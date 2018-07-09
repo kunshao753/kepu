@@ -63,7 +63,7 @@ class AdminController extends Controller
         if(!$type){
             // TODO check
         }
-        if($type == 'message'){
+        if($type == 'message_board'){
             $cellData = array(['序号','姓名','手机号','邮箱','问题','描述']);
             $messageList = Message::where('id', '>', '0')->orderBy('created_at','DESC')->paginate(6)->toArray();
             if(!empty($messageList)){

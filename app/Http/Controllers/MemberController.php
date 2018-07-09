@@ -19,6 +19,7 @@ class MemberController extends Controller
 
     public function index(Request $request)
     {
+
         $result = CorpInfo::where(['user_id'=>1])->first();
         $auditStatus = 0;
         if($result){
