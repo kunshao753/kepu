@@ -37,7 +37,7 @@ class FileController extends Controller
             $suffix = $file->getClientOriginalExtension();
             $path = $file->getRealPath();
             $filename = date('Y-m-d') . '/' . uniqid() .'.'.$suffix;
-            Storage::disk('uploadfiles')->put($filename,file_get_contents($path));
+            Storage::disk('public')->put($filename,file_get_contents($path));
             return $this->responseSuccess(['filepath'=>$filename]);
         }else{
             return $this->responseError();
