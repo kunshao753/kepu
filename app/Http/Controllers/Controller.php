@@ -86,13 +86,13 @@ class Controller extends BaseController
                 ),
             ),
             'productType' => array(
-                "1"=>array( 'name' => 'product_type', 'text' => '科普内容聚合平台（知识类、游戏类、教育类、工具书类）', 'show' => 0),
+                "1"=>array( 'name' => 'product_type', 'text' => '科普内容聚合平台（知识、游戏、教育、工具书类）', 'show' => 0),
                 "2"=>array( 'name' => 'product_type', 'text' => '科普技术', 'show' => 0),
                 "3"=>array( 'name' => 'product_type', 'text' => '科普交互服务', 'show' => 0),
                 "4"=>array( 'name' => 'product_type', 'text' => '科普体验', 'show' => 0),
             ),
             'help'=>array(
-                "1"=>array( 'name' => 'accept_help[1]', 'text' => '投资', 'show' => 1),
+                "1"=>array( 'name' => 'accept_help[1]', 'text' => '投资', 'show' => 0),
                 "2"=>array( 'name' => 'accept_help[2]', 'text' => '资源对接（产品、技术合作）', 'show' => 0 ),
                 "3"=>array( 'name' => 'accept_help[3]', 'text' => '创业指导（知名投资人、企业家指导）', 'show' => 0 ),
                 "4"=>array( 'name' => 'accept_help[4]', 'text' => '项目推广（品牌宣传）', 'show' => 0 ),

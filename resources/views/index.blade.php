@@ -35,7 +35,7 @@
             @else
                 <a href="{{route('member.index')}}" class="login">{{ Auth::user()->name }}</a>
                 <a href="{{ route('logout') }}" class="sign-up" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">  退出  </a>
-                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                <form style="border:0;" id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                 {{ csrf_field() }}
                 </form>
             @endif
@@ -87,69 +87,69 @@
 <div class="schedule-cont">
     <h3>赛程安排</h3>
     <div class="schedule-list clearfix">
-        <div class="schedule-up">
+        <div class="schedule-up @if($competition == 1) cur @endif ">
             <h4>大赛启动</h4>
-            <p class="s-date">2018年7月</p>
+            <p class="s-date">7月</p>
             <div class="s-icon-wrap">
                 <em class="line"></em>
                 <i class="s-icon"></i>
             </div>
         </div>
-        <div class="schedule-down">
+        <div class="schedule-down  @if($competition == 2) cur @endif ">
             <div class="s-icon-wrap">
                 <em class="line"></em>
                 <i class="s-icon"></i>
             </div>
-            <h4>大赛启动</h4>
-            <p class="s-date">2018年10月上旬</p>
+            <h4>项目征集</h4>
+            <p class="s-date">8月-9月</p>
         </div>
-        <div class="schedule-up">
-            <h4>大赛启动</h4>
-            <p class="s-date">2018年7月</p>
-            <div class="s-icon-wrap">
-                <em class="line"></em>
-                <i class="s-icon"></i>
-            </div>
-        </div>
-        <div class="schedule-down">
-            <div class="s-icon-wrap">
-                <em class="line"></em>
-                <i class="s-icon"></i>
-            </div>
-            <h4>大赛启动</h4>
-            <p class="s-date">2018年7月</p>
-        </div>
-        <div class="schedule-up">
-            <h4>大赛启动</h4>
-            <p class="s-date">2018年7月</p>
+        <div class="schedule-up  @if($competition == 3) cur @endif ">
+            <h4>初步审查</h4>
+            <p class="s-date">10月上旬</p>
             <div class="s-icon-wrap">
                 <em class="line"></em>
                 <i class="s-icon"></i>
             </div>
         </div>
-        <div class="schedule-down">
+        <div class="schedule-down  @if($competition == 4) cur @endif ">
             <div class="s-icon-wrap">
                 <em class="line"></em>
                 <i class="s-icon"></i>
             </div>
-            <h4>大赛启动</h4>
-            <p class="s-date">2018年7月</p>
+            <h4>材料评审</h4>
+            <p class="s-date">10月中旬</p>
         </div>
-        <div class="schedule-up">
-            <h4>大赛启动</h4>
-            <p class="s-date">2018年7月</p>
+        <div class="schedule-up  @if($competition == 5) cur @endif ">
+            <h4>初赛</h4>
+            <p class="s-date">10月下旬</p>
             <div class="s-icon-wrap">
                 <em class="line"></em>
                 <i class="s-icon"></i>
             </div>
         </div>
-        <div class="schedule-down">
+        <div class="schedule-down @if($competition == 6) cur @endif ">
             <div class="s-icon-wrap">
                 <em class="line"></em>
                 <i class="s-icon"></i>
             </div>
-            <h4>大赛启动</h4>
-            <p class="s-date">2018年7月</p>
+            <h4>赛前培训</h4>
+            <p class="s-date">11月上旬</p>
+        </div>
+        <div class="schedule-up  @if($competition == 7) cur @endif ">
+            <h4>决赛</h4>
+            <p class="s-date">11月上旬</p>
+            <div class="s-icon-wrap">
+                <em class="line"></em>
+                <i class="s-icon"></i>
+            </div>
+        </div>
+        <div class="schedule-down @if($competition == 8) cur @endif ">
+            <div class="s-icon-wrap">
+                <em class="line"></em>
+                <i class="s-icon"></i>
+            </div>
+            <h4>后续产业服务</h4>
+            <p class="s-date">11月后</p>
         </div>
     </div>
 </div>
@@ -363,34 +363,58 @@
         <h3 class="big-tit">
             咨询答疑
         </h3>
-        <ul class="form-list">
-            <li>
-                <input type="text" id="name" name="name" data-title="用户名" placeholder="用户名">
-                <label for="">*必填</label>
-            </li>
-            <li>
-                <input type="text" id="mobile" name="mobile"  data-title="联系方式" placeholder="请留下您的联系方式">
-                <label for="">*必填</label>
-            </li>
-            <li>
-                <input type="text" id="email" name="email"  data-title="邮箱"  placeholder="请留下您的邮箱">
-                <label for="">*必填</label>
-            </li>
-            <li>
-                <input type="text" id="question" name="question"  data-title="您的问题"  placeholder="您的问题">
-                <label for="">*必填</label>
-            </li>
-            <li>
-                <textarea id="description" name="description"  data-title="描述问题" placeholder="请描述您的问题"></textarea>
-                <label for="">*必填</label>
-            </li>
-        </ul>
-        <div class="f-btn">
-            <a href="javascript:void(0);" class="confirm">提交</a>
-        </div>
+        <form id="form">
+            {{ csrf_field() }}
+            <ul class="form-list">
+                <li>
+                    <input type="text" id="name" name="name" data-title="用户名" placeholder="用户名">
+                    <div id="nameTip"></div>
+                </li>
+                <li>
+                    <input type="tel" id="mobile" maxlength="11" name="mobile" data-title="手机号" placeholder="请留下您的手机号" />
+                    <div id="mobileTip"></div>
+                </li>
+                <li>
+                    <input type="text" id="email" name="email"  data-title="邮箱"  placeholder="请留下您的邮箱">
+                    <div id="emailTip"></div>
+                </li>
+                <li>
+                    <input type="text" id="question" name="question"  data-title="您的问题"  placeholder="您的问题">
+                    <div id="questionTip"></div>
+                </li>
+                <li>
+                    <textarea id="description" name="description"  data-title="描述问题" placeholder="请描述您的问题"></textarea>
+                    <div id="descriptionTip"></div>
+                </li>
+            </ul>
+            <div class="f-btn">
+                <button class="confirm">提交</button>
+            </div>
+        </form>
     </div>
 </div>
-<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+<script src="/js/jquery-1.11.0.min.js" ></script>
+<script src="/js/jquery-migrate-1.2.1.js" ></script>
+<script src="/js/formvalidator4.1.3/formValidator-4.1.3.js" ></script>
+<script src="/js/formvalidator4.1.3/formValidatorRegex.js" ></script>
+<style>
+    .form-list li{ position: relative; }
+    #descriptionTip, #questionTip, #mobileTip, #emailTip, #nameTip{
+        font-size: 20px;
+        color: #f8386b;
+        position: absolute;
+        right: 15px;
+        top:21px;
+        height: 60px;
+        width: 260px;
+        line-height: 60px;
+        text-align: left;
+    }
+    #descriptionTip div,  #questionTip div, #mobileTip div, #emailTip div,#nameTip div{
+        font-size: 20px;
+        color: #f8386b;
+    }
+</style>
 <script>
     window.onload = function(){
         document.querySelector("#works-cont-b").onclick = function(){
@@ -406,40 +430,31 @@
             document.querySelector("#rater-cont").scrollIntoView(false);
         }
     }
-    $(function(){
-        $('.login-mode .weibo, .login-mode .wechat').hover(function(){
+</script>
+<script>
+    $(function() {
+        $('.login-mode .weibo, .login-mode .wechat').hover(function () {
             $(this).find('.qr-code').show();
-        },function(){
+        }, function () {
             $(this).find('.qr-code').hide();
         })
-        $('.question-btn').click(function(){
+        $('.question-btn').click(function () {
             $(".pop-up").show();
         })
         $('.closeicon').click(function () {
             $(".pop-up").hide();
         })
-        var config = ['name','mobile','email','question','description'];
-        var checkQuestion = function(){
-            var flag = true;
-            for (var x in config){
-                if ($('#'+config[x]).val() == ''){
-                    $('#'+config[x]).closest('li').find('label').html(
-                        $('#'+config[x]).attr('data-title')+'不能为空'
-                    );
-                    flag = false;
-                }
-            }
-            return flag;
-        }
-        $('.confirm').click(function(){
-            if (checkQuestion() == false){
-                return;
-            }
+    })
+
+    $(function(){
+        var questionSubmit = function () {
+            var config = ['name','mobile','email','question','description'];
             var data = {};
             for (var x in config){
-                console.log()
                 data[config[x]] = $('#'+config[x]).val();
             }
+            $(".form-list input, .form-list textarea").val('');
+            $(".pop-up").hide();
             $.ajax({
                 type:"POST",
                 url:"{{route('message.create')}}",
@@ -447,13 +462,88 @@
                 dataType:"json",
                 success:function(response){
                     if(response.status == 'success'){
-                        $(".form-list input, .form-list textarea").val('');
-                        $(".pop-up").hide();
+                        alert("提交成功！");
                     }
                 }
             })
-        })
+        }
+        $.formValidator.initConfig({
+            formID:"form",
+            onSuccess:function(){
+                questionSubmit();
+                return false;
+            },
+            onError:function(){
+                return false;
+            }
+        });
+        $("#name").formValidator( {
+            onShow:"*必填",
+            onFocus :"2-8位汉字",
+        }).inputValidator( {
+            min :1,
+            onError :"姓名不能为空"
+        }).inputValidator( {
+            min :2,
+            max :8,
+            empty : {
+                leftEmpty :false,
+                rightEmpty :false,
+                emptyError :"两边不能有空"
+            },
+            onError :"2-8位汉字"
+        });
+        $("#mobile").formValidator({
+            onShow:"*必填",
+            onFocus:"手机号11位数字",
+        }).regexValidator({
+            regExp:"mobile",
+            dataType:"enum",
+            onError:"手机号码格式不正确"
+        });
+
+        $("#email").formValidator({
+            onShow:"*必填",
+            onFocus:"邮箱6-40个字符",
+        }).regexValidator({
+            regExp:"^([\\w-.]+)@(([[0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}.)|(([\\w-]+.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(]?)$",
+            onError:"邮箱格式不正确"
+        });
+        $("#question").formValidator( {
+            onShow:"*必填",
+            onFocus :"2-30位汉字",
+        }).inputValidator( {
+            min :1,
+            onError :"问题不能为空"
+        }).inputValidator( {
+            min :2,
+            max :30,
+            empty : {
+                leftEmpty :false,
+                rightEmpty :false,
+                emptyError :"两边不能有空"
+            },
+            onError :"2-30位汉字"
+        });
+        $("#description").formValidator( {
+            onShow:"*必填",
+            onFocus :"2-100位汉字",
+        }).inputValidator( {
+            min :1,
+            onError :"描述问题不能为空"
+        }).inputValidator( {
+            min :2,
+            max :100,
+            empty : {
+                leftEmpty :false,
+                rightEmpty :false,
+                emptyError :"两边不能有空"
+            },
+            onError :"2-30位汉字"
+        });
+
     })
+
 </script>
 </body>
 </html>

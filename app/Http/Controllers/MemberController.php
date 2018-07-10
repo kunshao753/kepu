@@ -19,21 +19,38 @@ class MemberController extends Controller
 
     public function index(Request $request)
     {
-
-        $result = CorpInfo::where(['user_id'=>1])->first();
+        $result = CorpInfo::where(['user_id'=>Auth::user()->id])->first();
         $auditStatus = 0;
         if($result){
             $auditStatus = $result->audit_status;
         }
         return view('member.center', ['status'=>$auditStatus, 'user'=>Auth::user()->toArray()]);
     }
-    public function corpInfo()
+    public function corpInfo(Request $request)
     {
         $config= $this->getCorpInfoConfig();
-        return view('member.schedule01', ['help'=>$config['help'],'signupResouce' => $config['signupResouce']]);
+        $cropInfo = [];
+        $help = $config['help'];
+        $flag = 0;
+        $view = 'member.schedule01';
+        if(isset($request['id'])){
+            $cropInfo = CorpInfo::where(['user_id'=> $request->get('id')])->first();
+            if($cropInfo){
+                $cropInfoArray = $cropInfo->toArray();
+                $helpArray = explode(',', $cropInfoArray['accept_help']);
+                foreach ($help as $key=>$value){
+                    if(array_key_exists($key, array_flip($helpArray))){
+                        $help[$key]['show'] = 1;
+                    }
+                }
+                $view = 'member.schedule01show';
+            }
+        }
+        return view($view, ['cropInfo' =>$cropInfo, 'help'=>$help,'signupResouce' => $config['signupResouce']]);
     }
     public function corpInfoEdit(Request $request)
     {
+        // TODO 查询是否存在
         if(!isset($request['id'])){
             $params = $request->all();
             $signupResouceVal = "";
@@ -57,60 +74,103 @@ class MemberController extends Controller
     }
     public function signUp(Request $request)
     {
-
         return view('member.signUp');
     }
     public function projectInfo(Request $request)
     {
+        $view = 'member.schedule03';
+        $projectInfo = [];
         $config= $this->getCorpInfoConfig();
-        return view('member.schedule03',['productType'=>$config['productType'],'productForm'=>$config['productForm']]);
+        $productForm = $config['productForm'];
+        $productType = $config['productType'];
+        if(isset($request['id'])) {
+            $projectInfo = ProjectInfo::where(['user_id' => $request->get('id')])->first();
+            if ($projectInfo) {
+                $projectInfoArray = $projectInfo->toArray();
+                $productFormArray = json_decode($projectInfoArray['product_form_val'], true);
+                foreach ($productForm as $key => $value) {
+                    if (array_key_exists($key, $productFormArray)) {
+                        $productForm[$key]['text'] = $productFormArray[$key];
+                        $productForm[$key]['show'] = 1;
+                    }
+                }
+                $view = 'member.schedule03show';
+            }
+        }
+        return view($view,['projectInfo'=>$projectInfo, 'productType'=>$productType,'productForm'=>$productForm]);
     }
     public function projectInfoEdit(Request $request)
     {
-        $params = $request->all();
-        $product_form = [];
-        foreach($params['product_form_k'] as $key=>$value){
-            $product_form[$key] = $params['product_form_v'][$key];
+        if(!isset($request['id'])){
+            $params = $request->all();
+
+            $product_form = [];
+            foreach($params['product_form_k'] as $key=>$value){
+                $product_form[$key] = $params['product_form_v'][$key];
+            }
+
+            unset($params['product_form_k']);
+            unset($params['product_form_v']);
+            $params['product_form_val'] = json_encode($product_form);
+            $params['user_id'] = Auth::user()->id;
+            $result = ProjectInfo::create($params);
+            if($result){
+                return redirect()->route('member.projectPhoto');
+            }else{
+                return redirect()->route('member.projectInfo');
+            }
         }
-        unset($params['product_form_k']);
-        unset($params['product_form_v']);
-        $params['product_form_val'] = json_encode($product_form);
-        $params['user_id'] = Auth::user()->id;
-        $result = ProjectInfo::create($params);
-        if($result){
-            return redirect()->route('member.projectPhoto');
-        }else{
-            return redirect()->route('member.projectInfo');
-        }
+
     }
-    public function projectPhoto()
+    public function projectPhoto(Request $request)
     {
-        return view('member.schedule04');
+        $view = 'member.schedule04';
+        $projectPhoto = [];
+        if(isset($request['id'])){
+            $projectPhoto = ProjectPhoto::where(['user_id' => $request->get('id')])->first();
+            if($projectPhoto){
+                $view = 'member.schedule04show';
+            }
+        }
+        return view($view,['projectPhoto' => $projectPhoto, 'pathPic' =>'/public/files/']);
     }
     public function projectPhotoEdit(Request $request)
     {
         $params = $request->all();
-        $params['user_id'] = Auth::user()->id;
-        $result = ProjectPhoto::create($params);
-        if($result){
-            return redirect('/');
-        }else{
-            return redirect()->route('member.projectTeam');
+        if(!isset($request['id'])) {
+            $params['user_id'] = Auth::user()->id;
+            $result = ProjectPhoto::create($params);
+            if ($result) {
+                return redirect('/');
+            } else {
+                return redirect()->route('member.projectTeam');
+            }
         }
     }
     public function projectTeam(Request $request)
     {
-        return view('member.schedule02');
+        $view = 'member.schedule02';
+        $teamInfo = [];
+        if(isset($request['id'])){
+            $teamInfo = ProjectTeam::where(['user_id' => $request->get('id')])->first();
+            if($teamInfo){
+                $view = 'member.schedule02show';
+            }
+        }
+        return view($view,['teamInfo' => $teamInfo]);
     }
     public function projectTeamEdit(Request $request)
     {
-        $params = $request->all();
-        $params['user_id'] = Auth::user()->id;
-        $result = ProjectTeam::create($params);
-        if($result){
-            return redirect()->route('member.projectInfo');
-        }else{
-            return redirect()->route('member.projectTeam');
+        // TODO 查询是否存在
+        if(!isset($request['id'])) {
+            $params = $request->all();
+            $params['user_id'] = Auth::user()->id;
+            $result = ProjectTeam::create($params);
+            if ($result) {
+                return redirect()->route('member.projectInfo');
+            } else {
+                return redirect()->route('member.projectTeam');
+            }
         }
     }
 

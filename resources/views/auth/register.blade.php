@@ -7,6 +7,7 @@
     <title></title>
     <link rel="stylesheet" href="/styles/base.css">
     <link rel="stylesheet" href="/styles/style.css">
+    <link rel="stylesheet" href="/css/jquery-ui.css">
 </head>
 <body class="gray-b">
     <div class="header">
@@ -29,76 +30,157 @@
             </h3>
             <ul class="form-list">
                 <li>
-                    <input type="tel" id="mobile" name="mobile" data-title="手机号" placeholder="手机号" />
-                    <label for="">*必填</label>
+                    <input type="tel" id="mobile" maxlength="11" name="mobile" data-title="手机号" placeholder="手机号" />
+                    <div id="mobileTip"></div>
                 </li>
                 <li>
                     <input type="password" id="password" name="password"  data-title="密码"  placeholder="密码" />
-                    <label for="">*必填</label>
+                    <div id="passwordTip"></div>
                 </li>
                 <li>
                     <input type="password" name="password_confirmation" id="password-confirm" placeholder="确认密码" data-title="确认密码" />
-                    <label for="">*必填</label>
+                    <div id="password-confirmTip"></div>
                 </li>
                 <li>
-                    <input type="text" name="email" placeholder="邮箱" />
+                    <input type="text" name="email" id="email" placeholder="邮箱" />
+                    <div id="emailTip"></div>
                 </li>
                 <li>
-                    <input type="text" name="name" placeholder="姓名" />
+                    <input type="text" name="name" id="name" placeholder="姓名" />
+                    <div id="nameTip"></div>
                 </li>
             </ul>
             <div class="f-btn">
-                <a href="javascript:void(0);" class="confirm">注册</a>
+                <button type="submit" class="confirm">注册</button>
             </div>
         </div>
-        @if ($errors->has('mobile'))
-            <span class="help-block">
-                                        <strong>{{ $errors->first('mobile') }}</strong>
-                                    </span>
-        @endif
-        @if ($errors->has('password'))
-            <span class="help-block">
-                                        <strong>{{ $errors->first('password') }}</strong>
-                                    </span>
-        @endif
-        @if ($errors->has('email'))
-            <span class="help-block">
-                                        <strong>{{ $errors->first('email') }}</strong>
-                                    </span>
-        @endif
-        @if ($errors->has('name'))
-            <span class="help-block">
-                                        <strong>{{ $errors->first('name') }}</strong>
-                                    </span>
+        @if ($errors->has('mobile') ||  $errors->has('email'))
+            <script>
+                @if($errors->first('mobile'))
+                    alert('手机号已注册');
+                @else
+                    alert('邮箱已注册');
+                @endif
+            </script>
         @endif
     </form>
     <div class="footer">
         <span>中国科学技术协会版权所</span>
         <span>中国科学技术协会版权所</span>
     </div>
-    <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+    <script src="/js/jquery-1.11.0.min.js" ></script>
+    <script src="/js/jquery-migrate-1.2.1.js" ></script>
+    <script src="/js/jquery-ui.min.js" ></script>
+    <script src="/js/formvalidator4.1.3/formValidator-4.1.3.js" ></script>
+    <script src="/js/formvalidator4.1.3/formValidatorRegex.js" ></script>
+    <style>
+        .form-list li{
+            position: relative;
+        }
+        #passwordTip, #password-confirmTip, #mobileTip, #emailTip, #nameTip{
+            font-size: 20px;
+            color: #f8386b;
+            position: absolute;
+            right: 15px;
+            top:21px;
+            height: 60px;
+            width: 260px;
+            line-height: 60px;
+            text-align: left;
+        }
+        #passwordTip div,  #password-confirmTip div, #mobileTip div, #emailTip div,#nameTip div{
+            font-size: 20px;
+            color: #f8386b;
+        }
+    </style>
     <script>
         $(function(){
-            var config = ['mobile', 'password', 'password-confirm'];
-            var checkInput = function(){
-                var flag = true;
-                for (var x in config){
-                    if ($('#'+config[x]).val() == ''){
-                        $('#'+config[x]).closest('li').find('label').html(
-                            $('#'+config[x]).attr('data-title')+'不能为空'
-                        );
-                        flag = false;
-                    }
+            $.formValidator.initConfig({
+                formID:"form",
+                onSuccess:function(){
+                    return true;
+                },
+                onError:function(){
+                    return false;
                 }
-                return flag;
-            }
-            $('.confirm').click(function(){
-                if (checkInput() == false){
-                    return;
-                }
-                $('#form').submit();
-            })
+            });
+            $("#mobile").formValidator({
+                onShow:"*必填",
+                onFocus:"手机号11位数字",
+            }).regexValidator({
+                regExp:"mobile",
+                dataType:"enum",
+                onError:"手机号码格式不正确"
+            });
+            $("#password").formValidator( {
+                onShow :"*必填",
+                onFocus :"6-20位数字、字母",
+            }).inputValidator( {
+                min :1,
+                onError :"密码不能为空"
+            }).inputValidator( {
+                min :6,
+                max :20,
+                empty : {
+                    leftEmpty :false,
+                    rightEmpty :false,
+                    emptyError :"两边不能有空"
+                },
+                onError :"6-20位数字、字母"
+            }).functionValidator({
+                fun:testNewPassword
+            });
+            $("#password-confirm").formValidator( {
+                onShow :"*必填",
+                onFocus :"6-20位数字、字母",
+                onCorrect :"&nbsp;"
+            }).inputValidator( {
+                min :1,
+                onError :"确认密码不能为空"
+            }).inputValidator( {
+                min :6,
+                max :20,
+                empty : {
+                    leftEmpty :false,
+                    rightEmpty :false,
+                    emptyError :"两边不能有空"
+                },
+                onError :"6-20位数字、字母"
+            }).compareValidator( {
+                desID :"password",
+                operateor :"=",
+                onError :"两次密码不一致"
+            });
+            $("#email").formValidator({
+                empty:true,
+                onShow :"",
+                onFocus:"邮箱6-100个字符",
+                onEmpty:""
+            }).regexValidator({
+                regExp:"^([\\w-.]+)@(([[0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}.)|(([\\w-]+.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(]?)$",
+                onError:"邮箱格式不正确"
+            });
+            $("#name").formValidator( {
+                empty:true,
+                onShow :"",
+                onFocus :"2-8位汉字",
+                onCorrect :"&nbsp;",
+                onEmpty:""
+            }).inputValidator( {
+                min :1,
+                onError :"姓名不能为空"
+            }).inputValidator( {
+                min :2,
+                max :8,
+                empty : {
+                    leftEmpty :false,
+                    rightEmpty :false,
+                    emptyError :"两边不能有空"
+                },
+                onError :"2-8位汉字"
+            });
         })
+
     </script>
 </body>
 </html>

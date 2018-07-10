@@ -27,18 +27,23 @@
             <h3 class="big-tit">
                 会员登录
             </h3>
+            @if ($errors->has('mobile') || $errors->has('password'))
+                    <script>
+                        alert('手机号密码输入有误, 请重新输入');
+                    </script>
+            @endif
             <ul class="form-list">
                 <li>
-                    <input type="text" name="email" id="email" data-title="邮箱" placeholder="邮箱">
-                    <label for="">*必填</label>
+                    <input type="tel" id="mobile" maxlength="11" name="mobile" data-title="手机号" placeholder="手机号" />
+                    <div id="mobileTip"></div>
                 </li>
                 <li>
-                    <input type="password" name="password" id="password"  data-title="密码" placeholder="密码">
-                    <label for="">*必填</label>
+                    <input type="password" id="password" name="password"  data-title="密码"  placeholder="密码" />
+                    <div id="passwordTip"></div>
                 </li>
             </ul>
             <div class="f-btn">
-                <a href="javascript:void(0);" class="confirm">登录</a>
+                <button type="submit" class="confirm">登录</button>
             </div>
         </div>
     </form>
@@ -46,29 +51,70 @@
         <span>中国科学技术协会版权所</span>
         <span>中国科学技术协会版权所</span>
     </div>
-    <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+    <script src="/js/jquery-1.11.0.min.js" ></script>
+    <script src="/js/jquery-migrate-1.2.1.js" ></script>
+    <script src="/js/jquery-ui.min.js" ></script>
+    <script src="/js/formvalidator4.1.3/formValidator-4.1.3.js" ></script>
+    <script src="/js/formvalidator4.1.3/formValidatorRegex.js" ></script>
+    <style>
+        .form-list li{
+            position: relative;
+        }
+        #passwordTip, #password-confirmTip, #mobileTip, #emailTip, #nameTip{
+            font-size: 20px;
+            color: #f8386b;
+            position: absolute;
+            right: 15px;
+            top:21px;
+            height: 60px;
+            width: 260px;
+            line-height: 60px;
+            text-align: left;
+        }
+        #passwordTip div,  #password-confirmTip div, #mobileTip div, #emailTip div,#nameTip div{
+            font-size: 20px;
+            color: #f8386b;
+        }
+    </style>
     <script>
         $(function(){
-            var config = ['email','password'];
-            var checkInput = function(){
-                var flag = true;
-                for (var x in config){
-                    if ($('#'+config[x]).val() == ''){
-                        $('#'+config[x]).closest('li').find('label').html(
-                            $('#'+config[x]).attr('data-title')+'不能为空'
-                        );
-                        flag = false;
-                    }
+            $.formValidator.initConfig({
+                formID:"form",
+                onSuccess:function(){
+                    return true;
+                },
+                onError:function(){
+                    return false;
                 }
-                return flag;
-            }
-            $('.confirm').click(function(){
-                if (checkInput() == false){
-                    return;
-                }
-                $('#form').submit();
-            })
+            });
+            $("#mobile").formValidator({
+                onShow:"*必填",
+                onFocus:"手机号11位数字",
+            }).regexValidator({
+                regExp:"mobile",
+                dataType:"enum",
+                onError:"手机号码格式不正确"
+            });
+            $("#password").formValidator( {
+                onShow :"*必填",
+                onFocus :"6-20位数字、字母",
+            }).inputValidator( {
+                min :1,
+                onError :"密码不能为空"
+            }).inputValidator( {
+                min :6,
+                max :20,
+                empty : {
+                    leftEmpty :false,
+                    rightEmpty :false,
+                    emptyError :"两边不能有空"
+                },
+                onError :"6-20位数字、字母"
+            }).functionValidator({
+                fun:testNewPassword
+            });
         })
+
     </script>
 </body>
 </html>

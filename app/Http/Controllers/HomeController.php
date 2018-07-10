@@ -3,26 +3,14 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Competition;
 
 class HomeController extends Controller
 {
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
-    public function __construct()
+    public function index(Request $request)
     {
-        $this->middleware('auth');
-    }
+        $competition = Competition::where(['id' => 1])->get(['status'])->first()->toArray();
 
-    /**
-     * Show the application dashboard.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        return view('home');
+        return view('index',['competition'=>$competition['status']]);
     }
 }

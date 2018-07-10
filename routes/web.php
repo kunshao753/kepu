@@ -11,13 +11,13 @@
 |
 */
 
-Route::get('/', function () {
-    return view('index');
-});
+//Route::get('/', function () {
+//    return view('index');
+//});
 
 Auth::routes();
 
-// Route::get('/home', 'HomeController@index');
+Route::get('/', 'HomeController@index');
 Route::get('/admin/index', 'AdminController@index')->name('admin.index');
 Route::get('/admin/exportList', 'AdminController@exportList')->name('admin.exportList');
 Route::post('/admin/updateStatus', 'AdminController@updateStatus')->name('admin.updateStatus');

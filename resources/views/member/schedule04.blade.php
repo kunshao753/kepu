@@ -39,6 +39,21 @@
             </li>
         </ul>
     </div>
+    <style>
+        .data-list li{
+            position: relative;
+        }
+        .a_view{
+            position: absolute;
+            top: 120px;
+            width: 120px;
+            height: 40px;
+            right: 35px;
+            font-size: 18px;
+            color: blue;
+
+        }
+    </style>
     <form method="post" id="form" enctype="multipart/form-data" action="{{route('member.projectPhotoEdit')}}">
         <div class="form-schedule w">
             <h3>上传资料</h3>
@@ -51,7 +66,7 @@
                         </div>
                         <div class="file-btn">
                             <input type="file" id="contestant_statement" class="input-file" />
-                            <input type="hidden" name="contestant_statement" />
+                            <input type="hidden" class="contestant_statement"  name="contestant_statement" />
                             <span class="file-b">上传</span>
                         </div>
                     </li>
@@ -64,6 +79,7 @@
                             <input type="hidden" name="identity_front_back" />
                             <span class="file-b">上传</span>
                         </div>
+                        <a style="display: none" class="identity_front_back" target="_blank">PDF</a>
                     </li>
                     <li>
                         <div class="text-left">
@@ -72,9 +88,10 @@
                         </div>
                         <div class="file-btn">
                             <input type="file" id="business_license" class="input-file" />
-                            <input type="hidden" name="business_license" />
+                            <input type="hidden" class="business_license"  name="business_license" />
                             <span class="file-b">上传</span>
                         </div>
+                        <a style="display: none" class="identity_front_back" target="_blank">PDF</a>
                     </li>
                     <li class="right text-aline">
                         <div class="text-left">
@@ -93,7 +110,7 @@
                         </div>
                         <div class="file-btn">
                             <input type="file" id="financing_certificate" class="input-file">
-                            <input type="hidden" name="financing_certificate" />
+                            <input type="hidden" class="financing_certificate" name="financing_certificate" />
                             <span class="file-b">上传</span>
                         </div>
                     </li>
@@ -130,10 +147,9 @@
                 </ul>
             </div>
             <div class="add-img clearfix">
-                <div class="img-show" style="display: none"></div>
-                {{--<div class="add-img-btn">--}}
-                    {{--<i class="icon03"></i>--}}
-                {{--</div>--}}
+                <div class="img-show contestant_photo_img" style="display: none"></div>
+                <div class="img-show logo_photo_img" style="display: none; float:right"></div>
+                </div>
             </div>
         </div>
         <div class="f-btn pt40">
@@ -151,7 +167,12 @@
             $('.data-list input').change(function(){
                 var formData = new FormData();
                 var inputName = $(this).attr('id');
-                formData.append("file", $('#'+$(this).attr('id'))[0].files[0]);
+                var file = $('#'+$(this).attr('id'))[0].files[0];
+                if (!/image\/\w+/.test(file.type) && !/fdf\/\w+/.test(file.type)) {
+                    alert("只能上传pdf文件和图片格式！")
+                    return false;
+                }
+                formData.append("file", file);
                 $.ajax({
                     url: "{{route('uploadFile')}}",
                     type: 'POST',
@@ -163,14 +184,31 @@
                     if(res.status == 'success'){
                         $("input[name="+inputName+"]").val(res.data.filepath);
                         $('#'+inputName).closest('.file-btn').find('.file-b').html('上传成功');
-                        if(inputName == 'contestant_photo'){
-                            $('.img-show').html('<img src="'+res.data.filepath+'" >');
-                            $('.img-show').show();
+                        if(inputName == 'contestant_photo' || inputName == 'logo_photo'){
+                            $className = inputName + '_img';
+                            $('.'+$className).html('<img src="{{$pathPic}}'+res.data.filepath+'" >');
+                            $('.'+$className).show();
+                        }else{
+                            $('#'+inputName).closest('li').append(
+                                '<a class="a_view" href="{{$pathPic}}'+res.data.filepath+'" >PDF查看</a>'
+                            );
                         }
                     }
                 });
             })
             $('#submit-btn').click(function(){
+                if($(".contestant_statement").val().length == 0){
+                    alert("参赛声明签名扫描版PDF不能为空");
+                    return false;
+                }
+                if($(".business_license").val().length == 0){
+                    alert("营业执照扫描PDF不能为空");
+                    return false;
+                }
+                if($(".financing_certificate").val().length == 0){
+                    alert("融资证明材料PDF不能为空");
+                    return false;
+                }
                 $('#form').submit();
             })
             $('#goBack').click(function(){
