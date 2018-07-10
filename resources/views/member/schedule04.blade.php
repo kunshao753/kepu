@@ -62,7 +62,7 @@
                     <li>
                         <div class="text-left">
                             <p class="text01">参赛声明签名扫描版PDF</p>
-                            <p class="text02">报名时下载的PDF企业盖章，团队签名后扫描上传</p>
+                            <p class="text02">报名时下载的PDF企业盖章，团队签名后扫描上传<br /> ＊必传</p>
                         </div>
                         <div class="file-btn">
                             <input type="file" id="contestant_statement" class="input-file" />
@@ -73,6 +73,7 @@
                     <li class="right text-aline">
                         <div class="text-left">
                             <p class="text01">身份证复印件正反面PDF</p>
+                            <p class="text02"> ＊必传</p>
                         </div>
                         <div class="file-btn">
                             <input type="file" id="identity_front_back"  name="" class="input-file" />
@@ -96,6 +97,7 @@
                     <li class="right text-aline">
                         <div class="text-left">
                             <p class="text01">知识产权合规声明PDF</p>
+                            <p class="text02">＊必传</p>
                         </div>
                         <div class="file-btn">
                             <input type="file" id="intellectual_property_statement" class="input-file" />
@@ -201,12 +203,12 @@
                     alert("参赛声明签名扫描版PDF不能为空");
                     return false;
                 }
-                if($(".business_license").val().length == 0){
-                    alert("营业执照扫描PDF不能为空");
+                if($(".identity_front_back").val().length == 0){
+                    alert("身份证复印件正反面PDF");
                     return false;
                 }
-                if($(".financing_certificate").val().length == 0){
-                    alert("融资证明材料PDF不能为空");
+                if($(".intellectual_property_statement").val().length == 0){
+                    alert("知识产权合规声明PDF");
                     return false;
                 }
                 $('#form').submit();
