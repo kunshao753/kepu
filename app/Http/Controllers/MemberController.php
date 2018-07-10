@@ -50,6 +50,8 @@ class MemberController extends Controller
     }
     public function corpInfoEdit(Request $request)
     {
+        // var_dump($request->all());
+
         // TODO 查询是否存在
         if(!isset($request['id'])){
             $params = $request->all();
@@ -58,10 +60,17 @@ class MemberController extends Controller
                 $signupResouceVal .= $params['signup_resouce_'.$x];
                 unset($params['signup_resouce_'.$x]);
             }
+            if(isset($params['birthday']) && !empty($params['birthday'])){
+                $params['birthday'] = $this->setDate($params['birthday']);
+            }
+            if(isset($params['registered_time']) && !empty($params['registered_time'])){
+                $params['registered_time'] = $this->setDate($params['registered_time']);
+            }
             $params['signup_resouce_val'] = $signupResouceVal;
             $params['accept_help'] = implode(",", $params['accept_help']);
             $params['audit_status'] = 0;
             $params['user_id'] = Auth::user()->id;
+          
             $result = CorpInfo::create($params);
             if($result){
                 return redirect()->route('member.projectTeam');
@@ -172,6 +181,14 @@ class MemberController extends Controller
                 return redirect()->route('member.projectTeam');
             }
         }
+    }
+
+    public function setDate($date)
+    {
+        $date = str_replace('-','/', str_replace('/','/',$date));
+        $date = explode("/", $date);
+        $date = $date[2].'/'.$date[0].'/'.$date[1];
+        return $date;
     }
 
 }

@@ -2,22 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1ecfe424-f879-4cb3-a1c7-b06af650845b" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Auth/RegisterController.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/Auth/RegisterController.php" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Controller.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/Controller.php" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/FileController.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/FileController.php" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/HomeController.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/HomeController.php" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/MemberController.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/MemberController.php" />
-      <change beforePath="$PROJECT_DIR$/public/storage" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/public/styles/style.css" afterPath="$PROJECT_DIR$/public/styles/style.css" />
-      <change beforePath="$PROJECT_DIR$/resources/views/auth/login.blade.php" afterPath="$PROJECT_DIR$/resources/views/auth/login.blade.php" />
-      <change beforePath="$PROJECT_DIR$/resources/views/auth/register.blade.php" afterPath="$PROJECT_DIR$/resources/views/auth/register.blade.php" />
-      <change beforePath="$PROJECT_DIR$/resources/views/index.blade.php" afterPath="$PROJECT_DIR$/resources/views/index.blade.php" />
-      <change beforePath="$PROJECT_DIR$/resources/views/member/schedule01.blade.php" afterPath="$PROJECT_DIR$/resources/views/member/schedule01.blade.php" />
-      <change beforePath="$PROJECT_DIR$/resources/views/member/schedule02.blade.php" afterPath="$PROJECT_DIR$/resources/views/member/schedule02.blade.php" />
-      <change beforePath="$PROJECT_DIR$/resources/views/member/schedule03.blade.php" afterPath="$PROJECT_DIR$/resources/views/member/schedule03.blade.php" />
-      <change beforePath="$PROJECT_DIR$/resources/views/member/schedule04.blade.php" afterPath="$PROJECT_DIR$/resources/views/member/schedule04.blade.php" />
-      <change beforePath="$PROJECT_DIR$/routes/web.php" afterPath="$PROJECT_DIR$/routes/web.php" />
-      <change beforePath="$PROJECT_DIR$/vendor/laravel/framework/src/Illuminate/Foundation/Auth/AuthenticatesUsers.php" afterPath="$PROJECT_DIR$/vendor/laravel/framework/src/Illuminate/Foundation/Auth/AuthenticatesUsers.php" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -34,18 +19,17 @@
       <file leaf-file-name="MemberController.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/Http/Controllers/MemberController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="396">
-              <caret line="138" column="0" lean-forward="false" selection-start-line="138" selection-start-column="0" selection-end-line="138" selection-end-column="0" />
+            <state relative-caret-position="413">
+              <caret line="72" column="10" lean-forward="false" selection-start-line="72" selection-start-column="10" selection-end-line="72" selection-end-column="10" />
               <folding>
                 <element signature="e#316#646#0#PHP" expanded="false" />
                 <element signature="e#651#1535#0#PHP" expanded="false" />
-                <element signature="e#1540#2396#0#PHP" expanded="false" />
-                <element signature="e#2401#2491#0#PHP" expanded="false" />
-                <element signature="e#2496#3561#0#PHP" expanded="false" />
-                <element signature="e#3566#4348#0#PHP" expanded="false" />
-                <element signature="e#4353#4801#0#PHP" expanded="false" />
-                <element signature="e#5223#5619#0#PHP" expanded="false" />
-                <element signature="e#5624#6087#0#PHP" expanded="false" />
+                <element signature="e#2807#2897#0#PHP" expanded="false" />
+                <element signature="e#2902#3967#0#PHP" expanded="false" />
+                <element signature="e#3972#4754#0#PHP" expanded="false" />
+                <element signature="e#5212#5624#0#PHP" expanded="false" />
+                <element signature="e#5629#6025#0#PHP" expanded="false" />
+                <element signature="e#6030#6493#0#PHP" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -468,12 +452,12 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1531145268544</updated>
-      <workItem from="1531145269946" duration="36656000" />
+      <workItem from="1531145269946" duration="38032000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="36656000" />
+    <option name="totallyTimeSpent" value="38032000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1280" height="800" extended-state="0" />
@@ -485,7 +469,7 @@
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="npm" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.34814218" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2714055" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Docker" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
@@ -1063,18 +1047,17 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/Controllers/MemberController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="396">
-          <caret line="138" column="0" lean-forward="false" selection-start-line="138" selection-start-column="0" selection-end-line="138" selection-end-column="0" />
+        <state relative-caret-position="413">
+          <caret line="72" column="10" lean-forward="false" selection-start-line="72" selection-start-column="10" selection-end-line="72" selection-end-column="10" />
           <folding>
             <element signature="e#316#646#0#PHP" expanded="false" />
             <element signature="e#651#1535#0#PHP" expanded="false" />
-            <element signature="e#1540#2396#0#PHP" expanded="false" />
-            <element signature="e#2401#2491#0#PHP" expanded="false" />
-            <element signature="e#2496#3561#0#PHP" expanded="false" />
-            <element signature="e#3566#4348#0#PHP" expanded="false" />
-            <element signature="e#4353#4801#0#PHP" expanded="false" />
-            <element signature="e#5223#5619#0#PHP" expanded="false" />
-            <element signature="e#5624#6087#0#PHP" expanded="false" />
+            <element signature="e#2807#2897#0#PHP" expanded="false" />
+            <element signature="e#2902#3967#0#PHP" expanded="false" />
+            <element signature="e#3972#4754#0#PHP" expanded="false" />
+            <element signature="e#5212#5624#0#PHP" expanded="false" />
+            <element signature="e#5629#6025#0#PHP" expanded="false" />
+            <element signature="e#6030#6493#0#PHP" expanded="false" />
           </folding>
         </state>
       </provider>
