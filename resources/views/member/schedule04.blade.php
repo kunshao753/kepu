@@ -66,7 +66,7 @@
                         </div>
                         <div class="file-btn">
                             <input type="file" id="contestant_statement" class="input-file" />
-                            <input type="hidden" class="contestant_statement"  name="contestant_statement" />
+                            <input type="hidden"  name="contestant_statement" class="contestant_statement" />
                             <span class="file-b">上传</span>
                         </div>
                     </li>
@@ -77,10 +77,9 @@
                         </div>
                         <div class="file-btn">
                             <input type="file" id="identity_front_back"  name="" class="input-file" />
-                            <input type="hidden" name="identity_front_back" />
+                            <input type="hidden" name="identity_front_back" class="identity_front_back" />
                             <span class="file-b">上传</span>
                         </div>
-                        <a style="display: none" class="identity_front_back" target="_blank">PDF</a>
                     </li>
                     <li>
                         <div class="text-left">
@@ -89,10 +88,9 @@
                         </div>
                         <div class="file-btn">
                             <input type="file" id="business_license" class="input-file" />
-                            <input type="hidden" class="business_license"  name="business_license" />
+                            <input type="hidden"  name="business_license" />
                             <span class="file-b">上传</span>
                         </div>
-                        <a style="display: none" class="identity_front_back" target="_blank">PDF</a>
                     </li>
                     <li class="right text-aline">
                         <div class="text-left">
@@ -101,7 +99,7 @@
                         </div>
                         <div class="file-btn">
                             <input type="file" id="intellectual_property_statement" class="input-file" />
-                            <input type="hidden" name="intellectual_property_statement" />
+                            <input type="hidden" name="intellectual_property_statement" class="intellectual_property_statement" />
                             <span class="file-b">上传</span>
                         </div>
                     </li>
@@ -112,7 +110,7 @@
                         </div>
                         <div class="file-btn">
                             <input type="file" id="financing_certificate" class="input-file">
-                            <input type="hidden" class="financing_certificate" name="financing_certificate" />
+                            <input type="hidden"  name="financing_certificate" />
                             <span class="file-b">上传</span>
                         </div>
                     </li>
