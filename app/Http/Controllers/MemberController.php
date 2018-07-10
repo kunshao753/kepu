@@ -70,7 +70,7 @@ class MemberController extends Controller
             $params['accept_help'] = implode(",", $params['accept_help']);
             $params['audit_status'] = 0;
             $params['user_id'] = Auth::user()->id;
-          
+
             $result = CorpInfo::create($params);
             if($result){
                 return redirect()->route('member.projectTeam');
@@ -141,7 +141,7 @@ class MemberController extends Controller
                 $view = 'member.schedule04show';
             }
         }
-        return view($view,['projectPhoto' => $projectPhoto, 'pathPic' =>'/public/files/']);
+        return view($view,['projectPhoto' => $projectPhoto, 'pathPic' =>'/public/']);
     }
     public function projectPhotoEdit(Request $request)
     {
