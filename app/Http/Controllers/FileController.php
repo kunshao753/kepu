@@ -11,7 +11,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
 
-class FileController extends Controller
+class FileController extends PermissionController
 {
     public function uploadImage(Request $request)
     {
@@ -32,6 +32,7 @@ class FileController extends Controller
 
     public function uploadFile(Request $request)
     {
+        $this->getIsLogin();
         $file= $request->file('file');
         if ($file) {
             $suffix = $file->getClientOriginalExtension();

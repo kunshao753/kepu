@@ -290,12 +290,13 @@
             }).inputValidator({
                 min:1,
                 max:1,
-                onError:""
+                onError:"报名来源不能为空"
             });
             $("#age").formValidator({
                 empty:true,
-                onShow:"",
+                onShow :"",
                 onFocus:"输入正确年龄",
+                onEmpty:""
             }).regexValidator({
                 regExp:regexEnum.isNumber2,
                 onError:"年龄格式不正确"
@@ -317,8 +318,9 @@
             });
             $("#email").formValidator({
                 empty:true,
-                onShow:"",
-                onFocus:"邮箱6-40个字符",
+                onShow :"",
+                onFocus:"邮箱6-100个字符",
+                onEmpty:""
             }).regexValidator({
                 regExp:"^([\\w-.]+)@(([[0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}.)|(([\\w-]+.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(]?)$",
                 onError:"邮箱格式不正确"
@@ -337,6 +339,7 @@
                 empty:true,
                 onShow:"",
                 onFocus :"输入企业名称",
+                onEmpty:""
             }).inputValidator( {
                 min :1,
                 onError :"企业名称不能为空"

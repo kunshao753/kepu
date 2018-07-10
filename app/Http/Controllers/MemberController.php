@@ -14,11 +14,11 @@ use App\ProjectPhoto;
 use App\ProjectInfo;
 use Illuminate\Support\Facades\Auth;
 
-class MemberController extends Controller
+class MemberController extends PermissionController
 {
-
     public function index(Request $request)
     {
+        $this->getIsLogin();
         $result = CorpInfo::where(['user_id'=>Auth::user()->id])->first();
         $auditStatus = 0;
         if($result){
@@ -28,6 +28,7 @@ class MemberController extends Controller
     }
     public function corpInfo(Request $request)
     {
+        $this->getIsLogin();
         $config= $this->getCorpInfoConfig();
         $cropInfo = [];
         $help = $config['help'];
@@ -50,8 +51,7 @@ class MemberController extends Controller
     }
     public function corpInfoEdit(Request $request)
     {
-        // var_dump($request->all());
-
+        $this->getIsLogin();
         // TODO 查询是否存在
         if(!isset($request['id'])){
             $params = $request->all();
@@ -83,10 +83,12 @@ class MemberController extends Controller
     }
     public function signUp(Request $request)
     {
+        $this->getIsLogin();
         return view('member.signUp');
     }
     public function projectInfo(Request $request)
     {
+        $this->getIsLogin();
         $view = 'member.schedule03';
         $projectInfo = [];
         $config= $this->getCorpInfoConfig();
@@ -110,6 +112,7 @@ class MemberController extends Controller
     }
     public function projectInfoEdit(Request $request)
     {
+        $this->getIsLogin();
         if(!isset($request['id'])){
             $params = $request->all();
 
@@ -133,6 +136,7 @@ class MemberController extends Controller
     }
     public function projectPhoto(Request $request)
     {
+        $this->getIsLogin();
         $view = 'member.schedule04';
         $projectPhoto = [];
         if(isset($request['id'])){
@@ -145,6 +149,7 @@ class MemberController extends Controller
     }
     public function projectPhotoEdit(Request $request)
     {
+        $this->getIsLogin();
         $params = $request->all();
         if(!isset($request['id'])) {
             $params['user_id'] = Auth::user()->id;
@@ -158,6 +163,7 @@ class MemberController extends Controller
     }
     public function projectTeam(Request $request)
     {
+        $this->getIsLogin();
         $view = 'member.schedule02';
         $teamInfo = [];
         if(isset($request['id'])){
@@ -170,6 +176,7 @@ class MemberController extends Controller
     }
     public function projectTeamEdit(Request $request)
     {
+        $this->getIsLogin();
         // TODO 查询是否存在
         if(!isset($request['id'])) {
             $params = $request->all();
@@ -182,9 +189,9 @@ class MemberController extends Controller
             }
         }
     }
-
     public function setDate($date)
     {
+        $this->getIsLogin();
         $date = str_replace('-','/', str_replace('/','/',$date));
         $date = explode("/", $date);
         $date = $date[2].'/'.$date[0].'/'.$date[1];

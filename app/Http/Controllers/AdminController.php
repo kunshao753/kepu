@@ -16,10 +16,11 @@ use App\ProjectInfo;
 use Illuminate\Support\Facades\Auth;
 
 
-class AdminController extends Controller
+class AdminController extends PermissionController
 {
     public function index()
     {
+        $this->getIsLogin();
         $messageList = Message::where('id', '>', '0')->orderBy('created_at','DESC')->paginate(10);
         $competition = Competition::where(['id' => 1])->get(['status'])->first()->toArray();
         $corpList = CorpInfo::where('id', '>', '0')->orderBy('created_at','DESC')->paginate(10);
@@ -36,6 +37,7 @@ class AdminController extends Controller
 
     public function updateStatus(Request $request)
     {
+        $this->getIsLogin();
         $step = $request->input('step');
         if(!$step){
             // TODO check
@@ -46,6 +48,7 @@ class AdminController extends Controller
 
     public function auditStatus(Request $request)
     {
+        $this->getIsLogin();
         $status = $request->input('status');
         $id = $request->input('id');
         if(!$status || !$id){
@@ -59,6 +62,7 @@ class AdminController extends Controller
 
     public function exportList(Request $request)
     {
+        $this->getIsLogin();
         $type = $request->get('type');
         if(!$type){
             // TODO check
