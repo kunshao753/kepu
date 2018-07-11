@@ -371,11 +371,11 @@
             {{ csrf_field() }}
             <ul class="form-list">
                 <li>
-                    <input type="text" id="name" name="name" data-title="用户名" placeholder="用户名">
+                    <input type="text" id="name"maxlength="8" name="name" data-title="用户名" placeholder="用户名">
                     <div id="nameTip"></div>
                 </li>
                 <li>
-                    <input type="tel" id="mobile" maxlength="11" name="mobile" data-title="手机号" placeholder="请留下您的手机号" />
+                    <input type="text" id="mobile" maxlength="11"  name="mobile" data-title="手机号" placeholder="请留下您的手机号" />
                     <div id="mobileTip"></div>
                 </li>
                 <li>
@@ -383,11 +383,11 @@
                     <div id="emailTip"></div>
                 </li>
                 <li>
-                    <input type="text" id="question" name="question"  data-title="您的问题"  placeholder="您的问题">
+                    <input type="text" id="question" name="question" maxlength="30" data-title="您的问题"  placeholder="您的问题">
                     <div id="questionTip"></div>
                 </li>
                 <li>
-                    <textarea id="description" name="description"  data-title="描述问题" placeholder="请描述您的问题"></textarea>
+                    <textarea id="description" name="description" maxlength="30"  data-title="描述问题" placeholder="请描述您的问题"></textarea>
                     <div id="descriptionTip"></div>
                 </li>
             </ul>
