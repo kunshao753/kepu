@@ -68,7 +68,7 @@
                             {{--<span class="file-b">上传</span>--}}
                         {{--</div>--}}
                         @if($projectPhoto->contestant_statement)
-                        <a class="a_view"  href="/public/{{$projectPhoto->contestant_statement}}">PDF查看</a>
+                        <a class="a_view"  target="_blank" href="/public/{{$projectPhoto->contestant_statement}}">PDF查看</a>
                         @endif
                     </li>
                     <li class="right text-aline">
@@ -81,7 +81,7 @@
                             {{--<span class="file-b">上传</span>--}}
                         {{--</div>--}}
                         @if($projectPhoto->identity_front_back)
-                        <a class="a_view"  href="/public/{{$projectPhoto->identity_front_back}}">PDF查看</a>
+                        <a class="a_view"  target="_blank" href="/public/{{$projectPhoto->identity_front_back}}">PDF查看</a>
                         @endif
                     </li>
                     <li>
@@ -94,7 +94,7 @@
                             {{--<span class="file-b">上传</span>--}}
                         {{--</div>--}}
                         @if($projectPhoto->business_license)
-                        <a class="a_view" href="/public/{{$projectPhoto->business_license}}">PDF查看</a>
+                        <a class="a_view"  target="_blank" href="/public/{{$projectPhoto->business_license}}">PDF查看</a>
                         @endif
                     </li>
                     <li class="right text-aline">
@@ -107,7 +107,7 @@
                             {{--<span class="file-b">上传</span>--}}
                         {{--</div>--}}
                         @if($projectPhoto->intellectual_property_statement)
-                        <a class="a_view"  href="/public/{{$projectPhoto->intellectual_property_statement}}">PDF查看</a>
+                        <a class="a_view" target="_blank" href="/public/{{$projectPhoto->intellectual_property_statement}}">PDF查看</a>
                         @endif
                     </li>
                     <li>
@@ -120,7 +120,7 @@
                             {{--<span class="file-b">上传</span>--}}
                         {{--</div>--}}
                         @if($projectPhoto->financing_certificate)
-                        <a class="a_view"  href="/public/{{$projectPhoto->financing_certificate}}">PDF查看</a>
+                        <a class="a_view"  target="_blank"  href="/public/{{$projectPhoto->financing_certificate}}">PDF查看</a>
                         @endif
                     </li>
                     <li class="right text-aline">
@@ -133,7 +133,7 @@
                             {{--<span class="file-b">上传</span>--}}
                         {{--</div>--}}
                         @if($projectPhoto->product_communication_report)
-                        <a class="a_view"  href="/public/{{$projectPhoto->product_communication_report}}">PDF查看</a>
+                        <a class="a_view"  target="_blank" href="/public/{{$projectPhoto->product_communication_report}}">PDF查看</a>
                         @endif
                     </li>
                     <li class="text-aline">
