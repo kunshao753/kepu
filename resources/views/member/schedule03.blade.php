@@ -226,15 +226,21 @@
                 formID:"form",
                 onSuccess:function(){
                     var flag = 1;
+                    var num = 0;
                     for(var i=1;i<6; i++){
                         var isCheck = $(":checkbox[name='product_form_k["+i+"]']").attr('checked');
                         if(isCheck == 'checked'){
+                            num = num+1;
                             if($("input[name='product_form_v["+i+"]']").val() == ''){
                                 flag = 0;
                                 alert("产品形态选名称不能为空");
                                 break;
                             }
                         }
+                    }
+                    if(!num){
+                        alert("产品形态选名称不能为空");
+                        return false;
                     }
                     if(!flag){
                         return false;
