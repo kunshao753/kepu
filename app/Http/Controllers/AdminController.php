@@ -25,8 +25,6 @@ class AdminController extends PermissionController
     {
         $this->getIsAdmin();
         $competition = Competition::where(['id' => 1])->get(['status'])->first()->toArray();
-        $corpList = CorpInfo::where('id', '>', '0')->orderBy('created_at','DESC')->paginate(20);
-        $corpData = $this->corpAndProject($corpList, $this->getCorpInfoConfig());
         $competitionStep = $this->competitionConfig();
         foreach($competitionStep as $key=>$value){
             if($key == $competition['status']){
@@ -35,20 +33,35 @@ class AdminController extends PermissionController
             }
         }
         $count = ProjectPhoto::where('id','>','0')->count();
-        return view('admin.index', array('count'=>$count, 'corpData'=>$corpData, 'corpList'=>$corpList,'competitionStep'=> $competitionStep));
+        return view('admin.index', array('count'=>$count,'competitionStep'=> $competitionStep));
     }
 
     public function messageList(Request $request){
-
-        $pageNum = $request->input('pageNo');
-        $messageList = Message::offset($pageNum-1)->limit(20)->get();
+        $pageSize = $request->input('pageSize');
+        $pageNum = $request->input('pageNum');
+        $offset = ($pageNum - 1) * $pageSize;
+        $messageList = Message::offset($offset)->limit($pageSize)->get();
         $count = Message::where('id','>','0')->count();
         $result = [
             'pageNum'=>$pageNum ,
             'rowTotal' => $count,
             'dataList' => $messageList
         ];
+        return $this->responseSuccess($result);
+    }
 
+    public function cropInfoList(Request $request){
+        $pageSize = $request->input('pageSize');
+        $pageNum = $request->input('pageNo');
+        $offset = ($pageNum - 1) * $pageSize;
+        $corpList = CorpInfo::offset($offset)->limit($pageSize)->orderBy('created_at','DESC')->get();
+        $count = CorpInfo::where('id','>','0')->count();
+        $corpData = $this->corpAndProject($corpList, $this->getCorpInfoConfig());
+        $result = [
+            'pageNum'=>$pageNum ,
+            'rowTotal' => $count,
+            'dataList' => $corpData
+        ];
         return $this->responseSuccess($result);
     }
 
@@ -86,7 +99,7 @@ class AdminController extends PermissionController
         }
         if($type == 'message_board'){
             $cellData = array(['序号','姓名','手机号','邮箱','问题','描述']);
-            $messageList = Message::where('id', '>', '0')->orderBy('created_at','DESC')->paginate(6)->toArray();
+            $messageList = Message::where('id', '>', '0')->orderBy('created_at','DESC')->paginate(500)->toArray();
             if(!empty($messageList)){
                 foreach($messageList['data'] as $key=>$message){
                     $tmpArray = array($key+1, $message['name'], $message['mobile'], $message['email'], $message['question'], $message['description']);
@@ -95,8 +108,8 @@ class AdminController extends PermissionController
             }
         }else{
             $cellData = array(['序号','姓名','手机号','企业名称','项目名称','参赛身份','产品类型','产品形态']);
-            $corpList = CorpInfo::where('id', '>', '0')->orderBy('created_at','DESC')->paginate(10);
-            $corpData = $this->corpAndProject($corpList);
+            $corpList = CorpInfo::where('id', '>', '0')->orderBy('created_at','DESC')->paginate(500);
+            $corpData = $this->corpAndProjecth($corpList, $this->getCorpInfoConfig());
             if(!empty($corpData)){
                 foreach($corpData['data'] as $key=>$value){
                     $ci = '企业';
@@ -115,7 +128,7 @@ class AdminController extends PermissionController
         })->export('xls');
     }
 
-    public function corpAndProject($corpList,$config)
+    public function corpAndProjecth($corpList,$config)
     {
         if(empty($corpList)){
             return [];
@@ -151,6 +164,46 @@ class AdminController extends PermissionController
             $corpData['data'][$key]['project_name'] = $projectName;
             $corpData['data'][$key]['product_type'] = $productTypeValue;
             $corpData['data'][$key]['product_form_val'] = $productForm;
+        }
+        return $corpData;
+    }
+
+    public function corpAndProject($corpList,$config)
+    {
+        if(empty($corpList)){
+            return [];
+        }
+        $corpData = $corpList->toArray();
+        $productType = $this->getCorpInfoConfig();
+        foreach($corpData as $key=>$value){
+            $isExtPhoto  = ProjectPhoto::where(['user_id'=> $value['user_id']])->first();
+            $projectInfo = ProjectInfo::where(['user_id'=> $value['user_id']])->first();
+            $projectTeam = ProjectTeam::where(['user_id'=> $value['user_id']])->first();
+            if(!$isExtPhoto || !$projectInfo || !$projectTeam){
+                unset($corpData[$key]);
+                continue;
+            }
+            $projectName = '';
+            if($projectInfo){
+                $projectName = $projectInfo['project_name'];
+            }
+            $productTypeValue = $projectInfo['product_type'];
+            $productFormArray = json_decode($projectInfo['product_form_val'], true);
+            foreach($productType['productType'] as $k=>$value){
+                if($projectInfo['product_type'] == $k){
+                    $productTypeValue = $value['text'];
+                    break;
+                }
+            }
+            $productForm = '';
+            if(!empty($productFormArray)){
+                foreach ($productFormArray as $k=>$v){
+                    $productForm .= $config['productForm'][$k]['name']."<br />";
+                }
+            }
+            $corpData[$key]['project_name'] = $projectName;
+            $corpData[$key]['product_type'] = $productTypeValue;
+            $corpData[$key]['product_form_val'] = $productForm;
         }
         return $corpData;
     }

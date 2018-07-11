@@ -44,45 +44,11 @@
 </div>
 <div class="people-num w">
     <h2>当前报名人数<br/>{{$count}}人</h2>
-    <table border="0" cellspacing="0" cellpadding="0" class="table-box">
-        <tr>
-            <th>序号</th>
-            <th>姓名</th>
-            <th>手机号</th>
-            <th>企业名称</th>
-            <th>项目名称</th>
-            <th>参赛身份</th>
-            <th>产品类型</th>
-            <th>产品形态</th>
-            <th>操作</th>
-        </tr>
-        @foreach ($corpData['data'] as $key=>$value)
-            <tr>
-                <td class="text">{{$key+1}}</td>
-                <td class="text">{{$value['name']}}</td>
-                <td class="text">{{$value['mobile']}}</td>
-                <td class="text">{{$value['company_name']}}</td>
-                <td class="text">{{$value['project_name']}}</td>
-                <td class="text">
-                    @if($value['contestant_identity'] == 1)
-                        企业
-                    @else
-                        创客团队
-                    @endif
-                </td>
-                <td class="text" width="15%" style="line-height: 30px;">{{$value['product_type']}}</td>
-                <td class="text"  style="line-height: 30px;" >{!! $value['product_form_val'] !!}</td>
-                <td>
-                    <a href="{{route('member.corpInfo')}}?id={{$value['user_id']}}" class="btn">查看</a>
-                    <a href="javascript:void(0);" data-id="{{$value['id']}}" class="btn audit-btn">审批</a>
-                </td>
-            </tr>
-        @endforeach
-    </table>
+    <div id="corpInfoList"></div>
     <div class="b-page clearfix">
         <a href="javascript:void(0);" data-type="corporate_information" class="export-btn">导出</a>
         <div class="page-list">
-            {{ $corpList->links()}}
+            {{--<div id="corpInfoPage"></div>--}}
         </div>
     </div>
 </div>
@@ -94,7 +60,7 @@
     <div class="b-page clearfix">
         <a href="javascript:void(0);" data-type="message_board" class="export-btn">导出</a>
         <div class="page-list">
-            <div id="messagePage"></div>
+            {{--<div id="messagePage"></div>--}}
         </div>
     </div>
 </div>
@@ -134,7 +100,7 @@
 <script src="/js/paging.js"></script>
 <script>
     var params = {
-        pageSize: 20,
+        pageSize: 2,
     };
     var messageAjax = function(params){
         $.ajax({
@@ -150,21 +116,64 @@
                         return i+1;
                     });
                     $('#messageList').html(templateList(result));
-                    // $("#messagePage").paging({
-                    //     pageNum: res.data.pageNum,
-                    //     totalPage: Math.ceil(res.data.rowTotal/1),
-                    //     totalSize: res.data.rowTotal,
-                    //     callback: function(num) {
-                    //         params.pageNo = num;
-                    //         messageAjax(params);
-                    //     }
-                    // })
+                    $("#messagePage").paging({
+                        pageNo: res.data.pageNum,
+                        totalPage: Math.ceil(res.data.rowTotal/2),
+                        totalSize: res.data.rowTotal,
+                        callback: function(num) {
+                            params.pageNum = num;
+                            messageAjax(params);
+                        }
+                    })
                 }
             }
         })
     }
-    params['pageNo'] = 1;
+    params['pageNum'] = 1;
     messageAjax(params);
+
+</script>
+<script>
+    var param = {
+        pageSize: 10,
+    };
+    var cropInfoAjax = function(param){
+        $.ajax({
+            type:"POST",
+            url:"{{route('admin.corpInfo')}}",
+            data:param,
+            dataType:"json",
+            success:function(res){
+                if(res.status == 'success'){
+                    var result = res.data;
+                    console.log(result)
+                    var templateList = Handlebars.compile($("#corpInfoList-template").html());
+                    Handlebars.registerHelper("index_key", function(i) {
+                        return i+1;
+                    });
+                    Handlebars.registerHelper("ci", function(id) {
+                        if(id == 1){
+                            return "企业";
+                        }else{
+                            return "创客团队";
+                        }
+                    });
+                    $('#corpInfoList').html(templateList(result));
+                    $("#corpInfoPage").paging({
+                        pageNo: res.data.pageNum,
+                        totalPage: Math.ceil(res.data.rowTotal/10),
+                        totalSize: res.data.rowTotal,
+                        callback: function(num) {
+                            param.pageNo = num;
+                            cropInfoAjax(param);
+                        }
+                    })
+                }
+            }
+        })
+    }
+    param['pageNo'] = 1;
+    cropInfoAjax(param);
 
 </script>
 <script id="messageList-template" type="text/x-handlebars-template">
@@ -177,14 +186,6 @@
             <th>问题</th>
             <th>描述</th>
         </tr>
-            {{--<tr>--}}
-                {{--<td class="text">{{$key+1}}</td>--}}
-                {{--<td class="text">{{$message->name}}</td>--}}
-                {{--<td class="text">{{$message->mobile}}</td>--}}
-                {{--<td class="text">{{$message->email}}</td>--}}
-                {{--<td class="text">{{$message->question}}</td>--}}
-                {{--<td class="text">{{$message->description}}</td>--}}
-            {{--</tr>--}}
         @{{#each dataList}}
         <tr>
             <td>@{{index_key @index}}</td>
@@ -193,6 +194,37 @@
             <td>@{{ email }}</td>
             <td>@{{ question }}</td>
             <td>@{{ description }}</td>
+        </tr>
+        @{{/each}}
+    </table>
+</script>
+<script id="corpInfoList-template" type="text/x-handlebars-template">
+    <table border="0" cellspacing="0" cellpadding="0" class="table-box">
+        <tr>
+            <th>序号</th>
+            <th>姓名</th>
+            <th>手机号</th>
+            <th>企业名称</th>
+            <th>项目名称</th>
+            <th>参赛身份</th>
+            <th>产品类型</th>
+            <th>产品形态</th>
+            <th>操作</th>
+        </tr>
+        @{{#each dataList}}
+        <tr>
+            <td>@{{index_key @index}}</td>
+            <td>@{{ name}}</td>
+            <td>@{{ mobile }}</td>
+            <td>@{{ company_name }}</td>
+            <td>@{{ project_name }}</td>
+            <td>@{{ci contestant_identity }}</td>
+            <td width="15%" style="line-height: 30px;">@{{ product_type }}</td>
+            <td width="15%" style="line-height: 30px;">@{{{ product_form_val }}}</td>
+            <td>
+                <a href="/member/corpInfo?id=@{{ user_id }}" class="btn">查看</a>
+                <a href="javascript:void(0);" data-id="@{{ id }}" class="btn audit-btn">审批</a>
+            </td>
         </tr>
         @{{/each}}
     </table>

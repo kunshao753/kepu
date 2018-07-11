@@ -387,7 +387,7 @@
                     <div id="questionTip"></div>
                 </li>
                 <li>
-                    <textarea id="description" name="description" maxlength="30"  data-title="描述问题" placeholder="请描述您的问题"></textarea>
+                    <textarea id="description" name="description" maxlength="100"  data-title="描述问题" placeholder="请描述您的问题"></textarea>
                     <div id="descriptionTip"></div>
                 </li>
             </ul>
@@ -537,13 +537,13 @@
             onError :"描述问题不能为空"
         }).inputValidator( {
             min :2,
-            max :30,
+            max :100,
             empty : {
                 leftEmpty :false,
                 rightEmpty :false,
                 emptyError :"两边不能有空"
             },
-            onError :"2-30位汉字"
+            onError :"2-100位汉字"
         });
 
     })

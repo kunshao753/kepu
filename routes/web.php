@@ -20,6 +20,7 @@ Auth::routes();
 Route::get('/', 'HomeController@index')->name('home');
 Route::get('/admin/index', 'AdminController@index')->name('admin.index');
 Route::post('/admin/message', 'AdminController@messageList')->name('admin.message');
+Route::post('/admin/corpInfo', 'AdminController@cropInfoList')->name('admin.corpInfo');
 Route::get('/admin/exportList', 'AdminController@exportList')->name('admin.exportList');
 Route::post('/admin/updateStatus', 'AdminController@updateStatus')->name('admin.updateStatus');
 Route::post('/admin/auditStatus', 'AdminController@auditStatus')->name('admin.auditStatus');
