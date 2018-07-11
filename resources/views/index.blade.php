@@ -537,7 +537,7 @@
             onError :"描述问题不能为空"
         }).inputValidator( {
             min :2,
-            max :100,
+            max :30,
             empty : {
                 leftEmpty :false,
                 rightEmpty :false,
