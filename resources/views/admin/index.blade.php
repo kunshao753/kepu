@@ -236,7 +236,8 @@
             var type = $(this).attr('data-type');
             window.location.href="{{route('admin.exportList')}}?type="+type;
         })
-        $('.audit-btn').click(function(){
+
+        $('#corpInfoList').delegate('.audit-btn','click',function(){
             $(".pop-up").hide();
             $(".pop-up").show();
             audit_id = $(this).attr('data-id');
