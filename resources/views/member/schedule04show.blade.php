@@ -67,7 +67,9 @@
                             {{--<input type="hidden" name="contestant_statement" />--}}
                             {{--<span class="file-b">上传</span>--}}
                         {{--</div>--}}
-                        <a class="a_view"  href="{{$projectPhoto->contestant_statement}}">PDF查看</a>
+                        @if($projectPhoto->contestant_statement)
+                        <a class="a_view"  href="/{{$projectPhoto->contestant_statement}}">PDF查看</a>
+                        @endif
                     </li>
                     <li class="right text-aline">
                         <div class="text-left">
@@ -78,7 +80,9 @@
                             {{--<input type="hidden" name="identity_front_back" />--}}
                             {{--<span class="file-b">上传</span>--}}
                         {{--</div>--}}
-                        <a class="a_view"  href="{{$projectPhoto->identity_front_back}}">PDF查看</a>
+                        @if($projectPhoto->identity_front_back)
+                        <a class="a_view"  href="/{{$projectPhoto->identity_front_back}}">PDF查看</a>
+                        @endif
                     </li>
                     <li>
                         <div class="text-left">
@@ -89,7 +93,9 @@
                             {{--<input type="hidden" name="business_license" />--}}
                             {{--<span class="file-b">上传</span>--}}
                         {{--</div>--}}
-                        <a class="a_view" href="{{$projectPhoto->business_license}}">PDF查看</a>
+                        @if($projectPhoto->business_license)
+                        <a class="a_view" href="/{{$projectPhoto->business_license}}">PDF查看</a>
+                        @endif
                     </li>
                     <li class="right text-aline">
                         <div class="text-left">
@@ -100,8 +106,9 @@
                             {{--<input type="hidden" name="intellectual_property_statement" />--}}
                             {{--<span class="file-b">上传</span>--}}
                         {{--</div>--}}
-                        <a class="a_view"  href="{{$projectPhoto->intellectual_property_statement}}">PDF查看</a>
-
+                        @if($projectPhoto->intellectual_property_statement)
+                        <a class="a_view"  href="/{{$projectPhoto->intellectual_property_statement}}">PDF查看</a>
+                        @endif
                     </li>
                     <li>
                         <div class="text-left">
@@ -112,7 +119,9 @@
                             {{--<input type="hidden" name="financing_certificate" />--}}
                             {{--<span class="file-b">上传</span>--}}
                         {{--</div>--}}
-                        <a class="a_view"  href="{{$projectPhoto->financing_certificate}}">PDF查看</a>
+                        @if($projectPhoto->financing_certificate)
+                        <a class="a_view"  href="/{{$projectPhoto->financing_certificate}}">PDF查看</a>
+                        @endif
                     </li>
                     <li class="right text-aline">
                         <div class="text-left">
@@ -123,7 +132,9 @@
                             {{--<input type="hidden" name="product_communication_report" />--}}
                             {{--<span class="file-b">上传</span>--}}
                         {{--</div>--}}
-                        <a class="a_view"  href="{{$projectPhoto->product_communication_report}}">PDF查看</a>
+                        @if($projectPhoto->product_communication_report)
+                        <a class="a_view"  href="/{{$projectPhoto->product_communication_report}}">PDF查看</a>
+                        @endif
                     </li>
                     <li class="text-aline">
                         <div class="text-left">
@@ -134,7 +145,9 @@
                             {{--<input type="hidden" name="contestant_photo" />--}}
                             {{--<span class="file-b">上传</span>--}}
                         {{--</div>--}}
-                        <img src="{{$projectPhoto->contestant_photo}}" width="120" />
+                        @if($projectPhoto->contestant_photo)
+                        <img src="/{{$projectPhoto->contestant_photo}}" width="120" />
+                        @endif
                     </li>
                     <li class="right text-aline">
                         <div class="text-left">
@@ -145,7 +158,9 @@
                             {{--<input type="hidden" name="logo_photo" />--}}
                             {{--<span class="file-b">上传</span>--}}
                         {{--</div>--}}
-                        <img src="{{$projectPhoto->logo_photo}}" width="120" />
+                        @if($projectPhoto->logo_photo)
+                        <img src="/{{$projectPhoto->logo_photo}}" width="120" />
+                        @endif
                     </li>
                 </ul>
             </div>
