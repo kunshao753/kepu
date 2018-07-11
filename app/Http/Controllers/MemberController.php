@@ -64,30 +64,30 @@ class MemberController extends PermissionController
     public function corpInfoEdit(Request $request)
     {
         $this->getIsLogin();
-        // TODO 查询是否存在
         $cropInfo = CorpInfo::where(['user_id'=> Auth::user()->id])->first();
-        if(!isset($request['id']) && !$cropInfo){
-            $params = $request->all();
-            $signupResouceVal = "";
-            if (isset($params['signup_resouce']) && $params['signup_resouce'] < 4) {
-                $signupResouceVal = $params['signup_resouce_'.$params['signup_resouce']];
-            }
-            if(isset($params['birthday']) && !empty($params['birthday'])){
-                $params['birthday'] = $this->setDate($params['birthday']);
-            }
-            if(isset($params['registered_time']) && !empty($params['registered_time'])){
-                $params['registered_time'] = $this->setDate($params['registered_time']);
-            }
-            $params['signup_resouce_val'] = $signupResouceVal;
-            $params['accept_help'] = implode(",", $params['accept_help']);
-            $params['audit_status'] = 0;
-            $params['user_id'] = Auth::user()->id;
-            $result = CorpInfo::create($params);
-            if($result){
-                return redirect()->route('member.projectTeam');
-            }else{
-                return redirect()->route('member.corpInfo');
-            }
+        if($cropInfo){
+            $cropInfo->delete();
+        }
+        $params = $request->all();
+        $signupResouceVal = "";
+        if (isset($params['signup_resouce']) && $params['signup_resouce'] < 4) {
+            $signupResouceVal = $params['signup_resouce_'.$params['signup_resouce']];
+        }
+        if(isset($params['birthday']) && !empty($params['birthday'])){
+            $params['birthday'] = $this->setDate($params['birthday']);
+        }
+        if(isset($params['registered_time']) && !empty($params['registered_time'])){
+            $params['registered_time'] = $this->setDate($params['registered_time']);
+        }
+        $params['signup_resouce_val'] = $signupResouceVal;
+        $params['accept_help'] = implode(",", $params['accept_help']);
+        $params['audit_status'] = 0;
+        $params['user_id'] = Auth::user()->id;
+        $result = CorpInfo::create($params);
+        if($result){
+            return redirect()->route('member.projectTeam');
+        }else{
+            return redirect()->route('member.corpInfo');
         }
     }
     public function corpInfoDel(Request $request)
@@ -155,27 +155,27 @@ class MemberController extends PermissionController
     {
         $this->getIsLogin();
         $projectInfo = ProjectInfo::where(['user_id' => Auth::user()->id])->first();
-        if(!isset($request['id']) && !$projectInfo){
-            $params = $request->all();
-
-            $product_form = [];
-            foreach($params['product_form_k'] as $key=>$value){
-                if($params['product_form_v'][$key] == '' || $params['product_form_v'][$key] == null){
-                    break;
-                }
-                $product_form[$key] = $params['product_form_v'][$key];
+        if($projectInfo){
+            $projectInfo->delete();
+        }
+        $params = $request->all();
+        $product_form = [];
+        foreach($params['product_form_k'] as $key=>$value){
+            if($params['product_form_v'][$key] == '' || $params['product_form_v'][$key] == null){
+                break;
             }
+            $product_form[$key] = $params['product_form_v'][$key];
+        }
 
-            unset($params['product_form_k']);
-            unset($params['product_form_v']);
-            $params['product_form_val'] = json_encode($product_form);
-            $params['user_id'] = Auth::user()->id;
-            $result = ProjectInfo::create($params);
-            if($result){
-                return redirect()->route('member.projectPhoto');
-            }else{
-                return redirect()->route('member.projectInfo');
-            }
+        unset($params['product_form_k']);
+        unset($params['product_form_v']);
+        $params['product_form_val'] = json_encode($product_form);
+        $params['user_id'] = Auth::user()->id;
+        $result = ProjectInfo::create($params);
+        if($result){
+            return redirect()->route('member.projectPhoto');
+        }else{
+            return redirect()->route('member.projectInfo');
         }
 
     }
@@ -207,14 +207,15 @@ class MemberController extends PermissionController
         $this->getIsLogin();
         $params = $request->all();
         $projectPhoto = ProjectPhoto::where(['user_id' => Auth::user()->id])->first();
-        if(!isset($request['id']) && !$projectPhoto) {
-            $params['user_id'] = Auth::user()->id;
-            $result = ProjectPhoto::create($params);
-            if ($result) {
-                return redirect('/');
-            } else {
-                return redirect()->route('member.projectTeam');
-            }
+        if($projectPhoto){
+            $projectPhoto->delete();
+        }
+        $params['user_id'] = Auth::user()->id;
+        $result = ProjectPhoto::create($params);
+        if ($result) {
+            return redirect('/');
+        } else {
+            return redirect()->route('member.projectTeam');
         }
     }
     public function projectTeam(Request $request)
@@ -244,16 +245,18 @@ class MemberController extends PermissionController
         $this->getIsLogin();
         // TODO 查询是否存在
         $teamInfo = ProjectTeam::where(['user_id' => Auth::user()->id])->first();
-        if(!isset($request['id']) && !$teamInfo) {
-            $params = $request->all();
-            $params['user_id'] = Auth::user()->id;
-            $result = ProjectTeam::create($params);
-            if ($result) {
-                return redirect()->route('member.projectInfo');
-            } else {
-                return redirect()->route('member.projectTeam');
-            }
+        if($teamInfo){
+            $teamInfo->delete();
         }
+        $params = $request->all();
+        $params['user_id'] = Auth::user()->id;
+        $result = ProjectTeam::create($params);
+        if ($result) {
+            return redirect()->route('member.projectInfo');
+        } else {
+            return redirect()->route('member.projectTeam');
+        }
+
     }
     public function setDate($date)
     {
