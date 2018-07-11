@@ -99,9 +99,8 @@ trait AuthenticatesUsers
         $request->session()->regenerate();
 
         $this->clearLoginAttempts($request);
-
-        return $this->authenticated($request, $this->guard()->user())
-                ?: redirect()->intended($this->redirectPath());
+        return $this->authenticated($request,  $this->guard()->user())
+                ?redirect()->intended("/admin/index"): redirect()->intended($this->redirectPath());
     }
 
     /**
@@ -113,7 +112,9 @@ trait AuthenticatesUsers
      */
     protected function authenticated(Request $request, $user)
     {
-        //
+        if($user->permission == 1){
+            return true;
+        }
     }
 
     /**

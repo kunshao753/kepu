@@ -170,7 +170,8 @@
                 data:{step: step},
                 dataType:"json",
                 success:function(response){
-
+                    alert("设置成功");
+                    window.location.href = window.location.href;
                 }
             })
         })

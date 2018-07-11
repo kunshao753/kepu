@@ -43,7 +43,7 @@ class AdminController extends PermissionController
             // TODO check
         }
         Competition::where(['id' => 1])->update(['status'=>$step]);
-        return redirect()->route('admin.index');
+        return $this->responseSuccess();
     }
 
     public function auditStatus(Request $request)
