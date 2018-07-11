@@ -43,7 +43,7 @@
     </div>
 </div>
 <div class="people-num w">
-    <h2>当前报名人数<br/>500人</h2>
+    <h2>当前报名人数<br/>{{$count}}人</h2>
     <table border="0" cellspacing="0" cellpadding="0" class="table-box">
         <tr>
             <th>序号</th>
@@ -70,8 +70,8 @@
                         创客团队
                     @endif
                 </td>
-                <td class="text">{{$value['product_type']}}</td>
-                <td class="text">{{$value['product_form_val']}}</td>
+                <td class="text" width="15%" style="line-height: 30px;">{{$value['product_type']}}</td>
+                <td class="text"  style="line-height: 30px;" >{!! $value['product_form_val'] !!}</td>
                 <td>
                     <a href="{{route('member.corpInfo')}}?id={{$value['user_id']}}" class="btn">查看</a>
                     <a href="javascript:void(0);" data-id="{{$value['id']}}" class="btn audit-btn">审批</a>
@@ -88,30 +88,13 @@
 </div>
 <div class="people-num people-num-w w">
     <h2>咨询答疑</h2>
-    <table border="0" cellspacing="0" cellpadding="0" class="table-box">
-        <tr>
-            <th>序号</th>
-            <th>姓名</th>
-            <th>手机号</th>
-            <th>邮箱</th>
-            <th>问题</th>
-            <th>描述</th>
-        </tr>
-        @foreach ($messageList as $key=>$message)
-            <tr>
-                <td class="text">{{$key+1}}</td>
-                <td class="text">{{$message->name}}</td>
-                <td class="text">{{$message->mobile}}</td>
-                <td class="text">{{$message->email}}</td>
-                <td class="text">{{$message->question}}</td>
-                <td class="text">{{$message->description}}</td>
-            </tr>
-        @endforeach
-    </table>
+
+    <div id="messageList"></div>
+
     <div class="b-page clearfix">
         <a href="javascript:void(0);" data-type="message_board" class="export-btn">导出</a>
         <div class="page-list">
-            {{ $messageList->links()}}
+            <div id="messagePage"></div>
         </div>
     </div>
 </div>
@@ -146,7 +129,74 @@
         </div>
     </div>
 </div>
-<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+<script src="/js/jquery-1.11.0.min.js" ></script>
+<script src="/js/handlebars-v4.0.5.js"></script>
+<script src="/js/paging.js"></script>
+<script>
+    var params = {
+        pageSize: 20,
+    };
+    var messageAjax = function(params){
+        $.ajax({
+            type:"POST",
+            url:"{{route('admin.message')}}",
+            data:params,
+            dataType:"json",
+            success:function(res){
+                if(res.status == 'success'){
+                    var result = res.data;
+                    var templateList = Handlebars.compile($("#messageList-template").html());
+                    Handlebars.registerHelper("index_key", function(i) {
+                        return i+1;
+                    });
+                    $('#messageList').html(templateList(result));
+                    // $("#messagePage").paging({
+                    //     pageNum: res.data.pageNum,
+                    //     totalPage: Math.ceil(res.data.rowTotal/1),
+                    //     totalSize: res.data.rowTotal,
+                    //     callback: function(num) {
+                    //         params.pageNo = num;
+                    //         messageAjax(params);
+                    //     }
+                    // })
+                }
+            }
+        })
+    }
+    params['pageNo'] = 1;
+    messageAjax(params);
+
+</script>
+<script id="messageList-template" type="text/x-handlebars-template">
+    <table border="0" cellspacing="0" cellpadding="0" class="table-box">
+        <tr>
+            <th>序号</th>
+            <th>姓名</th>
+            <th>手机号</th>
+            <th>邮箱</th>
+            <th>问题</th>
+            <th>描述</th>
+        </tr>
+            {{--<tr>--}}
+                {{--<td class="text">{{$key+1}}</td>--}}
+                {{--<td class="text">{{$message->name}}</td>--}}
+                {{--<td class="text">{{$message->mobile}}</td>--}}
+                {{--<td class="text">{{$message->email}}</td>--}}
+                {{--<td class="text">{{$message->question}}</td>--}}
+                {{--<td class="text">{{$message->description}}</td>--}}
+            {{--</tr>--}}
+        @{{#each dataList}}
+        <tr>
+            <td>@{{index_key @index}}</td>
+            <td>@{{ name}}</td>
+            <td>@{{ mobile }}</td>
+            <td>@{{ email }}</td>
+            <td>@{{ question }}</td>
+            <td>@{{ description }}</td>
+        </tr>
+        @{{/each}}
+    </table>
+</script>
 <script>
     var audit_id = 0;
     $(function(){

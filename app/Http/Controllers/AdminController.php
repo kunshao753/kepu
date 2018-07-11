@@ -10,6 +10,8 @@ namespace App\Http\Controllers;
 use App\Message;
 use App\Competition;
 use App\CorpInfo;
+use App\ProjectPhoto;
+use App\User;
 use Illuminate\Http\Request;
 use Excel;
 use App\ProjectInfo;
@@ -20,11 +22,10 @@ class AdminController extends PermissionController
 {
     public function index()
     {
-        $this->getIsLogin();
-        $messageList = Message::where('id', '>', '0')->orderBy('created_at','DESC')->paginate(10);
+        $this->getIsAdmin();
         $competition = Competition::where(['id' => 1])->get(['status'])->first()->toArray();
-        $corpList = CorpInfo::where('id', '>', '0')->orderBy('created_at','DESC')->paginate(10);
-        $corpData = $this->corpAndProject($corpList);
+        $corpList = CorpInfo::where('id', '>', '0')->orderBy('created_at','DESC')->paginate(20);
+        $corpData = $this->corpAndProject($corpList, $this->getCorpInfoConfig());
         $competitionStep = $this->competitionConfig();
         foreach($competitionStep as $key=>$value){
             if($key == $competition['status']){
@@ -32,12 +33,27 @@ class AdminController extends PermissionController
                 break;
             }
         }
-        return view('admin.index', array('messageList' => $messageList, 'corpData'=>$corpData, 'corpList'=>$corpList,'competitionStep'=> $competitionStep));
+        $count = ProjectPhoto::where('id','>','0')->count();
+        return view('admin.index', array('count'=>$count, 'corpData'=>$corpData, 'corpList'=>$corpList,'competitionStep'=> $competitionStep));
+    }
+
+    public function messageList(Request $request){
+
+        $pageNum = $request->input('pageNo');
+        $messageList = Message::offset($pageNum-1)->limit(20)->get();
+        $count = Message::where('id','>','0')->count();
+        $result = [
+            'pageNum'=>$pageNum ,
+            'rowTotal' => $count,
+            'dataList' => $messageList
+        ];
+
+        return $this->responseSuccess($result);
     }
 
     public function updateStatus(Request $request)
     {
-        $this->getIsLogin();
+        $this->getIsAdmin();
         $step = $request->input('step');
         if(!$step){
             // TODO check
@@ -48,7 +64,7 @@ class AdminController extends PermissionController
 
     public function auditStatus(Request $request)
     {
-        $this->getIsLogin();
+        $this->getIsAdmin();
         $status = $request->input('status');
         $id = $request->input('id');
         if(!$status || !$id){
@@ -62,7 +78,7 @@ class AdminController extends PermissionController
 
     public function exportList(Request $request)
     {
-        $this->getIsLogin();
+        $this->getIsAdmin();
         $type = $request->get('type');
         if(!$type){
             // TODO check
@@ -98,7 +114,7 @@ class AdminController extends PermissionController
         })->export('xls');
     }
 
-    public function corpAndProject($corpList)
+    public function corpAndProject($corpList,$config)
     {
         if(empty($corpList)){
             return [];
@@ -108,15 +124,22 @@ class AdminController extends PermissionController
         foreach($corpData['data'] as $key=>$value){
             $projectList = ProjectInfo::where(['user_id'=> $value['user_id']])->first();
             $productTypeValue = $projectList['product_type'];
+            $productFormArray = json_decode($projectList['product_form_val'], true);
             foreach($productType['productType'] as $k=>$value){
                 if($projectList['product_type'] == $k){
                     $productTypeValue = $value['text'];
                     break;
                 }
             }
+            $productForm = '';
+            if(!empty($productFormArray)){
+                foreach ($productFormArray as $k=>$v){
+                    $productForm .= $config['productForm'][$k]['name']."<br />";
+                }
+            }
             $corpData['data'][$key]['project_name'] = $projectList['project_name'];
             $corpData['data'][$key]['product_type'] = $productTypeValue;
-            $corpData['data'][$key]['product_form_val'] = $projectList['product_form_val'];
+            $corpData['data'][$key]['product_form_val'] = $productForm;
         }
         return $corpData;
     }

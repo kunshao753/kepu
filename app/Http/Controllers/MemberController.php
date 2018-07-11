@@ -160,6 +160,9 @@ class MemberController extends PermissionController
 
             $product_form = [];
             foreach($params['product_form_k'] as $key=>$value){
+                if($params['product_form_v'][$key] == '' || $params['product_form_v'][$key] == null){
+                    break;
+                }
                 $product_form[$key] = $params['product_form_v'][$key];
             }
 
