@@ -193,7 +193,11 @@ class MemberController extends PermissionController
             $projectPhoto = ProjectPhoto::where(['user_id' => $id])->first();
             if($projectPhoto){
                 $view = 'member.schedule04show';
-                $nextUrl = route('member.index');
+                if(Auth::user()->permission == 1){
+                    $nextUrl = route('admin.index');
+                }else{
+                    $nextUrl = route('member.index');
+                }
             }
         }
         return view($view,['projectPhoto' => $projectPhoto, 'nextUrl'=>$nextUrl, 'pathPic' =>'/public/']);
