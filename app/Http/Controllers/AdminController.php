@@ -11,6 +11,7 @@ use App\Message;
 use App\Competition;
 use App\CorpInfo;
 use App\ProjectPhoto;
+use App\ProjectTeam;
 use App\User;
 use Illuminate\Http\Request;
 use Excel;
@@ -122,11 +123,21 @@ class AdminController extends PermissionController
         $corpData = $corpList->toArray();
         $productType = $this->getCorpInfoConfig();
         foreach($corpData['data'] as $key=>$value){
-            $projectList = ProjectInfo::where(['user_id'=> $value['user_id']])->first();
-            $productTypeValue = $projectList['product_type'];
-            $productFormArray = json_decode($projectList['product_form_val'], true);
+            $isExtPhoto  = ProjectPhoto::where(['user_id'=> $value['user_id']])->first();
+            $projectInfo = ProjectInfo::where(['user_id'=> $value['user_id']])->first();
+            $projectTeam = ProjectTeam::where(['user_id'=> $value['user_id']])->first();
+            if(!$isExtPhoto || !$projectInfo || !$projectTeam){
+                unset($corpData['data'][$key]);
+                continue;
+            }
+            $projectName = '';
+            if($projectInfo){
+                $projectName = $projectInfo['project_name'];
+            }
+            $productTypeValue = $projectInfo['product_type'];
+            $productFormArray = json_decode($projectInfo['product_form_val'], true);
             foreach($productType['productType'] as $k=>$value){
-                if($projectList['product_type'] == $k){
+                if($projectInfo['product_type'] == $k){
                     $productTypeValue = $value['text'];
                     break;
                 }
@@ -137,7 +148,7 @@ class AdminController extends PermissionController
                     $productForm .= $config['productForm'][$k]['name']."<br />";
                 }
             }
-            $corpData['data'][$key]['project_name'] = $projectList['project_name'];
+            $corpData['data'][$key]['project_name'] = $projectName;
             $corpData['data'][$key]['product_type'] = $productTypeValue;
             $corpData['data'][$key]['product_form_val'] = $productForm;
         }
