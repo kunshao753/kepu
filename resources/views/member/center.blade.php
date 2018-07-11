@@ -53,7 +53,7 @@
                 <td>
                     @if($isResult == 1)
                     <a href="{{route('member.corpInfo')}}?id={{$user['id']}}" class="btn">查看</a>
-                    <a href="{{route('member.corpInfoDel')}}" class="btn">删除</a>
+                    <a href="javascript:void(0);" class="btn" id="del">删除</a>
                     @else
                         <a href="{{route('member.signUp')}}" class="btn">开始报名</a>
                     @endif
@@ -65,5 +65,24 @@
         <span>中国科学技术协会版权所</span>
         <span>中国科学技术协会版权所</span>
     </div>
+    <script>
+
+        var disp_confirm = function ()
+        {
+            var r = confirm("删除报名信息")
+            if (r == true)
+            {
+                window.location.href = "{{route('member.corpInfoDel')}}";
+            }
+        }
+    </script>
+    <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+    <script>
+        $(function(){
+            $('#del').click(function(){
+                disp_confirm();
+            })
+        })
+    </script>
 </body>
 </html>

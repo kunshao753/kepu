@@ -125,14 +125,14 @@
                     <div class="label">
                         <label for="">商业模式</label>
                     </div>
-                    <textarea name="business_model" id="business_model" placeholder="请填写商业模式（50字）" class="textarea-box"></textarea>
+                    <textarea name="business_model" id="business_model" placeholder="请填写商业模式（200字）" class="textarea-box"></textarea>
                     <span class="prompt red-p"><span id="business_modelTip"></span></span>
                 </li>
                 <li class="clearfix">
                     <div class="label">
                         <label for="">核心壁垒</label>
                     </div>
-                    <textarea  name="core_barrier" id="core_barrier" placeholder="请填写核心壁垒（50字）" class="textarea-box"></textarea>
+                    <textarea  name="core_barrier" id="core_barrier" placeholder="请填写核心壁垒（200字）" class="textarea-box"></textarea>
                     <span class="prompt red-p"><span id="core_barrierTip"></span></span>
                 </li>
                 <li class="clearfix">
@@ -203,7 +203,7 @@
             </ul>
         </div>
         <div class="f-btn pt40">
-            <button type="submit" class="confirm">提交</button>
+            <button type="submit" class="confirm">下一步</button>
             <a href="javascript:void(0);" id="goBack" class="confirm green-btn">取消</a>
         </div>
     </form>
@@ -312,7 +312,7 @@
                 onFocus :"输入商业模式",
             }).inputValidator( {
                 min :1,
-                max :50,
+                max :200,
                 onError :"商业模式不能为空"
             });
             $("#core_barrier").formValidator( {
@@ -320,7 +320,7 @@
                 onFocus :"输入核心壁垒",
             }).inputValidator( {
                 min :1,
-                max :50,
+                max :200,
                 onError :"核心壁垒不能为空"
             });
             $("#financing_situation").formValidator( {

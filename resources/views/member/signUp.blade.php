@@ -25,7 +25,7 @@
     </div>
     <div class="f-btn pt40">
         <a href="/测试声明文件.pdf" target="_blank" class="confirm green-btn-d">下载</a>
-        <a href="{{route('member.corpInfo')}}" class="confirm">提交</a>
+        <a href="{{route('member.corpInfo')}}" class="confirm">下一步</a>
         <a href="javascript:void(0);" id="goBack" class="confirm green-btn">取消</a>
     </div>
     <div class="footer">

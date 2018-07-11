@@ -35,11 +35,13 @@
             @else
                 <a href="{{route('member.index')}}" class="login">{{ Auth::user()->name }}</a>
                 <a href="{{ route('logout') }}" class="sign-up" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">  退出  </a>
-                <form style="border:0;" id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                {{ csrf_field() }}
-                </form>
             @endif
         </div>
+        @if (!Auth::guest())
+        <form style="border:0;" id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+            {{ csrf_field() }}
+        </form>
+        @endif
     </div>
     <h2 class="big-tit">科普互联网大赛</h2>
     <div class="sign-button">

@@ -84,7 +84,6 @@
                     <li>
                         <div class="text-left">
                             <p class="text01">营业执照扫描PDF</p>
-                            <p class="text02">企业上传 <br/> ＊必传</p>
                         </div>
                         <div class="file-btn">
                             <input type="file" id="business_license" class="input-file" />

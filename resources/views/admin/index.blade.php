@@ -22,6 +22,16 @@
     <h3>大赛评审管理</h3>
     <p class="text01">Project registration system</p>
     <p class="text02">Lorem ipsum dolor sit amet , consectetur adipiscing elit .</p>
+        <div class="login" style="position: absolute; font-size: 22px; right:50px; top:30px;">
+            @if (!Auth::guest())
+                <a style="color: #fff" href="{{ route('logout') }}" class="sign-up" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">  退出  </a>
+            @endif
+        </div>
+        @if (!Auth::guest())
+            <form style="border:0;" id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                {{ csrf_field() }}
+            </form>
+        @endif
 </div>
 <div class="schedule-date w">
     <h2>当前大赛阶段</h2>
