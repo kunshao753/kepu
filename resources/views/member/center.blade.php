@@ -14,6 +14,16 @@
         <h3>个人中心</h3>
         <p class="text01">Personal Center</p>
         <p class="text02">Lorem ipsum dolor sit amet , consectetur adipiscing elit .</p>
+        <div class="login" style=" color: #fff; font-size: 20px; position: absolute; right: 30px; top:50px;">
+            <a style="color: #fff; margin-right:10px;" href="/">首页</a> |
+            <a style="color: #fff;margin-left:10px;margin-right:10px;" href="{{route('member.index')}}" class="login">{{ Auth::user()->name }}</a> |
+            <a style="color: #fff;margin-left:10px;" href="{{ route('logout') }}" class="sign-up" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">  退出  </a>
+            @if (!Auth::guest())
+                <form style="border:0;" id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                    {{ csrf_field() }}
+                </form>
+            @endif
+        </div>
     </div>
     <div class="personal-data">
         <h3>个人资料</h3>
