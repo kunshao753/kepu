@@ -154,7 +154,9 @@
             </div>
         </div>
         <div class="f-btn pt40">
-            <a href="javascript:void(0);" class="confirm">结束</a>
+            @if($nextUrl != '')
+                <a href="{{$nextUrl}}" class="confirm">结束</a>
+            @endif
         </div>
     </form>
     <div class="footer">

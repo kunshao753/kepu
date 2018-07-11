@@ -152,20 +152,15 @@
                 onError :"两次密码不一致"
             });
             $("#email").formValidator({
-                empty:true,
-                onShow :"",
+                onShow :"*必填",
                 onFocus:"邮箱6-100个字符",
-                onEmpty:""
             }).regexValidator({
                 regExp:"^([\\w-.]+)@(([[0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}.)|(([\\w-]+.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(]?)$",
                 onError:"邮箱格式不正确"
             });
             $("#name").formValidator( {
-                empty:true,
-                onShow :"",
+                onShow :"*必填",
                 onFocus :"2-8位汉字",
-                onCorrect :"&nbsp;",
-                onEmpty:""
             }).inputValidator( {
                 min :1,
                 onError :"姓名不能为空"

@@ -51,7 +51,12 @@
                     </span>
                 </td>
                 <td>
-                    <a href="javascript:void(0);" class="btn">查看</a>
+                    @if($isResult == 1)
+                    <a href="{{route('member.corpInfo')}}?id={{$user['id']}}" class="btn">查看</a>
+                    <a href="{{route('member.corpInfoDel')}}" class="btn">删除</a>
+                    @else
+                        <a href="{{route('member.signUp')}}" class="btn">开始报名</a>
+                    @endif
                 </td>
             </tr>
         </table>

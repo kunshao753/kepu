@@ -46,7 +46,11 @@
         @if (Auth::guest())
             <a href="{{route('login')}}" class="sign-btn">报名</a>
         @else
-            <a href="{{route('member.signUp')}}" class="sign-btn">报名</a>
+            @if($isCenter == 1)
+                <a href="{{route('member.index')}}" class="sign-btn">已报名</a>
+            @else
+                <a href="{{route('member.signUp')}}" class="sign-btn">报名</a>
+            @endif
         @endif
         <a href="javascript:void(0);" class="question-btn">咨询答疑</a>
     </div>

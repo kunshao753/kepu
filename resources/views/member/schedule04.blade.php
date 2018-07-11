@@ -168,7 +168,8 @@
                 var formData = new FormData();
                 var inputName = $(this).attr('id');
                 var file = $('#'+$(this).attr('id'))[0].files[0];
-                if (!/image\/\w+/.test(file.type) && !/fdf\/\w+/.test(file.type)) {
+
+                if (!/image\/\w+/.test(file.type) && !/\w+\/pdf/.test(file.type)) {
                     alert("只能上传pdf文件和图片格式！")
                     return false;
                 }

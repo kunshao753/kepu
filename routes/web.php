@@ -26,6 +26,7 @@ Route::post('/admin/auditStatus', 'AdminController@auditStatus')->name('admin.au
 Route::get('/member/index', 'MemberController@index')->name('member.index');
 Route::get('/member/signUp', 'MemberController@signUp')->name('member.signUp');
 Route::get('/member/corpInfo', 'MemberController@corpInfo')->name('member.corpInfo');
+Route::get('/member/corpInfoDel', 'MemberController@corpInfoDel')->name('member.corpInfoDel');
 Route::get('/member/projectInfo', 'MemberController@projectInfo')->name('member.projectInfo');
 Route::get('/member/projectPhoto', 'MemberController@projectPhoto')->name('member.projectPhoto');
 Route::get('/member/projectTeam', 'MemberController@projectTeam')->name('member.projectTeam');

@@ -71,7 +71,9 @@
         </ul>
     </div>
     <div class="f-btn pt40">
-        <a href="javascript:void(0);" class="confirm">下一步</a>
+        @if($nextUrl != '')
+            <a href="{{$nextUrl}}" class="confirm">下一步</a>
+        @endif
     </div>
     <div class="footer">
         <span>中国科学技术协会版权所</span>

@@ -260,6 +260,20 @@
             $.formValidator.initConfig({
                 formID:"form",
                 onSuccess:function(){
+                    if($(":radio[name='contestant_identity']:checked").val()==1){
+                        if($('#company_name').val() == ''){
+                            alert("参赛身份选企业要填企业名称")
+                            return false;
+                        }
+                    }
+                    var num = $(":radio[name='signup_resouce']:checked").val();
+                    if(num < 4 ){
+                        var sr_name = 'signup_resouce_'+num;
+                        if($("input[name="+sr_name+"]").val() == ""){
+                            alert("报名来源内容不能为空")
+                            return false;
+                        }
+                    }
                     return true;
                 },
                 onError:function(){
@@ -286,7 +300,8 @@
             $(":radio[name='signup_resouce']").formValidator({
                 tipID:"signup_resouceTip",
                 onShow:"*必填(四选一)",
-                onFocus:"请添写右边内容"
+                onFocus:"请输入右边内容",
+                onCorrect:"请输入右边内容"
             }).inputValidator({
                 min:1,
                 max:1,

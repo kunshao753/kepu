@@ -21,10 +21,12 @@ class MemberController extends PermissionController
         $this->getIsLogin();
         $result = CorpInfo::where(['user_id'=>Auth::user()->id])->first();
         $auditStatus = 0;
+        $isResult = 0;
         if($result){
             $auditStatus = $result->audit_status;
+            $isResult = 1;
         }
-        return view('member.center', ['status'=>$auditStatus, 'user'=>Auth::user()->toArray()]);
+        return view('member.center', ['status'=>$auditStatus, 'isResult'=>$isResult, 'user'=>Auth::user()->toArray()]);
     }
     public function corpInfo(Request $request)
     {
@@ -32,10 +34,14 @@ class MemberController extends PermissionController
         $config= $this->getCorpInfoConfig();
         $cropInfo = [];
         $help = $config['help'];
-        $flag = 0;
         $view = 'member.schedule01';
+        $nextUrl = '';
         if(isset($request['id'])){
-            $cropInfo = CorpInfo::where(['user_id'=> $request->get('id')])->first();
+            $id = $request->get('id');
+            if(Auth::user()->id != $id && Auth::user()->permission != 1){
+                return redirect()->route('home');
+            }
+            $cropInfo = CorpInfo::where(['user_id'=> $id])->first();
             if($cropInfo){
                 $cropInfoArray = $cropInfo->toArray();
                 $helpArray = explode(',', $cropInfoArray['accept_help']);
@@ -45,15 +51,22 @@ class MemberController extends PermissionController
                     }
                 }
                 $view = 'member.schedule01show';
+                $teamInfo = ProjectTeam::where(['user_id' => $id])->first();
+                if($teamInfo){
+                    $nextUrl = route('member.projectTeam').'?id='.$id;
+                }
             }
         }
-        return view($view, ['cropInfo' =>$cropInfo, 'help'=>$help,'signupResouce' => $config['signupResouce']]);
+
+
+        return view($view, ['cropInfo' =>$cropInfo, 'nextUrl' => $nextUrl, 'help'=>$help,'signupResouce' => $config['signupResouce']]);
     }
     public function corpInfoEdit(Request $request)
     {
         $this->getIsLogin();
         // TODO 查询是否存在
-        if(!isset($request['id'])){
+        $cropInfo = CorpInfo::where(['user_id'=> Auth::user()->id])->first();
+        if(!isset($request['id']) && !$cropInfo){
             $params = $request->all();
             $signupResouceVal = "";
             for ($x=1; $x<=3; $x++) {
@@ -81,6 +94,29 @@ class MemberController extends PermissionController
         }
 
     }
+    public function corpInfoDel(Request $request)
+    {
+        $this->getIsLogin();
+        $id = Auth::user()->id;
+        // 删除用户报名数据
+        $cropInfo = CorpInfo::where(['user_id'=> $id])->first();
+        if($cropInfo){
+            $cropInfo->delete();
+        }
+        $teamInfo = ProjectTeam::where(['user_id' => $id])->first();
+        if($teamInfo){
+            $teamInfo->delete();
+        }
+        $projectInfo = ProjectInfo::where(['user_id' => $id])->first();
+        if($projectInfo){
+            $projectInfo->delete();
+        }
+        $projectPhoto = ProjectPhoto::where(['user_id' => $id])->first();
+        if($projectInfo){
+            $projectPhoto->delete();
+        }
+        return redirect()->route('member.index');
+    }
     public function signUp(Request $request)
     {
         $this->getIsLogin();
@@ -94,8 +130,13 @@ class MemberController extends PermissionController
         $config= $this->getCorpInfoConfig();
         $productForm = $config['productForm'];
         $productType = $config['productType'];
+        $nextUrl = '';
         if(isset($request['id'])) {
-            $projectInfo = ProjectInfo::where(['user_id' => $request->get('id')])->first();
+            $id = $request->get('id');
+            if(Auth::user()->id != $id && Auth::user()->permission != 1){
+                return redirect()->route('home');
+            }
+            $projectInfo = ProjectInfo::where(['user_id' => $id])->first();
             if ($projectInfo) {
                 $projectInfoArray = $projectInfo->toArray();
                 $productFormArray = json_decode($projectInfoArray['product_form_val'], true);
@@ -106,14 +147,19 @@ class MemberController extends PermissionController
                     }
                 }
                 $view = 'member.schedule03show';
+                $projectPhoto = ProjectPhoto::where(['user_id' => $id])->first();
+                if($projectPhoto){
+                    $nextUrl = route('member.projectPhoto').'?id='.$id;
+                }
             }
         }
-        return view($view,['projectInfo'=>$projectInfo, 'productType'=>$productType,'productForm'=>$productForm]);
+        return view($view,['projectInfo'=>$projectInfo,'nextUrl' => $nextUrl, 'productType'=>$productType,'productForm'=>$productForm]);
     }
     public function projectInfoEdit(Request $request)
     {
         $this->getIsLogin();
-        if(!isset($request['id'])){
+        $projectInfo = ProjectInfo::where(['user_id' => Auth::user()->id])->first();
+        if(!isset($request['id']) && !$projectInfo){
             $params = $request->all();
 
             $product_form = [];
@@ -139,19 +185,26 @@ class MemberController extends PermissionController
         $this->getIsLogin();
         $view = 'member.schedule04';
         $projectPhoto = [];
+        $nextUrl = '';
         if(isset($request['id'])){
-            $projectPhoto = ProjectPhoto::where(['user_id' => $request->get('id')])->first();
+            $id = $request->get('id');
+            if(Auth::user()->id != $id && Auth::user()->permission != 1){
+                return redirect()->route('home');
+            }
+            $projectPhoto = ProjectPhoto::where(['user_id' => $id])->first();
             if($projectPhoto){
                 $view = 'member.schedule04show';
+                $nextUrl = route('member.index');
             }
         }
-        return view($view,['projectPhoto' => $projectPhoto, 'pathPic' =>'/public/']);
+        return view($view,['projectPhoto' => $projectPhoto, 'nextUrl'=>$nextUrl, 'pathPic' =>'/public/']);
     }
     public function projectPhotoEdit(Request $request)
     {
         $this->getIsLogin();
         $params = $request->all();
-        if(!isset($request['id'])) {
+        $projectPhoto = ProjectPhoto::where(['user_id' => Auth::user()->id])->first();
+        if(!isset($request['id']) && !$projectPhoto) {
             $params['user_id'] = Auth::user()->id;
             $result = ProjectPhoto::create($params);
             if ($result) {
@@ -166,19 +219,29 @@ class MemberController extends PermissionController
         $this->getIsLogin();
         $view = 'member.schedule02';
         $teamInfo = [];
+        $nextUrl = '';
         if(isset($request['id'])){
-            $teamInfo = ProjectTeam::where(['user_id' => $request->get('id')])->first();
+            $id = $request->get('id');
+            if(Auth::user()->id != $id && Auth::user()->permission != 1){
+                return redirect()->route('home');
+            }
+            $teamInfo = ProjectTeam::where(['user_id' => $id])->first();
             if($teamInfo){
                 $view = 'member.schedule02show';
+                $projectInfo = ProjectInfo::where(['user_id' => $id])->first();
+                if($projectInfo){
+                    $nextUrl = route('member.projectInfo').'?id='.$id;
+                }
             }
         }
-        return view($view,['teamInfo' => $teamInfo]);
+        return view($view,['teamInfo' => $teamInfo, 'nextUrl'=>$nextUrl]);
     }
     public function projectTeamEdit(Request $request)
     {
         $this->getIsLogin();
         // TODO 查询是否存在
-        if(!isset($request['id'])) {
+        $teamInfo = ProjectTeam::where(['user_id' => Auth::user()->id])->first();
+        if(!isset($request['id']) && !$teamInfo) {
             $params = $request->all();
             $params['user_id'] = Auth::user()->id;
             $result = ProjectTeam::create($params);

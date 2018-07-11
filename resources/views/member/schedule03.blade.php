@@ -225,9 +225,16 @@
             $.formValidator.initConfig({
                 formID:"form",
                 onSuccess:function(){
-                    $('.radio-listnew input').each(function(){
-                        // TODO 处理
-                    })
+                    for(var i=1;i<6; i++){
+                        var isCheck = $(":checkbox[name='product_form_k["+i+"]']").attr('checked');
+                        if(isCheck == 'checked'){
+                            if($("input[name='product_form_v["+i+"]']").val() == ''){
+                                alert("产品形态选名称不能为空")
+                                return false;
+                            }
+                        }
+                        break;
+                    }
                     return true;
                 },
                 onError:function(){
