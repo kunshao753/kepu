@@ -69,9 +69,8 @@ class MemberController extends PermissionController
         if(!isset($request['id']) && !$cropInfo){
             $params = $request->all();
             $signupResouceVal = "";
-            for ($x=1; $x<=3; $x++) {
-                $signupResouceVal .= $params['signup_resouce_'.$x];
-                unset($params['signup_resouce_'.$x]);
+            if (isset($params['signup_resouce']) && $params['signup_resouce'] < 4) {
+                $signupResouceVal = $params['signup_resouce_'.$params['signup_resouce']];
             }
             if(isset($params['birthday']) && !empty($params['birthday'])){
                 $params['birthday'] = $this->setDate($params['birthday']);
@@ -83,14 +82,12 @@ class MemberController extends PermissionController
             $params['accept_help'] = implode(",", $params['accept_help']);
             $params['audit_status'] = 0;
             $params['user_id'] = Auth::user()->id;
-
             $result = CorpInfo::create($params);
             if($result){
                 return redirect()->route('member.projectTeam');
             }else{
                 return redirect()->route('member.corpInfo');
             }
-            die;
         }
 
     }
