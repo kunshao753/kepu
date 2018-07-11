@@ -187,11 +187,11 @@
                         $('#'+inputName).closest('.file-btn').find('.file-b').html('上传成功');
                         if(inputName == 'contestant_photo' || inputName == 'logo_photo'){
                             $className = inputName + '_img';
-                            $('.'+$className).html('<img src="{{$pathPic}}'+res.data.filepath+'" >');
+                            $('.'+$className).html('<img  src="{{$pathPic}}'+res.data.filepath+'" >');
                             $('.'+$className).show();
                         }else{
                             $('#'+inputName).closest('li').append(
-                                '<a class="a_view" href="{{$pathPic}}'+res.data.filepath+'" >PDF查看</a>'
+                                '<a class="a_view" target="_blank" href="{{$pathPic}}'+res.data.filepath+'" >PDF查看</a>'
                             );
                         }
                     }
@@ -213,7 +213,7 @@
                 $('#form').submit();
             })
             $('#goBack').click(function(){
-                window.history.back()
+                window.location.href="/";
             })
         })
     </script>

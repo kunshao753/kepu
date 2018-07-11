@@ -220,7 +220,7 @@
         $(function(){
 
             $('#goBack').click(function(){
-                window.history.back()
+                window.location.href="/";
             })
             $.formValidator.initConfig({
                 formID:"form",
@@ -239,7 +239,7 @@
                         }
                     }
                     if(!num){
-                        alert("产品形态选名称不能为空");
+                        alert("产品形态不能为空");
                         return false;
                     }
                     if(!flag){

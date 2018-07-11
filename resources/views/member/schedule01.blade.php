@@ -256,7 +256,7 @@
                 numberOfMonths: 1
             });
             $('#goBack').click(function(){
-                window.history.back()
+                window.location.href="/";
             })
             $.formValidator.initConfig({
                 formID:"form",
