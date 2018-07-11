@@ -73,7 +73,7 @@
                 <td class="text">{{$value['product_type']}}</td>
                 <td class="text">{{$value['product_form_val']}}</td>
                 <td>
-                    <a href="javascript:void(0);" class="btn">查看</a>
+                    <a href="{{route('member.corpInfo')}}?id={{$value['user_id']}}" class="btn">查看</a>
                     <a href="javascript:void(0);" data-id="{{$value['id']}}" class="btn audit-btn">审批</a>
                 </td>
             </tr>
