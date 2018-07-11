@@ -33,7 +33,9 @@
                 <a href="{{ route('login') }}" class="login">登录</a>
                 <a href="{{ route('register') }}" class="sign-up">注册</a>
             @else
-                <a href="{{route('member.index')}}" class="login">{{ Auth::user()->name }}</a>
+                @if(Auth::user()->permission != 1)
+                    <a href="{{route('member.index')}}" class="login">{{ Auth::user()->name }}</a>
+                @endif
                 <a href="{{ route('logout') }}" class="sign-up" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">  退出  </a>
             @endif
         </div>
