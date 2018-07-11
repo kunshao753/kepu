@@ -89,7 +89,6 @@ class MemberController extends PermissionController
                 return redirect()->route('member.corpInfo');
             }
         }
-
     }
     public function corpInfoDel(Request $request)
     {

@@ -225,20 +225,18 @@
             $.formValidator.initConfig({
                 formID:"form",
                 onSuccess:function(){
-                    var flag = 0;
+                    var flag = 1;
                     for(var i=1;i<6; i++){
                         var isCheck = $(":checkbox[name='product_form_k["+i+"]']").attr('checked');
                         if(isCheck == 'checked'){
                             if($("input[name='product_form_v["+i+"]']").val() == ''){
-                                alert("产品形态选名称不能为空")
-                                return false;
+                                flag = 0;
+                                alert("产品形态选名称不能为空");
+                                break;
                             }
-                            flag = 1;
                         }
-                        break;
                     }
                     if(!flag){
-                        alert("产品形态不能为空")
                         return false;
                     }
                     return true;
