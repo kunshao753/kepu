@@ -58,7 +58,7 @@
     <div class="b-page clearfix">
         <a href="javascript:void(0);" data-type="corporate_information" class="export-btn">导出</a>
         <div class="page-list">
-            {{--<div id="corpInfoPage"></div>--}}
+            <div id="corpInfoPage"></div>
         </div>
     </div>
 </div>
@@ -70,7 +70,7 @@
     <div class="b-page clearfix">
         <a href="javascript:void(0);" data-type="message_board" class="export-btn">导出</a>
         <div class="page-list">
-            {{--<div id="messagePage"></div>--}}
+            <div id="messagePage"></div>
         </div>
     </div>
 </div>
@@ -105,12 +105,12 @@
         </div>
     </div>
 </div>
-<script src="/js/jquery-1.11.0.min.js" ></script>
+<script src="/js/jquery-2.2.3.min.js" ></script>
 <script src="/js/handlebars-v4.0.5.js"></script>
 <script src="/js/paging.js"></script>
 <script>
     var params = {
-        pageSize: 2,
+        pageSize: 20,
     };
     var messageAjax = function(params){
         $.ajax({
@@ -128,7 +128,7 @@
                     $('#messageList').html(templateList(result));
                     $("#messagePage").paging({
                         pageNo: res.data.pageNum,
-                        totalPage: Math.ceil(res.data.rowTotal/2),
+                        totalPage: Math.ceil(res.data.rowTotal/20),
                         totalSize: res.data.rowTotal,
                         callback: function(num) {
                             params.pageNum = num;
@@ -145,7 +145,7 @@
 </script>
 <script>
     var param = {
-        pageSize: 10,
+        pageSize: 20,
     };
     var cropInfoAjax = function(param){
         $.ajax({
@@ -171,7 +171,7 @@
                     $('#corpInfoList').html(templateList(result));
                     $("#corpInfoPage").paging({
                         pageNo: res.data.pageNum,
-                        totalPage: Math.ceil(res.data.rowTotal/10),
+                        totalPage: Math.ceil(res.data.rowTotal/20),
                         totalSize: res.data.rowTotal,
                         callback: function(num) {
                             param.pageNo = num;

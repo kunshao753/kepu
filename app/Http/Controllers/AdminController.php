@@ -7,6 +7,7 @@
  */
 
 namespace App\Http\Controllers;
+use App\Common\UrlPage;
 use App\Message;
 use App\Competition;
 use App\CorpInfo;
@@ -42,10 +43,16 @@ class AdminController extends PermissionController
         $offset = ($pageNum - 1) * $pageSize;
         $messageList = Message::offset($offset)->limit($pageSize)->get();
         $count = Message::where('id','>','0')->count();
+        $page = UrlPage::makePage(
+            100000,
+            $pageNum,
+            $request->url()
+        );
         $result = [
             'pageNum'=>$pageNum ,
             'rowTotal' => $count,
-            'dataList' => $messageList
+            'dataList' => $messageList,
+            'pageList' => $page
         ];
         return $this->responseSuccess($result);
     }
@@ -109,7 +116,7 @@ class AdminController extends PermissionController
         }else{
             $cellData = array(['序号','姓名','手机号','企业名称','项目名称','参赛身份','产品类型','产品形态']);
             $corpList = CorpInfo::where('id', '>', '0')->orderBy('created_at','DESC')->paginate(500);
-            $corpData = $this->corpAndProjecth($corpList, $this->getCorpInfoConfig());
+            $corpData = $this->corpAndProjectExport($corpList, $this->getCorpInfoConfig());
             if(!empty($corpData)){
                 foreach($corpData['data'] as $key=>$value){
                     $ci = '企业';
@@ -128,7 +135,7 @@ class AdminController extends PermissionController
         })->export('xls');
     }
 
-    public function corpAndProjecth($corpList,$config)
+    public function corpAndProjectExport($corpList,$config)
     {
         if(empty($corpList)){
             return [];
