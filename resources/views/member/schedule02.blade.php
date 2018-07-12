@@ -34,7 +34,7 @@
                 <div class="label">
                     <label for="">团队人数</label>
                 </div>
-                <input type="text" name="team_size" id="team_size" placeholder="请填写团队人数" class="input-box">
+                <input type="text" name="team_size" maxlength="5" id="team_size" placeholder="请填写团队人数" class="input-box">
                 <span class="prompt">人</span>
                 <span class="prompt red-p"><span id="team_sizeTip"></span></span>
             </li>

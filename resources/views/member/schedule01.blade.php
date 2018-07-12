@@ -36,7 +36,7 @@
                             <label >{{$value['name']}}</label>
                         </div>
                         @if ($key < 4)
-                            <input type="text" name="signup_resouce_{{$key}}" disabled placeholder="{{$value['tips']}}" class="signup_resouce_{{$key}} input-box">
+                            <input type="text" name="signup_resouce_{{$key}}" maxlength="49" disabled placeholder="{{$value['tips']}}" class="signup_resouce_{{$key}} input-box">
                         @endif
                         @if($key == 1)
                             <span class="prompt red-p"><span id="signup_resouceTip">*必填(四选一)</span></span>
@@ -109,7 +109,7 @@
                     <div class="label">
                         <label for="">邮箱</label>
                     </div>
-                    <input type="text" name="email" id="email" placeholder="请填写邮箱" class="input-box">
+                    <input type="text" name="email" maxlength="39" id="email" placeholder="请填写邮箱" class="input-box">
                     <span class="prompt red-p"><span id="emailTip"></span></span>
                 </li>
                 <li class="clearfix">
@@ -138,14 +138,14 @@
                     <div class="label">
                         <label for="">企业名称</label>
                     </div>
-                    <input type="text" maxlength="50"  name="company_name" id="company_name" placeholder="请填写企业名称" class="input-box">
+                    <input type="text" maxlength="49"  name="company_name" id="company_name" placeholder="请填写企业名称" class="input-box">
                     <span class="prompt red-p"><span id="company_nameTip"></span></span>
                 </li>
                 <li class="clearfix">
                     <div class="label">
                         <label for="">公司网址</label>
                     </div>
-                    <input type="text" name="website_url" placeholder="请填写企业网址" class="input-box">
+                    <input type="text" name="website_url" maxlength="95" placeholder="请填写企业网址" class="input-box">
                 </li>
             </ul>
         </div>
@@ -172,7 +172,7 @@
                         <div class="label">
                             <label for="">注册资本</label>
                         </div>
-                        <input type="text" name="registered_capital" maxlength="30" id="registered_capital" placeholder="请填写注册资本" class="input-box">
+                        <input type="text" name="registered_capital" maxlength="8" id="registered_capital" placeholder="请填写注册资本" class="input-box">
                         <span class="prompt">万元</span>
                         <span class="prompt red-p"><span id="registered_capitalTip"></span></span>
                     </li>
@@ -188,7 +188,7 @@
                             <label for="">注册地区</label>
                         </div>
                         <div class="select-box clearfix">
-                            <input type="text" name="registered_address" maxlength="50" id="registered_address"  placeholder="请选择注册地区" class="input-box">
+                            <input type="text" name="registered_address" maxlength="49" id="registered_address"  placeholder="请选择注册地区" class="input-box">
                             <span class="prompt red-p"><span id="registered_addressTip"></span></span>
                         </div>
                     </li>
@@ -261,20 +261,11 @@
                 }
             });
             $("#name").formValidator( {
-                onShow:"*必填",
-                onFocus :"2-8位汉字",
-            }).inputValidator( {
-                min :1,
-                onError :"姓名不能为空"
+                onShow :"*必填",
+                onFocus :"2-8汉字和字母",
             }).inputValidator( {
                 min :2,
-                max :8,
-                empty : {
-                    leftEmpty :false,
-                    rightEmpty :false,
-                    emptyError :"两边不能有空"
-                },
-                onError :"2-8位汉字"
+                onError :"姓名不能为空"
             });
             // TODO 处理
             $(":radio[name='signup_resouce']").formValidator({
@@ -313,7 +304,7 @@
             $("#email").formValidator({
                 empty:true,
                 onShow :"",
-                onFocus:"邮箱6-100个字符",
+                onFocus:"邮箱6-40个字符",
                 onEmpty:""
             }).regexValidator({
                 regExp:"^([\\w-.]+)@(([[0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}.)|(([\\w-]+.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(]?)$",
@@ -356,7 +347,7 @@
                     if($("#company_info_box").css('display') == 'none'){
                         return true;
                     }
-                    if(!/^\S{2,50}$/.test(val)){
+                    if(!/^\S{2,49}$/.test(val)){
                         return "企业名称不能为空";
                     }
                     return true;
@@ -398,7 +389,7 @@
                     if($("#company_info_box").css('display') == 'none'){
                         return true;
                     }
-                    if(!/^\S{1,30}$/.test(val)){
+                    if(!/^\S{1,8}$/.test(val)){
                         return "注册资本不能为空";
                     }
                     if(!/^([+-]?)\d*\.?\d+$/.test(val)){

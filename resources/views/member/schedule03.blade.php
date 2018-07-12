@@ -33,7 +33,7 @@
                     <div class="label">
                         <label for="">项目名称</label>
                     </div>
-                    <input type="text" name="project_name" id="project_name" placeholder="请填写项目名称" class="input-box">
+                    <input type="text" name="project_name" maxlength="49" id="project_name" placeholder="请填写项目名称" class="input-box">
                     <span class="prompt red-p"><span id="project_nameTip"></span></span>
                 </li>
                 <li class="clearfix label-f-n pl0">
@@ -89,7 +89,7 @@
                     <div class="label">
                         <label for="">产品用户数</label>
                     </div>
-                    <input type="text" name="product_user_size" id="product_user_size" placeholder="请填写产品用户数" class="input-box">
+                    <input type="text" name="product_user_size" maxlength="10" id="product_user_size" placeholder="请填写产品用户数" class="input-box">
                     <span class="prompt">人</span>
                     <span class="prompt red-p"><span id="product_user_sizeTip"></span></span>
                 </li>
@@ -97,49 +97,49 @@
                     <div class="label">
                         <label for="">产品概况</label>
                     </div>
-                    <textarea name="project_profile" id="project_profile" placeholder="请填写产品概况（500字）" class="textarea-box"></textarea>
+                    <textarea name="project_profile" id="project_profile" maxlength="499" placeholder="请填写产品概况（500字）" class="textarea-box"></textarea>
                     <span class="prompt red-p"><span id="project_profileTip"></span></span>
                 </li>
                 <li class="clearfix">
                     <div class="label">
                         <label for="">产品亮点</label>
                     </div>
-                    <textarea name="product_highlight" id="product_highlight" placeholder="请填写产品亮点" class="textarea-box"></textarea>
+                    <textarea name="product_highlight" maxlength="149" id="product_highlight" placeholder="请填写产品亮点" class="textarea-box"></textarea>
                     <span class="prompt red-p"><span id="product_highlightTip"></span></span>
                 </li>
                 <li class="clearfix">
                     <div class="label">
                         <label for="">商业模式</label>
                     </div>
-                    <textarea name="business_model" id="business_model" placeholder="请填写商业模式（200字）" class="textarea-box"></textarea>
+                    <textarea name="business_model" id="business_model" maxlength="199" placeholder="请填写商业模式（200字）" class="textarea-box"></textarea>
                     <span class="prompt red-p"><span id="business_modelTip"></span></span>
                 </li>
                 <li class="clearfix">
                     <div class="label">
                         <label for="">核心壁垒</label>
                     </div>
-                    <textarea  name="core_barrier" id="core_barrier" placeholder="请填写核心壁垒（200字）" class="textarea-box"></textarea>
+                    <textarea  name="core_barrier" id="core_barrier" maxlength="199" placeholder="请填写核心壁垒（200字）" class="textarea-box"></textarea>
                     <span class="prompt red-p"><span id="core_barrierTip"></span></span>
                 </li>
                 <li class="clearfix">
                     <div class="label">
                         <label for="">过往融资</label>
                     </div>
-                    <textarea  name="financing_situation" id="financing_situation" placeholder="请填写过往融资（200字）" class="textarea-box"></textarea>
+                    <textarea  name="financing_situation" maxlength="199" id="financing_situation" placeholder="请填写过往融资（200字）" class="textarea-box"></textarea>
                     <span class="prompt red-p"><span id="financing_situationTip"></span></span>
                 </li>
                 <li class="clearfix">
                     <div class="label">
                         <label for="">是否拥有专利技术</label>
                     </div>
-                    <textarea  name="is_patent" id="is_patent" placeholder="请描述（200字）" class="textarea-box"></textarea>
+                    <textarea  name="is_patent" id="is_patent" maxlength="199" placeholder="请描述（200字）" class="textarea-box"></textarea>
                     <span class="prompt red-p"><span id="is_patentTip"></span></span>
                 </li>
                 <li class="clearfix">
                     <div class="label">
                         <label for="">产品传播效果</label>
                     </div>
-                    <textarea name="product_communication" id="product_communication" placeholder="请填写传播效果（500字）" class="textarea-box"></textarea>
+                    <textarea name="product_communication" maxlength="499" id="product_communication" placeholder="请填写传播效果（500字）" class="textarea-box"></textarea>
                     <span class="prompt red-p"><span id="product_communicationTip"></span></span>
                 </li>
                 <li class="clearfix">
@@ -162,28 +162,28 @@
                     <div class="label">
                         <label for="">广告类型</label>
                     </div>
-                    <input type="text" name="ad_type" id="ad_type" placeholder="请填写广告类型" class="input-box">
+                    <input type="text" name="ad_type" maxlength="19" id="ad_type" placeholder="请填写广告类型" class="input-box">
                     <span class="prompt red-p"><span id="ad_typeTip"></span></span>
                 </li>
                 <li class="clearfix">
                     <div class="label">
                         <label for="">内容生产机制</label>
                     </div>
-                    <input type="text"  name="content_production_mechanism" id="content_production_mechanism" placeholder="请填写生产机制" class="input-box">
+                    <input type="text"  name="content_production_mechanism" maxlength="149" id="content_production_mechanism" placeholder="请填写生产机制" class="input-box">
                     <span class="prompt red-p"><span id="content_production_mechanismTip"></span></span>
                 </li>
                 <li class="clearfix">
                     <div class="label">
                         <label for="">内容审核机制</label>
                     </div>
-                    <input type="text" id="content_review_mechanism"  name="content_review_mechanism" placeholder="请填写审核机制" class="input-box">
+                    <input type="text" id="content_review_mechanism" maxlength="149" name="content_review_mechanism" placeholder="请填写审核机制" class="input-box">
                     <span class="prompt red-p"><span id="content_review_mechanismTip"></span></span>
                 </li>
                 <li class="clearfix">
                     <div class="label">
                         <label for="">专家或机构推荐意见</label>
                     </div>
-                    <textarea name="expert_agency_recommendation" id="expert_agency_recommendation" placeholder="除自由报名选手外需填写；如投资人推荐意见或高校学校推荐意见（200字）" class="textarea-box"></textarea>
+                    <textarea name="expert_agency_recommendation" maxlength="149" id="expert_agency_recommendation" placeholder="除自由报名选手外需填写；如投资人推荐意见或高校学校推荐意见（200字）" class="textarea-box"></textarea>
                     <span class="prompt red-p"><span id="expert_agency_recommendationTip"></span></span>
                 </li>
             </ul>
@@ -243,7 +243,6 @@
                 onFocus :"输入项目名称",
             }).inputValidator( {
                 min :2,
-                max :50,
                 empty : {
                     leftEmpty :false,
                     rightEmpty :false,
@@ -281,7 +280,6 @@
                 onFocus :"输入产品概况",
             }).inputValidator( {
                 min :1,
-                max :500,
                 onError :"产品概况不能为空"
             });
             $("#product_highlight").formValidator( {
@@ -289,8 +287,6 @@
                 onFocus :"输入产品亮点",
             }).inputValidator( {
                 min :1,
-                max :150,
-
                 onError :"产品亮点不能为空"
             });
             $("#business_model").formValidator( {
@@ -298,7 +294,6 @@
                 onFocus :"输入商业模式",
             }).inputValidator( {
                 min :1,
-                max :200,
                 onError :"商业模式不能为空"
             });
             $("#core_barrier").formValidator( {
@@ -306,7 +301,6 @@
                 onFocus :"输入核心壁垒",
             }).inputValidator( {
                 min :1,
-                max :200,
                 onError :"核心壁垒不能为空"
             });
             $("#financing_situation").formValidator( {
@@ -314,7 +308,6 @@
                 onFocus :"输入过往融资",
             }).inputValidator( {
                 min :1,
-                max :200,
                 onError :"过往融资不能为空"
             });
             $("#is_patent").formValidator( {
@@ -322,7 +315,6 @@
                 onFocus :"输入是否专利技术",
             }).inputValidator( {
                 min :1,
-                max :200,
                 onError :"专利技术不能为空"
             });
             $("#product_communication").formValidator( {
@@ -330,7 +322,6 @@
                 onFocus :"输入传播效果",
             }).inputValidator( {
                 min :1,
-                max :200,
                 onError :"传播效果不能为空"
             });
             $(":radio[name='is_ad']").formValidator({
@@ -347,7 +338,6 @@
                 onFocus :"输入广告类型",
             }).inputValidator( {
                 min :1,
-                max :20,
                 onError :"广告类型不能为空"
             });
             $("#content_production_mechanism").formValidator( {
@@ -355,7 +345,6 @@
                 onFocus :"输入内容生产机制",
             }).inputValidator( {
                 min :1,
-                max :150,
                 onError :"内容生产机制不能为空"
             });
             $("#content_review_mechanism").formValidator( {
@@ -363,7 +352,6 @@
                 onFocus :"输入内容审核机制",
             }).inputValidator( {
                 min :1,
-                max :150,
                 onError :"内容审核机制不能为空"
             });
             $("#expert_agency_recommendation").formValidator( {
@@ -371,7 +359,6 @@
                 onFocus :"输入专家或机构推荐意见",
             }).inputValidator( {
                 min :1,
-                max :150,
                 onError :"专家或机构推荐意见不能为空"
             });
         })
