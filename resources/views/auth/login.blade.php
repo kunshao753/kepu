@@ -38,7 +38,7 @@
                     <div id="mobileTip"></div>
                 </li>
                 <li>
-                    <input type="password" id="password" name="password"  data-title="密码"  placeholder="密码" />
+                    <input type="password" id="password" name="password" maxlength="20" data-title="密码"  placeholder="密码" />
                     <div id="passwordTip"></div>
                 </li>
             </ul>
@@ -103,7 +103,6 @@
                 onError :"密码不能为空"
             }).inputValidator( {
                 min :6,
-                max :20,
                 empty : {
                     leftEmpty :false,
                     rightEmpty :false,

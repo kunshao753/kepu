@@ -2,7 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1ecfe424-f879-4cb3-a1c7-b06af650845b" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/resources/views/index.blade.php" afterPath="$PROJECT_DIR$/resources/views/index.blade.php" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change beforePath="$PROJECT_DIR$/resources/views/auth/login.blade.php" afterPath="$PROJECT_DIR$/resources/views/auth/login.blade.php" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -36,12 +37,17 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="login.blade.php" pinned="false" current-in-tab="false">
+      <file leaf-file-name="login.blade.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/resources/views/auth/login.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="528">
-              <caret line="24" column="23" lean-forward="false" selection-start-line="24" selection-start-column="0" selection-end-line="25" selection-end-column="0" />
-              <folding />
+            <state relative-caret-position="436">
+              <caret line="113" column="15" lean-forward="true" selection-start-line="113" selection-start-column="15" selection-end-line="113" selection-end-column="15" />
+              <folding>
+                <marker date="1531398444677" expanded="true" signature="668:687" ph="..." />
+                <marker date="1531398444677" expanded="true" signature="800:816" ph="..." />
+                <marker date="1531398444677" expanded="true" signature="831:845" ph="..." />
+                <marker date="1531398444677" expanded="true" signature="971:1021" ph="..." />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -136,11 +142,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="index.blade.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="index.blade.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/resources/views/index.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-293">
-              <caret line="494" column="28" lean-forward="true" selection-start-line="494" selection-start-column="28" selection-end-line="494" selection-end-column="28" />
+            <state relative-caret-position="257">
+              <caret line="524" column="10" lean-forward="false" selection-start-line="524" selection-start-column="10" selection-end-line="531" selection-end-column="10" />
               <folding>
                 <marker date="1531398233051" expanded="true" signature="1217:1230" ph="..." />
                 <marker date="1531398233051" expanded="true" signature="1259:1275" ph="..." />
@@ -276,7 +282,6 @@
         <option value="$PROJECT_DIR$/public/css/jquery-ui.css" />
         <option value="$PROJECT_DIR$/public/js/formvalidator4.1.3/themes/SolidBox/style/style.css" />
         <option value="$PROJECT_DIR$/public/styles/style.css" />
-        <option value="$PROJECT_DIR$/resources/views/auth/login.blade.php" />
         <option value="$PROJECT_DIR$/public/js/formvalidator4.1.3/themes/Default/style/style.css" />
         <option value="$PROJECT_DIR$/public/js/formvalidator4.1.3/formValidatorRegex.js" />
         <option value="$PROJECT_DIR$/config/filesystems.php" />
@@ -306,6 +311,7 @@
         <option value="$PROJECT_DIR$/resources/views/member/schedule01show.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/member/schedule04.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/index.blade.php" />
+        <option value="$PROJECT_DIR$/resources/views/auth/login.blade.php" />
       </list>
     </option>
   </component>
@@ -528,12 +534,12 @@
       <workItem from="1531361351025" duration="113000" />
       <workItem from="1531390744586" duration="1641000" />
       <workItem from="1531396556261" duration="238000" />
-      <workItem from="1531397647637" duration="506000" />
+      <workItem from="1531397647637" duration="699000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="93380000" />
+    <option name="totallyTimeSpent" value="93573000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1280" height="800" extended-state="6" />
@@ -914,14 +920,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/auth/login.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="528">
-          <caret line="24" column="23" lean-forward="false" selection-start-line="24" selection-start-column="0" selection-end-line="25" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/auth/register.blade.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="3564">
@@ -1023,8 +1021,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/index.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-293">
-          <caret line="494" column="28" lean-forward="true" selection-start-line="494" selection-start-column="28" selection-end-line="494" selection-end-column="28" />
+        <state relative-caret-position="257">
+          <caret line="524" column="10" lean-forward="false" selection-start-line="524" selection-start-column="10" selection-end-line="531" selection-end-column="10" />
           <folding>
             <marker date="1531398233051" expanded="true" signature="1217:1230" ph="..." />
             <marker date="1531398233051" expanded="true" signature="1259:1275" ph="..." />
@@ -1051,6 +1049,19 @@
             <marker date="1531398233051" expanded="true" signature="5709:5726" ph="..." />
             <marker date="1531398233051" expanded="true" signature="12494:12508" ph="..." />
             <marker date="1531398233051" expanded="true" signature="16093:16116" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/auth/login.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="436">
+          <caret line="113" column="15" lean-forward="true" selection-start-line="113" selection-start-column="15" selection-end-line="113" selection-end-column="15" />
+          <folding>
+            <marker date="1531398444677" expanded="true" signature="668:687" ph="..." />
+            <marker date="1531398444677" expanded="true" signature="800:816" ph="..." />
+            <marker date="1531398444677" expanded="true" signature="831:845" ph="..." />
+            <marker date="1531398444677" expanded="true" signature="971:1021" ph="..." />
           </folding>
         </state>
       </provider>
