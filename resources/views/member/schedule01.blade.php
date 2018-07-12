@@ -281,7 +281,6 @@
                 tipID:"signup_resouceTip",
                 onShow:"*必填(四选一)",
                 onFocus:"请输入右边内容",
-                onCorrect:"请输入右边内容"
             }).inputValidator({
                 min:1,
                 max:1,

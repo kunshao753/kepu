@@ -91,7 +91,6 @@
                     <li>
                         <div class="text-left">
                             <p class="text01">融资证明材料PDF</p>
-                            <p class="text02">有融资情况上传<br/> ＊必传</p>
                         </div>
                         <div class="file-btn">
                             <input type="file" id="financing_certificate" class="input-file">

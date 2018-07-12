@@ -42,11 +42,11 @@
                     <div id="password-confirmTip"></div>
                 </li>
                 <li>
-                    <input type="text" name="email" id="email" placeholder="邮箱" />
+                    <input type="text" name="email" maxlength="40" id="email" placeholder="邮箱" />
                     <div id="emailTip"></div>
                 </li>
                 <li>
-                    <input type="text" name="name" id="name" placeholder="姓名" />
+                    <input type="text" name="name" maxlength="8" id="name" placeholder="姓名" />
                     <div id="nameTip"></div>
                 </li>
             </ul>
@@ -114,7 +114,7 @@
             });
             $("#password").formValidator( {
                 onShow :"*必填",
-                onFocus :"6-20位数字、字母",
+                onFocus :"必包含数字字母组合",
             }).inputValidator( {
                 min :1,
                 onError :"密码不能为空"
@@ -160,19 +160,10 @@
             });
             $("#name").formValidator( {
                 onShow :"*必填",
-                onFocus :"2-8位汉字",
+                onFocus :"2-8汉字和字母",
             }).inputValidator( {
                 min :1,
                 onError :"姓名不能为空"
-            }).inputValidator( {
-                min :2,
-                max :8,
-                empty : {
-                    leftEmpty :false,
-                    rightEmpty :false,
-                    emptyError :"两边不能有空"
-                },
-                onError :"2-8位汉字"
             });
         })
 

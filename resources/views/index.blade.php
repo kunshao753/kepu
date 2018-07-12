@@ -16,14 +16,14 @@
                         <i class="weibo-icon"></i>
                         <div class="qr-code" style="display: none">
                             <i class="icon01"></i>
-                            <img src="img/qr-code.jpg" alt=""÷>
+                            <img src="img/qr-weibo.jpg" alt=""÷>
                         </div>
                     </span>
                     <span class="wechat">
                         <i class="wechat-icon"></i>
                         <div class="qr-code"  style="display: none">
                             <i class="icon01"></i>
-                            <img src="img/qr-code.jpg" alt=""÷>
+                            <img src="img/qr-wechat.jpg" alt=""÷>
                         </div>
                     </span>
         </div>
@@ -387,11 +387,11 @@
                     <div id="emailTip"></div>
                 </li>
                 <li>
-                    <input type="text" id="question" name="question" maxlength="30" data-title="您的问题"  placeholder="您的问题">
+                    <input type="text" id="question" name="question" maxlength="29" data-title="您的问题"  placeholder="您的问题">
                     <div id="questionTip"></div>
                 </li>
                 <li>
-                    <textarea id="description" name="description" maxlength="100"  data-title="描述问题" placeholder="请描述您的问题"></textarea>
+                    <textarea id="description" name="description" maxlength="99"  data-title="描述问题" placeholder="请描述您的问题"></textarea>
                     <div id="descriptionTip"></div>
                 </li>
             </ul>
@@ -447,6 +447,7 @@
             $(this).find('.qr-code').hide();
         })
         $('.question-btn').click(function () {
+            $('.form-list input, .form-list textarea').val('');
             $(".pop-up").show();
         })
         $('.closeicon').click(function () {
@@ -487,7 +488,7 @@
         });
         $("#name").formValidator( {
             onShow:"*必填",
-            onFocus :"2-8位汉字",
+            onFocus :"汉字2-8位汉字和字母",
         }).inputValidator( {
             min :1,
             onError :"姓名不能为空"
@@ -499,7 +500,7 @@
                 rightEmpty :false,
                 emptyError :"两边不能有空"
             },
-            onError :"2-8位汉字"
+            onError :"汉字2-8位汉字和字母"
         });
         $("#mobile").formValidator({
             onShow:"*必填",
