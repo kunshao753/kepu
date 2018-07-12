@@ -4,7 +4,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title></title>
+    <title>
+        @if(\Illuminate\Support\Facades\Request::getRequestUri() == '/member/corpInfo')
+            申报评审系统--基本信息
+        @elseif(\Illuminate\Support\Facades\Request::getRequestUri() == '/member/projectTeam')
+            申报评审系统--项目团队
+        @elseif(\Illuminate\Support\Facades\Request::getRequestUri() == '/member/projectInfo')
+            申报评审系统--项目信息
+        @else
+            申报评审系统--上传资料
+        @endif
+    </title>
     <link rel="stylesheet" href="/styles/base.css">
     <link rel="stylesheet" href="/styles/style.css">
     <link rel="stylesheet" href="/css/jquery-ui.css">
