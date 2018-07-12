@@ -490,7 +490,7 @@
             onShow:"*必填",
             onFocus :"2-8位汉字和字母",
         }).inputValidator( {
-            min :1,
+            min :2,
             onError :"姓名不能为空"
         }).inputValidator( {
             empty : {
@@ -520,7 +520,7 @@
             onShow:"*必填",
             onFocus :"2-30位汉字",
         }).inputValidator( {
-            min :1,
+            min :2,
             onError :"问题不能为空"
         }).inputValidator( {
             empty : {
@@ -534,7 +534,7 @@
             onShow:"*必填",
             onFocus :"2-100位汉字",
         }).inputValidator( {
-            min :1,
+            min :2,
             onError :"描述问题不能为空"
         }).inputValidator( {
             empty : {
