@@ -116,11 +116,7 @@
                 onShow :"*必填",
                 onFocus :"必包含数字字母组合",
             }).inputValidator( {
-                min :1,
-                onError :"密码不能为空"
-            }).inputValidator( {
                 min :6,
-                max :20,
                 empty : {
                     leftEmpty :false,
                     rightEmpty :false,
@@ -134,9 +130,6 @@
                 onShow :"*必填",
                 onFocus :"6-20位数字、字母",
                 onCorrect :"&nbsp;"
-            }).inputValidator( {
-                min :1,
-                onError :"确认密码不能为空"
             }).inputValidator( {
                 min :6,
                 empty : {

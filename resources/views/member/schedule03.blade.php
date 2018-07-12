@@ -62,7 +62,7 @@
                                     <label for="">{{$value['name']}}</label>
                                 </div>
                             </div>
-                            <input type="text" name="{{$value['val']}}" value="{{$value['text']}}" placeholder="{{$value['tips']}}" class="input-box">
+                            <input type="text" name="{{$value['val']}}" maxlength="30" value="{{$value['text']}}" placeholder="{{$value['tips']}}" class="input-box">
                         @endforeach
                     </div>
                     <span class="prompt red-p" style=" margin-top:65px;"><span id="product_formTip">*必填(四选一)</span></span>

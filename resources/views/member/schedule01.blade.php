@@ -103,7 +103,7 @@
                     <div class="label">
                         <label for="">微信号</label>
                     </div>
-                    <input type="text" name="wechat" placeholder="请填写微信号" class="input-box">
+                    <input type="text" name="wechat" maxlength="29" placeholder="请填写微信号" class="input-box">
                 </li>
                 <li class="clearfix">
                     <div class="label">
