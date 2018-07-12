@@ -383,7 +383,7 @@
                     <div id="mobileTip"></div>
                 </li>
                 <li>
-                    <input type="text" id="email" name="email"  data-title="邮箱"  placeholder="请留下您的邮箱">
+                    <input type="text" id="email" name="email" maxlength="40" data-title="邮箱"  placeholder="请留下您的邮箱">
                     <div id="emailTip"></div>
                 </li>
                 <li>
@@ -488,19 +488,17 @@
         });
         $("#name").formValidator( {
             onShow:"*必填",
-            onFocus :"汉字2-8位汉字和字母",
+            onFocus :"2-8位汉字和字母",
         }).inputValidator( {
             min :1,
             onError :"姓名不能为空"
         }).inputValidator( {
-            min :2,
-            max :8,
             empty : {
                 leftEmpty :false,
                 rightEmpty :false,
                 emptyError :"两边不能有空"
             },
-            onError :"汉字2-8位汉字和字母"
+            onError :"2-8位汉字和字母"
         });
         $("#mobile").formValidator({
             onShow:"*必填",
@@ -525,14 +523,12 @@
             min :1,
             onError :"问题不能为空"
         }).inputValidator( {
-            min :2,
-            max :30,
             empty : {
                 leftEmpty :false,
                 rightEmpty :false,
                 emptyError :"两边不能有空"
             },
-            onError :"2-30位汉字"
+            onError :"2-8位汉字和字母"
         });
         $("#description").formValidator( {
             onShow:"*必填",
@@ -541,8 +537,6 @@
             min :1,
             onError :"描述问题不能为空"
         }).inputValidator( {
-            min :2,
-            max :100,
             empty : {
                 leftEmpty :false,
                 rightEmpty :false,
