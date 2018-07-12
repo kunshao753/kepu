@@ -34,11 +34,11 @@
                     <div id="mobileTip"></div>
                 </li>
                 <li>
-                    <input type="password" id="password" name="password"  data-title="密码"  placeholder="密码" />
+                    <input type="password" id="password" maxlength="20" name="password"  data-title="密码"  placeholder="密码" />
                     <div id="passwordTip"></div>
                 </li>
                 <li>
-                    <input type="password" name="password_confirmation" id="password-confirm" placeholder="确认密码" data-title="确认密码" />
+                    <input type="password" name="password_confirmation" maxlength="20"  id="password-confirm" placeholder="确认密码" data-title="确认密码" />
                     <div id="password-confirmTip"></div>
                 </li>
                 <li>
@@ -139,7 +139,6 @@
                 onError :"确认密码不能为空"
             }).inputValidator( {
                 min :6,
-                max :20,
                 empty : {
                     leftEmpty :false,
                     rightEmpty :false,
@@ -153,7 +152,7 @@
             });
             $("#email").formValidator({
                 onShow :"*必填",
-                onFocus:"邮箱6-100个字符",
+                onFocus:"邮箱6-40个字符",
             }).regexValidator({
                 regExp:"^([\\w-.]+)@(([[0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}.)|(([\\w-]+.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(]?)$",
                 onError:"邮箱格式不正确"
@@ -162,7 +161,7 @@
                 onShow :"*必填",
                 onFocus :"2-8汉字和字母",
             }).inputValidator( {
-                min :1,
+                min :2,
                 onError :"姓名不能为空"
             });
         })
