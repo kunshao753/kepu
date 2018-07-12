@@ -5,11 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>
-        @if(\Illuminate\Support\Facades\Request::getRequestUri() == '/member/corpInfo')
+        @if(stripos(\Illuminate\Support\Facades\Request::getRequestUri(),'corpInfo') !== false)
             申报评审系统--基本信息
-        @elseif(\Illuminate\Support\Facades\Request::getRequestUri() == '/member/projectTeam')
+        @elseif(stripos(\Illuminate\Support\Facades\Request::getRequestUri(),'projectTeam') !== false)
             申报评审系统--项目团队
-        @elseif(\Illuminate\Support\Facades\Request::getRequestUri() == '/member/projectInfo')
+        @elseif(stripos(\Illuminate\Support\Facades\Request::getRequestUri(),'projectInfo') !== false)
             申报评审系统--项目信息
         @else
             申报评审系统--上传资料
