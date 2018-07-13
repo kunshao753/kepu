@@ -18,10 +18,7 @@
 </head>
 <body>
 <div class="header">
-    <h2>科普互联网大赛</h2>
-    <h3>大赛评审管理</h3>
-    <p class="text01">Project registration system</p>
-    <p class="text02">Lorem ipsum dolor sit amet , consectetur adipiscing elit .</p>
+    <div class="login-header w clearfix" style="position: relative">
         <div class="login" style="position: absolute; font-size: 22px; right:50px; top:30px;">
             @if (!Auth::guest())
                 <a style="color: #fff" href="{{ route('logout') }}" class="sign-up" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">  退出  </a>
@@ -32,6 +29,12 @@
                 {{ csrf_field() }}
             </form>
         @endif
+    </div>
+    <h2>科普互联网大赛</h2>
+    <h3>大赛评审管理</h3>
+    <p class="text01">Project registration system</p>
+    <p class="text02">Lorem ipsum dolor sit amet , consectetur adipiscing elit .</p>
+
 </div>
 <div class="schedule-date w">
     <h2>当前大赛阶段</h2>
