@@ -165,7 +165,7 @@ class AdminController extends PermissionController
             $productForm = '';
             if(!empty($productFormArray)){
                 foreach ($productFormArray as $k=>$v){
-                    $productForm .= $config['productForm'][$k]['name']."<br />";
+                    $productForm .= $config['productForm'][$k]['name'];
                 }
             }
             $corpData['data'][$key]['project_name'] = $projectName;

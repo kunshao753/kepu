@@ -62,6 +62,12 @@
 </div>
 <div class="summary-cont w">
     <ul class="btn-list clearfix">
+        <li id="about-cont-b">
+            <div class="img-wrap">
+                <img src="img/works03.png" alt="">
+            </div>
+            <h3>关于大赛</h3>
+        </li>
         <li id="works-cont-b">
             <div class="img-wrap">
                 <img src="img/works01.png" alt="">
@@ -74,12 +80,7 @@
             </div>
             <h3>活动现场</h3>
         </li>
-        <li id="about-cont-b">
-            <div class="img-wrap">
-                <img src="img/works03.png" alt="">
-            </div>
-            <h3>关于大赛</h3>
-        </li>
+
         <li id="rater-cont-b">
             <div class="img-wrap">
                 <img src="img/works04.png" alt="">
