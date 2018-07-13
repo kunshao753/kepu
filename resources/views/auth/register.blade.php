@@ -156,6 +156,9 @@
             }).inputValidator( {
                 min :2,
                 onError :"姓名不能为空"
+            }).regexValidator({
+                regExp:"^[a-zA-Z\u4E00-\u9FA5]+$",
+                onError:"姓名格式有误"
             });
         })
 
