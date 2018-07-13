@@ -424,20 +424,33 @@
     }
 </style>
 <script>
-    window.onload = function(){
-        document.querySelector("#works-cont-b").onclick = function(){
-            document.querySelector("#works-cont").scrollIntoView(false);
-        }
-        document.querySelector("#activity-scene-b").onclick = function(){
-            document.querySelector("#activity-scene").scrollIntoView(false);
-        }
-        document.querySelector("#about-cont-b").onclick = function(){
-            document.querySelector("#about-cont").scrollIntoView(false);
-        }
-        document.querySelector("#rater-cont-b").onclick = function(){
-            document.querySelector("#rater-cont").scrollIntoView(false);
-        }
-    }
+
+//    window.onload = function(){
+//        document.querySelector("#works-cont-b").onclick = function(){
+//            document.querySelector("#works-cont").scrollIntoView(false);
+//        }
+//        document.querySelector("#activity-scene-b").onclick = function(){
+//            document.querySelector("#activity-scene").scrollIntoView(false);
+//        }
+//        document.querySelector("#about-cont-b").onclick = function(){
+//            document.querySelector("#about-cont").scrollIntoView(false);
+//        }
+//        document.querySelector("#rater-cont-b").onclick = function(){
+//            document.querySelector("#rater-cont").scrollIntoView(false);
+//        }
+//    }
+    $('#works-cont-b').click(function(){
+        $('html,body').animate({scrollTop: '3280px'}, 1200)
+    })
+    $('#activity-scene-b').click(function(){
+        $('html,body').animate({scrollTop: '3800px'}, 1200)
+    })
+    $('#about-cont-b').click(function(){
+        $('html,body').animate({scrollTop: '1900px'}, 800)
+    })
+    $('#rater-cont-b').click(function(){
+        $('html,body').animate({scrollTop: '4330px'}, 1500)
+    })
 </script>
 <script>
     $(function() {

@@ -83,9 +83,9 @@
     <span>中国科学技术协会版权所</span>
     <span>中国科学技术协会版权所</span>
 </div>
-<div class="pop-up" style="display: none">
+<div class="pop-up" style="display: none;   ">
     <div class="mask"></div>
-    <div class="form-cont w">
+    <div class="form-cont w" style="position: fixed; top:70px;">
         <i class="closeicon"></i>
         <h3 class="big-tit">
             审批操作
