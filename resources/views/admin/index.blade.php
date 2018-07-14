@@ -60,7 +60,7 @@
     <div id="corpInfoList"></div>
     <div class="b-page clearfix">
         {{--<a href="javascript:void(0);" data-type="corporate_information" class="export-btn">导出</a>--}}
-        <a target="_blank" href="{{route('admin.exportList')}}?type=corporate_information" class="export-btn">导出</a>
+        <a  href="{{route('admin.exportList')}}?type=corporate_information" class="export-btn">导出</a>
         <div class="page-list">
             <div id="corpInfoPage"></div>
         </div>
@@ -73,7 +73,7 @@
 
     <div class="b-page clearfix">
         {{--<a href="javascript:void(0);" data-type="message_board" class="export-btn">导出</a>--}}
-        <a target="_blank" href="{{route('admin.exportList')}}?type=message_board" class="export-btn">导出</a>
+        <a  href="{{route('admin.exportList')}}?type=message_board" class="export-btn">导出</a>
         <div class="page-list">
             <div id="messagePage"></div>
         </div>

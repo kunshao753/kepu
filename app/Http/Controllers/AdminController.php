@@ -133,6 +133,7 @@ class AdminController extends PermissionController
                 $sheet->rows($cellData);
             });
         })->export('xls');
+        die;
     }
 
     public function corpAndProjectExport($corpList,$config)
