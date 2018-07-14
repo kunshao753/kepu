@@ -466,6 +466,7 @@
         })
         $('.closeicon').click(function () {
             $(".pop-up").hide();
+            window.location.href = window.location.href;
         })
     })
 
@@ -486,6 +487,7 @@
                 success:function(response){
                     if(response.status == 'success'){
                         alert("提交成功！");
+                        window.location.href = window.location.href;
                     }
                 }
             })
@@ -502,7 +504,7 @@
         });
         $("#name").formValidator( {
             onShow:"*必填",
-            onFocus :"2-8位汉字和字母",
+            onFocus :"最长为8位",
         }).inputValidator( {
             min :2,
             onError :"姓名不能为空"
@@ -512,7 +514,7 @@
                 rightEmpty :false,
                 emptyError :"两边不能有空"
             },
-            onError :"2-8位汉字和字母"
+            onError :"最长为8位"
         });
         $("#mobile").formValidator({
             onShow:"*必填",

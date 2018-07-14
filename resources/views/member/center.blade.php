@@ -51,10 +51,12 @@
                 <td>
                     <span class="text">
                         @if($status == 0)
-                            初审未通过
+                            未报名
                         @elseif($status == 1)
-                            报名
+                            初审中
                         @elseif($status == 2)
+                            初审未通过
+                        @elseif($status == 3)
                             进入初赛
                         @else
                             进入决赛

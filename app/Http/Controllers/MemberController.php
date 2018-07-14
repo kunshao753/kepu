@@ -111,6 +111,7 @@ class MemberController extends PermissionController
         if($projectInfo){
             $projectPhoto->delete();
         }
+        CorpInfo::where(['user_id' => Auth::user()->id])->update(['audit_status'=>0]);
         return redirect()->route('member.index');
     }
     public function signUp(Request $request)
@@ -251,6 +252,7 @@ class MemberController extends PermissionController
         $params = $request->all();
         $params['user_id'] = Auth::user()->id;
         $result = ProjectTeam::create($params);
+        CorpInfo::where(['user_id' => Auth::user()->id])->update(['audit_status'=>1]);
         if ($result) {
             return redirect()->route('member.projectInfo');
         } else {

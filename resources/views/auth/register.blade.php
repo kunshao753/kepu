@@ -114,7 +114,7 @@
             });
             $("#password").formValidator( {
                 onShow :"*必填",
-                onFocus :"必包含数字字母组合",
+                onFocus :"长度6-20,必包含数字字母",
             }).inputValidator( {
                 min :6,
                 empty : {
@@ -122,13 +122,13 @@
                     rightEmpty :false,
                     emptyError :"两边不能有空"
                 },
-                onError :"6-20位数字、字母"
+                onError :"长度6-20,必包含数字字母"
             }).functionValidator({
                 fun:testNewPassword
             });
             $("#password-confirm").formValidator( {
                 onShow :"*必填",
-                onFocus :"6-20位数字、字母",
+                onFocus :"长度6-20,必包含数字字母",
                 onCorrect :"&nbsp;"
             }).inputValidator( {
                 min :6,
@@ -137,7 +137,7 @@
                     rightEmpty :false,
                     emptyError :"两边不能有空"
                 },
-                onError :"6-20位数字、字母"
+                onError :"长度6-20,必包含数字字母"
             }).compareValidator( {
                 desID :"password",
                 operateor :"=",
@@ -152,7 +152,7 @@
             });
             $("#name").formValidator( {
                 onShow :"*必填",
-                onFocus :"2-8汉字和字母",
+                onFocus :"最长为8位",
             }).inputValidator( {
                 min :2,
                 onError :"姓名不能为空"

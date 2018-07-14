@@ -184,11 +184,12 @@ function testNewPassword(val){
     var isNotNewPassword = /^(?:\d*|[a-zA-Z]*|[\w\!\@\#\$\%\^\&\*\(\)\_\-\+\=]*)$/;
 
     // var tip1 = "至少使用6-20位大小写英文字母、数字或标点符号两种组成";//"至少使用6-20位大小写英文字母、数字或标点符号两种组成";
-    var tip1 = "6-20位数字、字母";//"至少使用6-20位大小写英文字母、数字或标点符号两种组成";
-    var tip2 = "输入字符有误，支持的字符为!@#$%^&*()_+";
-    if(val.match(isNotNewPassword) == null){
-        return tip2;
-    }
+    var tip1 = "长度6-20,包含数字字母组合";//"至少使用6-20位大小写英文字母、数字或标点符号两种组成";
+    var tip2 = "长度6-20,包含数字字母组合";//"至少使用6-20位大小写英文字母、数字或标点符号两种组成";
+    // var tip2 = "输入字符有误，支持的字符为!@#$%^&*()_+";
+    // if(val.match(isNotNewPassword) == null){
+    //     return tip2;
+    // }
     if(val.match(num)!=null || val.match(upperLetter)!=null || val.match(lowLetter)!=null || val.match(special)!=null ){
         return tip1;
     }

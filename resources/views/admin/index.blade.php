@@ -92,15 +92,15 @@
         </h3>
         <ul class="reason-list">
             <li>
-                <input name="auditstep" value="1" checked type="radio">
+                <input name="auditstep" value="2" checked type="radio">
                 初审未通过
             </li>
             <li>
-                <input name="auditstep" value="2"  type="radio">
+                <input name="auditstep" value="3"  type="radio">
                 进入初赛
             </li>
             <li>
-                <input name="auditstep" value="3" type="radio">
+                <input name="auditstep" value="4" type="radio">
                 进入决赛
             </li>
         </ul>
