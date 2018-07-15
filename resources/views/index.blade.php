@@ -534,7 +534,7 @@
         });
         $("#question").formValidator( {
             onShow:"*必填",
-            onFocus :"2-30位汉字",
+            onFocus :"2-30位",
         }).inputValidator( {
             min :2,
             onError :"问题不能为空"
@@ -544,11 +544,11 @@
                 rightEmpty :false,
                 emptyError :"两边不能有空"
             },
-            onError :"2-8位汉字和字母"
+            onError :"2-30位"
         });
         $("#description").formValidator( {
             onShow:"*必填",
-            onFocus :"2-100位汉字",
+            onFocus :"2-100位",
         }).inputValidator( {
             min :2,
             onError :"描述问题不能为空"
@@ -558,7 +558,7 @@
                 rightEmpty :false,
                 emptyError :"两边不能有空"
             },
-            onError :"2-100位汉字"
+            onError :"2-100位"
         });
 
     })
