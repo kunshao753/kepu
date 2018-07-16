@@ -70,7 +70,7 @@
                     <li>
                         <div class="text-left">
                             <p class="text01">营业执照扫描PDF</p>
-                            <p class="text02">企业用户请上传</p>
+                            <p class="text02">*企业用户请上传</p>
                         </div>
                         <div class="file-btn">
                             <input type="file" id="business_license" class="input-file" />
@@ -92,7 +92,7 @@
                     <li>
                         <div class="text-left">
                             <p class="text01">融资证明材料PDF</p>
-                            <p class="text02">有融资用户请上传</p>
+                            <p class="text02">*有融资用户请上传</p>
                         </div>
                         <div class="file-btn">
                             <input type="file" id="financing_certificate" class="input-file">

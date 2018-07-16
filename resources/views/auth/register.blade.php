@@ -152,13 +152,13 @@
             });
             $("#name").formValidator( {
                 onShow :"*必填",
-                onFocus :"最长为8位",
+                onFocus :"2-8位，字母和汉字",
             }).inputValidator( {
                 min :2,
-                onError :"姓名不能为空"
+                onError :"2-8位，字母和汉字"
             }).regexValidator({
                 regExp:"^[a-zA-Z\u4E00-\u9FA5]+$",
-                onError:"姓名格式有误"
+                onError:"2-8位，字母和汉字"
             });
         })
 

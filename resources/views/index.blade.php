@@ -503,18 +503,14 @@
             }
         });
         $("#name").formValidator( {
-            onShow:"*必填",
-            onFocus :"最长为8位",
+            onShow :"*必填",
+            onFocus :"2-8位，字母和汉字",
         }).inputValidator( {
             min :2,
-            onError :"姓名不能为空"
-        }).inputValidator( {
-            empty : {
-                leftEmpty :false,
-                rightEmpty :false,
-                emptyError :"两边不能有空"
-            },
-            onError :"最长为8位"
+            onError :"2-8位，字母和汉字"
+        }).regexValidator({
+            regExp:"^[a-zA-Z\u4E00-\u9FA5]+$",
+            onError:"2-8位，字母和汉字"
         });
         $("#mobile").formValidator({
             onShow:"*必填",
