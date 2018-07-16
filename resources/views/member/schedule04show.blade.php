@@ -33,6 +33,7 @@
                     <li>
                         <div class="text-left">
                             <p class="text01">参赛声明签名扫描版PDF</p>
+                            <p class="text02">报名时下载的PDF企业盖章，团队签名后扫描上传<br /> ＊必传</p>
                         </div>
                         {{--<div class="file-btn">--}}
                             {{--<input type="file" id="contestant_statement" class="input-file" />--}}
@@ -46,6 +47,7 @@
                     <li class="right text-aline">
                         <div class="text-left">
                             <p class="text01">身份证复印件正反面PDF</p>
+                            <p class="text02"> ＊必传</p>
                         </div>
                         {{--<div class="file-btn">--}}
                             {{--<input type="file" id="identity_front_back"  name="" class="input-file" />--}}
@@ -59,6 +61,7 @@
                     <li>
                         <div class="text-left">
                             <p class="text01">营业执照扫描PDF</p>
+                            <p class="text02">*企业用户请上传</p>
                         </div>
                         {{--<div class="file-btn">--}}
                             {{--<input type="file" id="business_license" class="input-file" />--}}
@@ -72,6 +75,8 @@
                     <li class="right text-aline">
                         <div class="text-left">
                             <p class="text01">知识产权合规声明PDF</p>
+                            <p class="text02">＊必传</p>
+
                         </div>
                         {{--<div class="file-btn">--}}
                             {{--<input type="file" id="intellectual_property_statement" class="input-file" />--}}
@@ -85,6 +90,8 @@
                     <li>
                         <div class="text-left">
                             <p class="text01">融资证明材料PDF</p>
+                            <p class="text02">*有融资用户请上传</p>
+
                         </div>
                         {{--<div class="file-btn">--}}
                             {{--<input type="file" id="financing_certificate" class="input-file">--}}
