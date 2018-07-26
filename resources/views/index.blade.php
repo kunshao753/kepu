@@ -251,11 +251,12 @@
             paginationClickable:true,
             prevButton:'.swiper-button-prev',
             nextButton:'.swiper-button-next',
-            breakpoints: {
-                668: {
-                    slidesPerView: 1,
-                }
-            }
+             spaceBetween: -30
+            // breakpoints: {
+            //     668: {
+            //         slidesPerView: 1,
+            //     }
+            // }
         });
     })
 </script>
