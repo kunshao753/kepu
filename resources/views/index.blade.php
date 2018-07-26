@@ -146,7 +146,7 @@
             </tr>
         </table>
         <div class="f-bar">
-            中国科学技术协会版权所  |  中国科学技术协会版权所
+            中国科学技术协会版权所<span style="padding:0 20px;">|</span>中国科学技术协会版权所
         </div>
     </div>
 </div>
