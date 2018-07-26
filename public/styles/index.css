@@ -1,0 +1,92 @@
+body{
+    background: #4c8fff url(../images/bg.jpg) 50% 0 no-repeat;
+    min-height:1800px;
+}
+.w {
+    width: 1100px;
+    margin: 0 auto; }
+.logo{
+    margin-top:18px;
+    width: 180px;
+    height: 45px;
+    float: left;
+    background: url(../images/ide1_03.png);
+}
+.top-bar{
+    height: 80px;
+    background: #fff;
+    font-size: 16px;
+}
+.menu{
+    margin: 0;
+    padding: 0;
+    margin-left:41px;
+    height: 80px;
+    float: left;
+}
+.menu li{
+    float: left;
+    list-style: none;
+}
+.menu li a{
+    display: block;
+    line-height: 80px;
+    width: 101px;
+    height: 100%;
+    background: #fff;
+    font-weight: bold;
+    text-align: center;
+}
+.menu li a.active{
+    background: #c3171e;
+    color: #fff;
+}
+.login-box{
+    width: 230px;
+    height: 30px;
+    float: right;
+    margin-top:25px;
+    text-align: right;
+}
+.login-box span{
+    margin: 0 15px;
+}
+.login-box .txt{
+    line-height: 30px;
+    float: left;
+}
+.wechat{
+    width: 30px;
+    height: 30px;
+    display: inline-block;
+    background: url(../images/ide1_06.jpg);
+}
+.webo{
+    width: 30px;
+    height: 30px;
+    margin-left:16px;
+    display: inline-block;
+    background: url(../images/ide1_08.jpg);
+}
+.banner-top{
+    height: 430px;
+    margin-top:550px;
+
+}
+.btn-box{
+    margin: 0 auto;
+    width: 545px;
+    height: 60px;
+}
+.btn-box a.join{
+    float: left;
+    width: 249px;
+    height: 60px;
+    background: url(../images/idex_28.png);
+}
+.btn-box a.ask{
+    float: right;
+    width: 250px;
+    height: 60px;
+    background: url(../images/idex_30.png);
+}
