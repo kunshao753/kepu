@@ -144,8 +144,9 @@ body{
     background: url(../images/idex_48.png);
 }
 .footer{
-    height: 297px;
+    height: 340px;
     background: #1b2d5f;
+    overflow: hidden;
 }
 .footer .text{
     color: #849bdc;
@@ -181,6 +182,15 @@ body{
 }
 .f_r{
     padding-left:59px;
+}
+.f-bar{
+    border-top:#142248 solid 1px;
+    font-size: 14px;
+    height: 55px;
+    line-height: 55px;
+    text-align: center;
+    color: #849bdc;
+    margin-top:20px;
 }
 .title-box{
     margin: 0 auto;

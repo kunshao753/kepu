@@ -145,6 +145,9 @@
                 </td>
             </tr>
         </table>
+        <div class="f-bar">
+            中国科学技术协会版权所  |  中国科学技术协会版权所
+        </div>
     </div>
 </div>
 <script src="/js/jquery-1.11.0.min.js?r=1" ></script>
