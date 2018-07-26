@@ -34,8 +34,8 @@
     </div>
     <div class="banner-top">
         <div class="btn-box clearfix">
-            <a href="#" class="join"></a>
-            <a href="#" class="ask"></a>
+            <a href="javascript:void(0);" class="join"></a>
+            <a href="javascript:void(0);" class="ask"></a>
         </div>
         <div id="swiper">
             <section class="swiper-container">
