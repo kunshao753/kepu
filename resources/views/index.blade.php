@@ -85,7 +85,7 @@
                 </td>
                 <td class="pd" valign="top">
                     <p class="title-wrap">
-                        <img src="/images/idex_55.png" />
+                        <img src="/images/a_03.png" />
                         <a href="javascript:void(0);">活动详情</a>
                     </p>
                     <p class="text">
@@ -96,7 +96,7 @@
             <tr>
                 <td valign="top" style="padding-top:40px;">
                     <p class="title-wrap">
-                        <img src="/images/index_10.jpg" />
+                        <img src="/images/a_07.png" />
                         <a href="javascript:void(0);">要求详情</a>
                     </p>
                     <p class="text">
@@ -105,7 +105,7 @@
                 </td>
                 <td  class="pd" valign="top"  style="padding-top:40px;">
                     <p class="title-wrap">
-                        <img src="/images/index_12.jpg" />
+                        <img src="/images/a_09.png" />
                         <a href="javascript:void(0);">要求详情</a>
                     </p>
                     <p class="text">
