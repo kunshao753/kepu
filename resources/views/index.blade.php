@@ -63,6 +63,7 @@
     <div class="w">
         <div class="title-box">活动日程</div>
         <dl class="data-content">
+            <!--
            <dd class="d1"></dd>
            <dd class="d2"></dd>
            <dd class="d3"></dd>
@@ -70,7 +71,7 @@
            <dd class="d5"></dd>
            <dd class="d6"></dd>
            <dd class="d7"></dd>
-           <dd class="d8"></dd>
+           <dd class="d8"></dd>-->
         </dl>
     </div>
 </div>
@@ -95,16 +96,16 @@
             <tr>
                 <td valign="top" style="padding-top:40px;">
                     <p class="title-wrap">
-                        <img src="/images/t1.png" />
+                        <img src="/images/index_10.jpg" />
                         <a href="javascript:void(0);">要求详情</a>
                     </p>
                     <p class="text">
-                        直接面向普通公众，品征集活动是科普信息化建或服务于科普内容生产传播的专业机构。具有互联网思维，提供科普相关的内容、技术或服务，具备互联网产品形态,如科普内容聚合平台（知识类、游戏类、教育类、工具书类等），科普内容生产和传播技术，科普交互服务，科普体验技术或内容等。
+                        符合条件的企业和创客均可报名参选，活动不设置分组，企业和创客公平竞争。活动亦不向申报者收取任何费用。
                     </p>
                 </td>
                 <td  class="pd" valign="top"  style="padding-top:40px;">
                     <p class="title-wrap">
-                        <img src="/images/t1.png" />
+                        <img src="/images/index_12.jpg" />
                         <a href="javascript:void(0);">要求详情</a>
                     </p>
                     <p class="text">
