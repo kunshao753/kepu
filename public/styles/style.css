@@ -337,22 +337,11 @@
     .rater-cont .reate-list .red-s {
       background: #f8386b; }
 
-.footer {
-  margin-top: 42px;
-  background: #282828;
-  text-align: center; }
-  .footer span {
-    line-height: 70px;
-    font-size: 22px;
-    line-height: 70px;
-    padding: 0 45px;
-    color: #999a9a; }
 
 .gray-b {
   background: #f9f9f9; }
 
 .header {
-  background: url(../img/sign-banner.png) center 0 no-repeat;
   text-align: center;
   padding-bottom: 53px; }
   .header h2 {
@@ -383,7 +372,7 @@
 
 .login-s {
   text-align: right;
-  padding: 138px 0 46px 0; }
+  padding: px 0 }
   .login-s span {
     font-size: 20px;
     color: #969398; }
@@ -406,7 +395,9 @@
     line-height: 100px;
     text-align: center;
     color: #fff;
-    background: url(../img/titbg.png) center 0 no-repeat; }
+    background: url(../img/titbg.png) center 0 no-repeat;
+    background-size: 100% auto;
+  }
   .form-cont .form-list {
     margin-top: 20px;
     margin-bottom: 50px; }
@@ -504,13 +495,12 @@
     z-index: 20; }
 
 .schedule-list .schedule-wrap {
-  border-bottom: 2px solid #dadada;
   position: relative;
   text-align: center;
-  padding-top: 104px; }
+  padding-top: 44px;}
   .schedule-list .schedule-wrap li {
     display: inline-block;
-    margin: 0 82px;
+    margin: 0 72px;
     padding-bottom: 28px;
     position: relative; }
     .schedule-list .schedule-wrap li em {
@@ -888,7 +878,7 @@
 
 .my-data {
   text-align: center;
-  margin-top: 56px;
+  margin-top: 56px !important;
   padding-top: 68px;
   border-top: 2px solid #f4f4f4; }
   .my-data h3 {
@@ -901,7 +891,7 @@
     border-bottom: 2px solid #faa160; }
   .my-data .table-box {
     width: 492px;
-    margin: 94px auto 108px;
+    margin: 94px auto ;
     border-top: 2px solid #f4f4f4;
     border-right: 2px solid #f4f4f4; }
     .my-data .table-box th, .my-data .table-box td {

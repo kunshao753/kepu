@@ -16,6 +16,10 @@ use Illuminate\Support\Facades\Auth;
 
 class MemberController extends PermissionController
 {
+    public function jump(){
+        header('Location: http://shenbao.kepuchina.cn');
+        exit;
+    }
     public function index(Request $request)
     {
         $this->getIsLogin();
@@ -25,6 +29,9 @@ class MemberController extends PermissionController
         if($result){
             $auditStatus = $result->audit_status;
             $isResult = 1;
+        }
+        if(Auth::user()->permission == 1){
+            return redirect()->route('admin.index');
         }
         return view('member.center', ['status'=>$auditStatus, 'isResult'=>$isResult, 'user'=>Auth::user()->toArray()]);
     }
@@ -57,8 +64,6 @@ class MemberController extends PermissionController
                 }
             }
         }
-
-
         return view($view, ['cropInfo' =>$cropInfo, 'nextUrl' => $nextUrl, 'help'=>$help,'signupResouce' => $config['signupResouce']]);
     }
     public function corpInfoEdit(Request $request)
@@ -85,9 +90,7 @@ class MemberController extends PermissionController
         $params['user_id'] = Auth::user()->id;
         $result = CorpInfo::create($params);
         if($result){
-            return redirect()->route('member.projectTeam');
-        }else{
-            return redirect()->route('member.corpInfo');
+            return Redirect()->route('member.projectTeam', ['id'=>Auth::user()->id]);
         }
     }
     public function corpInfoDel(Request $request)
@@ -174,9 +177,7 @@ class MemberController extends PermissionController
         $params['user_id'] = Auth::user()->id;
         $result = ProjectInfo::create($params);
         if($result){
-            return redirect()->route('member.projectPhoto');
-        }else{
-            return redirect()->route('member.projectInfo');
+            return Redirect()->route('member.projectPhoto', ['id'=>Auth::user()->id]);
         }
 
     }
@@ -215,8 +216,6 @@ class MemberController extends PermissionController
         $result = ProjectPhoto::create($params);
         if ($result) {
             return redirect('/');
-        } else {
-            return redirect()->route('member.projectTeam');
         }
     }
     public function projectTeam(Request $request)
@@ -253,10 +252,8 @@ class MemberController extends PermissionController
         $params['user_id'] = Auth::user()->id;
         $result = ProjectTeam::create($params);
         CorpInfo::where(['user_id' => Auth::user()->id])->update(['audit_status'=>1]);
-        if ($result) {
-            return redirect()->route('member.projectInfo');
-        } else {
-            return redirect()->route('member.projectTeam');
+        if($result){
+            return Redirect()->route('member.projectInfo', ['id'=>Auth::user()->id]);
         }
 
     }

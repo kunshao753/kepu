@@ -44,7 +44,7 @@
         <div class="form-schedule w">
             <h3>上传资料</h3>
             <div class="data-up">
-                <ul class="data-list clearfix">
+                <ul class="data-list clearfix" style="padding:20px 40px;">
                     <li>
                         <div class="text-left">
                             <p class="text01">参赛声明签名扫描版PDF</p>
@@ -137,16 +137,12 @@
                 <div class="img-show logo_photo_img" style="display: none; float:right"></div>
                 </div>
             </div>
-        </div>
-        <div class="f-btn pt40">
-            <a href="javascript:void(0);" id="submit-btn" class="confirm">提交</a>
-            <a href="javascript:void(0);" id="goBack" class="confirm green-btn">取消</a>
+            <div class="f-btn ">
+                <a href="javascript:void(0);" id="submit-btn" class="confirm">提交</a>
+                <a href="javascript:void(0);" id="goBack" class="confirm green-btn">取消</a>
+            </div>
         </div>
     </form>
-    <div class="footer">
-        <span>中国科学技术协会版权所</span>
-        <span>中国科学技术协会版权所</span>
-    </div>
     <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
     <script>
         $(function(){

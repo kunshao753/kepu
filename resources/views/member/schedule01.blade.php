@@ -221,10 +221,6 @@
             <a href="javascript:void(0);" id="goBack" class="confirm green-btn">取消</a>
         </div>
     </form>
-    <div class="footer">
-        <span>中国科学技术协会版权所</span>
-        <span>中国科学技术协会版权所</span>
-    </div>
     <script src="/js/jquery-1.11.0.min.js" ></script>
     <script src="/js/jquery-migrate-1.2.1.js" ></script>
     <script src="/js/jquery-ui.min.js" ></script>

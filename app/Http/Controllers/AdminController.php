@@ -37,6 +37,56 @@ class AdminController extends PermissionController
         return view('admin.index', array('count'=>$count,'competitionStep'=> $competitionStep));
     }
 
+    public function memberInfo(Request $request)
+    {
+        $this->getIsAdmin();
+        if(!isset($request['id'])){
+            // TODO check
+            // return;
+        }
+        $id = $request['id'];
+
+        $cropInfo = CorpInfo::where(['user_id'=> $id])->first();
+        $config= $this->getCorpInfoConfig();
+        $productForm = $config['productForm'];
+        $productType = $config['productType'];
+        $help = $config['help'];
+        if($cropInfo){
+            $cropInfoArray = $cropInfo->toArray();
+            $helpArray = explode(',', $cropInfoArray['accept_help']);
+            foreach ($help as $key=>$value){
+                if(array_key_exists($key, array_flip($helpArray))){
+                    $help[$key]['show'] = 1;
+                }
+            }
+        }
+        $teamInfo = ProjectTeam::where(['user_id'=> $id])->first();
+        $projectInfo = ProjectInfo::where(['user_id' => $id])->first();
+        if ($projectInfo) {
+            $projectInfoArray = $projectInfo->toArray();
+            $productFormArray = json_decode($projectInfoArray['product_form_val'], true);
+            foreach ($productForm as $key => $value) {
+                if (array_key_exists($key, $productFormArray)) {
+                    $productForm[$key]['text'] = $productFormArray[$key];
+                    $productForm[$key]['show'] = 1;
+                }
+            }
+        }
+        $projectPhoto = ProjectPhoto::where(['user_id' => $id])->first();
+
+        return view('admin.memberInfo', array(
+            'cropInfo'=>$cropInfo,
+            'help'=>$help,
+            'signupResouce' => $config['signupResouce'],
+            'teamInfo'=>$teamInfo,
+            'productType'=>$productType,
+            'productForm'=>$productForm,
+            'projectInfo'=>$projectInfo,
+            'projectPhoto'=>$projectPhoto
+        ));
+
+
+    }
     public function messageList(Request $request){
         $pageSize = $request->input('pageSize');
         $pageNum = $request->input('pageNum');
@@ -56,7 +106,6 @@ class AdminController extends PermissionController
         ];
         return $this->responseSuccess($result);
     }
-
     public function cropInfoList(Request $request){
         $pageSize = $request->input('pageSize');
         $pageNum = $request->input('pageNo');
@@ -71,7 +120,6 @@ class AdminController extends PermissionController
         ];
         return $this->responseSuccess($result);
     }
-
     public function updateStatus(Request $request)
     {
         $this->getIsAdmin();
@@ -82,7 +130,6 @@ class AdminController extends PermissionController
         Competition::where(['id' => 1])->update(['status'=>$step]);
         return $this->responseSuccess();
     }
-
     public function auditStatus(Request $request)
     {
         $this->getIsAdmin();
@@ -96,7 +143,6 @@ class AdminController extends PermissionController
             return $this->responseSuccess();
         }
     }
-
     public function exportList(Request $request)
     {
         $this->getIsAdmin();
@@ -135,7 +181,6 @@ class AdminController extends PermissionController
         })->export('xls');
         die;
     }
-
     public function corpAndProjectExport($corpList,$config)
     {
         if(empty($corpList)){
@@ -175,7 +220,6 @@ class AdminController extends PermissionController
         }
         return $corpData;
     }
-
     public function corpAndProject($corpList,$config)
     {
         if(empty($corpList)){

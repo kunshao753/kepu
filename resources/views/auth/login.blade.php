@@ -1,20 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>申报评审系统-登录页</title>
-    <link rel="stylesheet" href="/styles/base.css">
-    <link rel="stylesheet" href="/styles/style.css">
-</head>
-<body class="gray-b">
-    <div class="header">
-        <h2>科普互联网大赛</h2>
-        <h3>项目报名</h3>
-        <p class="text01">Project registration system</p>
-        <p class="text02">Lorem ipsum dolor sit amet , consectetur adipiscing elit .</p>
-    </div>
+@extends('layouts.top')
+@section('content')
     <div class="login-s w">
         <span>还没有账号？</span>
         <a href="{{ route('register') }}">注册</a>
@@ -41,26 +26,23 @@
                     <input type="password" id="password" name="password" maxlength="20" data-title="密码"  placeholder="密码" />
                     <div id="passwordTip"></div>
                 </li>
+                <li style="min-height: 65px;">
+                    <input type="text" class="check-input"  id="checkcode" maxlength="5" name="checkcode"  placeholder="验证码" />
+                    <div class="check-img-box">
+                        <img src="{{route('checkCode.create')}}" class="check-img" id="checkcodeimg" >
+                        <a  href="javascript:void(0);" onClick="checkCode()">换一张</a>
+                    </div>
+                    <div id="checkcodeTip"></div>
+                </li>
             </ul>
             <div class="f-btn">
                 <button type="submit" class="confirm">登录</button>
             </div>
         </div>
     </form>
-    <div class="footer">
-        <span>中国科学技术协会版权所</span>
-        <span>中国科学技术协会版权所</span>
-    </div>
-    <script src="/js/jquery-1.11.0.min.js" ></script>
-    <script src="/js/jquery-migrate-1.2.1.js" ></script>
-    <script src="/js/jquery-ui.min.js" ></script>
-    <script src="/js/formvalidator4.1.3/formValidator-4.1.3.js" ></script>
-    <script src="/js/formvalidator4.1.3/formValidatorRegex.js" ></script>
     <style>
-        .form-list li{
-            position: relative;
-        }
-        #passwordTip, #password-confirmTip, #mobileTip, #emailTip, #nameTip{
+        .form-list li{ position: relative;  }
+        #passwordTip, #password-confirmTip, #mobileTip, #emailTip, #nameTip,#checkcodeTip{
             font-size: 20px;
             color: #f8386b;
             position: absolute;
@@ -71,11 +53,46 @@
             line-height: 60px;
             text-align: left;
         }
-        #passwordTip div,  #password-confirmTip div, #mobileTip div, #emailTip div,#nameTip div{
+        #passwordTip div,#checkcodeTip div,  #password-confirmTip div, #mobileTip div, #emailTip div,#nameTip div{
             font-size: 20px;
             color: #f8386b;
         }
+        .check-input{
+            position: absolute;
+            left:323px;
+            top:20px;
+            width: 180px !important;
+        }
+        .check-img{
+            width: 170px;
+            border-radius:6px;
+            height: 60px;
+        }
+        .check-img-box{
+            position: absolute;
+            left:535px
+        }
     </style>
+    <script src="/js/jquery-1.11.0.min.js" ></script>
+    <script src="/js/jquery-migrate-1.2.1.js" ></script>
+    <script src="/js/jquery-ui.min.js" ></script>
+    <script src="/js/formvalidator4.1.3/formValidator-4.1.3.js?r=1" ></script>
+    <script src="/js/formvalidator4.1.3/formValidatorRegex.js" ></script>
+    <script>
+        var checkCode = function (){
+            $.ajax({
+                url:"{{route('checkCode.create')}}",
+                type: 'GET',
+                success: function(data){
+                    if(data){
+                        $("#checkcodeimg").attr('src', $('#checkcodeimg').attr('src'));
+                    }else{
+                        alert("获取验证码失败！");
+                    }
+                }
+            })
+        }
+    </script>
     <script>
         $(function(){
             $.formValidator.initConfig({
@@ -112,8 +129,29 @@
             }).functionValidator({
                 fun:testNewPassword
             });
+            $("#checkcode").formValidator({
+                onShow:"*必填",
+                onFocus:"5位数字、字母",
+            }).inputValidator( {
+                min :5,
+                onError :"5位数字、字母"
+            }).ajaxValidator({
+                dataType: "json",
+                async: true,
+                url: "{{route('checkCode.verifyCheckCode')}}",
+                success: function (response) {
+                    console.log(response)
+                    if(response.status == 'success'){
+                        return true;
+                    }else{
+                        checkCode();
+                        return false;
+                    }
+                },
+                onError: "验证码输入有误",
+                onWait: " "
+            });
         })
 
     </script>
-</body>
-</html>
+@endsection

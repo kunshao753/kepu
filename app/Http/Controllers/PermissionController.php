@@ -18,7 +18,7 @@ class PermissionController extends Controller
     public function getIsLogin()
     {
         if(Auth::check() == false){
-            header('Location: /');
+            header('Location: /login');
             exit;
         }
     }
@@ -26,7 +26,7 @@ class PermissionController extends Controller
     public function getIsAdmin()
     {
         if(Auth::check() == false || Auth::user()->permission != 1){
-            header('Location: /');
+            header('Location: /login');
             exit;
         }
     }

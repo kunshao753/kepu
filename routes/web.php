@@ -19,6 +19,7 @@ Auth::routes();
 
 Route::get('/', 'HomeController@index')->name('home');
 Route::get('/admin/index', 'AdminController@index')->name('admin.index');
+Route::get('/admin/memberInfo', 'AdminController@memberInfo')->name('admin.memberInfo');
 Route::post('/admin/message', 'AdminController@messageList')->name('admin.message');
 Route::post('/admin/corpInfo', 'AdminController@cropInfoList')->name('admin.corpInfo');
 Route::get('/admin/exportList', 'AdminController@exportList')->name('admin.exportList');
@@ -26,6 +27,7 @@ Route::post('/admin/updateStatus', 'AdminController@updateStatus')->name('admin.
 Route::post('/admin/auditStatus', 'AdminController@auditStatus')->name('admin.auditStatus');
 
 Route::get('/member/index', 'MemberController@index')->name('member.index');
+Route::get('/jump', 'MemberController@jump')->name('member.jump');
 Route::get('/member/signUp', 'MemberController@signUp')->name('member.signUp');
 Route::get('/member/corpInfo', 'MemberController@corpInfo')->name('member.corpInfo');
 Route::get('/member/corpInfoDel', 'MemberController@corpInfoDel')->name('member.corpInfoDel');

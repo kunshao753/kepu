@@ -18,4 +18,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 Route::post('/message/create', 'MessageController@index')->name('message.create');
+Route::get('/checkCode', 'CheckCodeController@create')->name('checkCode.create');
+Route::get('/verifyCheckCode', 'CheckCodeController@verifyCheckCode')->name('checkCode.verifyCheckCode');
+
 

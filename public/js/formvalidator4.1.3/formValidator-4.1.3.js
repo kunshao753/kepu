@@ -35,7 +35,7 @@ $.formValidator =
 		        else
 				{
 					if (settings.ajaxCountValid > 0) {
-						settings.onAlert(settings.ajaxPrompt);
+						// settings.onAlert(settings.ajaxPrompt);
 						return false;
 					}
 					return $.formValidator.pageIsValid(settings.validatorGroup);
