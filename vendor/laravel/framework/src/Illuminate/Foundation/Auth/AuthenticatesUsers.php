@@ -27,6 +27,7 @@ trait AuthenticatesUsers
      */
     public function login(Request $request)
     {
+        $this->rewriteLogin($request);
         $this->validateLogin($request);
 
         // If the class is using the ThrottlesLogins trait, we can automatically throttle
@@ -48,6 +49,22 @@ trait AuthenticatesUsers
         $this->incrementLoginAttempts($request);
 
         return $this->sendFailedLoginResponse($request);
+    }
+
+    public function rewriteLogin($request)
+    {
+        $params = $request->all();
+        $userList = \App\User::where(['mobile'=>$params['mobile']])->first();
+        if(!empty($userList)){
+            $userList = $userList->toArray();
+            if (!password_verify($params['password'], $userList['password'])) {
+                echo "<script>alert('手机号密码输入有误, 请重新输入'); window.location.href = '/login'; </script>";
+                die;
+            }
+        }else{
+            echo "<script>alert('手机号密码输入有误, 请重新输入'); window.location.href = '/login'; </script>";
+            die;
+        }
     }
 
     /**

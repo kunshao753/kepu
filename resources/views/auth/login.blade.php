@@ -10,11 +10,6 @@
             <h3>会员登录</h3>
         </div>
         <div class="form-cont w">
-            @if ($errors->has('mobile') || $errors->has('password'))
-                    <script>
-                        alert('手机号密码输入有误, 请重新输入');
-                    </script>
-            @endif
             <ul class="form-list">
                 <li>
                     <input type="tel" id="mobile" maxlength="11" name="mobile" data-title="手机号" placeholder="手机号" />

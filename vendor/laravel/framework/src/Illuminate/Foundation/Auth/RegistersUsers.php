@@ -28,6 +28,7 @@ trait RegistersUsers
      */
     public function register(Request $request)
     {
+        $this->rewriteRegister($request);
         $this->validator($request->all())->validate();
 
         event(new Registered($user = $this->create($request->all())));
@@ -36,6 +37,21 @@ trait RegistersUsers
 
         return $this->registered($request, $user)
                         ?: redirect($this->redirectPath());
+    }
+
+    public function rewriteRegister($request)
+    {
+        $params = $request->all();
+        $userByMobile = \App\User::where(['mobile'=>$params['mobile']])->first();
+        $userByEmail = \App\User::where(['email'=>$params['email']])->first();
+        if(!empty($userByMobile)){
+            echo "<script>alert('手机号已存在, 请重新输入'); window.location.href = '/register'; </script>";
+            die;
+        }
+        if(!empty($userByEmail)){
+            echo "<script>alert('邮箱已存在, 请重新输入'); window.location.href = '/register'; </script>";
+            die;
+        }
     }
 
     /**

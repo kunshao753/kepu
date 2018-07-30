@@ -44,15 +44,15 @@
                 <button type="submit" class="confirm">注册</button>
             </div>
         </div>
-        @if ($errors->has('mobile') ||  $errors->has('email'))
-            <script>
-                @if($errors->first('mobile'))
-                    alert('手机号已注册');
-                @else
-                    alert('邮箱已注册');
-                @endif
-            </script>
-        @endif
+        {{--@if ($errors->has('mobile') ||  $errors->has('email'))--}}
+            {{--<script>--}}
+                {{--@if($errors->first('mobile'))--}}
+                    {{--alert('手机号已注册');--}}
+                {{--@else--}}
+                    {{--alert('邮箱已注册');--}}
+                {{--@endif--}}
+            {{--</script>--}}
+        {{--@endif--}}
     </form>
     <style>
         .form-list li{
