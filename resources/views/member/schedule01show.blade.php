@@ -127,7 +127,7 @@
                 </li>
             </ul>
         </div>
-        <div id="company_info_box" style="display: none">
+        <div id="company_info_box" @if(2 == $cropInfo->contestant_identity) style="display: none" @endif >
         <div class="form-schedule w">
             <h3>企业基本情况</h3>
             <ul class="form-list">
