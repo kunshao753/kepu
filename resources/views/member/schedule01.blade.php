@@ -357,7 +357,7 @@
                     if($("#company_info_box").css('display') == 'none'){
                         return true;
                     }
-                    if(!/^\d{1,18}$/.test(val)){
+                    if(!/^[a-zA-Z0-9]{15,18}$/.test(val)){
                         return "信用代码不正确";
                     }
                     return true;
