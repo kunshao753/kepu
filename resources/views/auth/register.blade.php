@@ -1,17 +1,15 @@
     @extends('layouts.top')
     @section('content')
-    <div class="login-s w">
+        <div class="login-s " style="position: relative; bottom: -25px; padding-right: 40px;">
         <span>已有账号，</span>
         <a href="{{ route('login') }}">马上登录</a>
-        <em>|</em>
-        <a href="/">返回</a>
     </div>
     <form  method="POST" id="form" action="{{ route('register') }}">
         {{ csrf_field() }}
+        <div class="my-data w">
+            <h3>注册会员</h3>
+        </div>
         <div class="form-cont w">
-            <h3 class="big-tit">
-                注册会员
-            </h3>
             <ul class="form-list">
                 <li>
                     <input type="tel" id="mobile" maxlength="11" name="mobile" data-title="手机号" placeholder="手机号" />

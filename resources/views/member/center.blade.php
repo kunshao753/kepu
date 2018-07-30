@@ -32,9 +32,9 @@
                         @elseif($status == 2)
                             初审未通过
                         @elseif($status == 3)
-                            进入初赛
+                            初选通过
                         @else
-                            进入决赛
+                            终选通过
                         @endif
                     </span>
                 </td>

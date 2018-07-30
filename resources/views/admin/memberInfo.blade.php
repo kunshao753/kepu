@@ -52,12 +52,14 @@
             </ul>
             <div class="login-box">
                 <label class="txt">
+                    <a href="{{route('admin.index')}}">返回首页</a><span>|</span>
                     @if (!Auth::guest())
                         <a href="{{ route('logout') }}" class="sign-up" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">  退出  </a>
                         <form style="border:0; display: none" id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                             {{ csrf_field() }}
                         </form>
                     @endif
+
                 </label>
                 <a href="javascript:void(0);" class="wechat"></a>
                 <a href="javascript:void(0);" class="webo"></a>

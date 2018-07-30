@@ -126,11 +126,11 @@
             </li>
             <li>
                 <input name="auditstep" value="3"  type="radio">
-                进入初赛
+                初选通过
             </li>
             <li>
                 <input name="auditstep" value="4" type="radio">
-                进入决赛
+                终选通过
             </li>
         </ul>
         <div class="f-btn">

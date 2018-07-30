@@ -158,7 +158,7 @@
         color: #f8386b;
     }
 </style>
-<!--
+
 <script>
 
     $(function(){
@@ -192,7 +192,8 @@
             })
         }
         $.formValidator.initConfig({
-            validatorgroup: "qform",
+            formID: "qform",
+            validatorGroup: "2",
             onSuccess:function(){
                 questionSubmit();
                 return false;
@@ -202,6 +203,7 @@
             }
         });
         $("#qname").formValidator( {
+            validatorGroup: "2",
             onShow :"*必填",
             onFocus :"2-8位，字母和汉字",
         }).inputValidator( {
@@ -212,6 +214,7 @@
             onError:"2-8位，字母和汉字"
         });
         $("#qmobile").formValidator({
+            validatorGroup: "2",
             onShow:"*必填",
             onFocus:"手机号11位数字",
         }).regexValidator({
@@ -221,6 +224,7 @@
         });
 
         $("#qemail").formValidator({
+            validatorGroup: "2",
             onShow:"*必填",
             onFocus:"邮箱6-40个字符",
         }).regexValidator({
@@ -228,6 +232,7 @@
             onError:"邮箱格式不正确"
         });
         $("#qquestion").formValidator( {
+            validatorGroup: "2",
             onShow:"*必填",
             onFocus :"2-30位",
         }).inputValidator( {
@@ -242,6 +247,7 @@
             onError :"2-30位"
         });
         $("#qdescription").formValidator( {
+            validatorGroup: "2",
             onShow:"*必填",
             onFocus :"2-100位",
         }).inputValidator( {
@@ -258,6 +264,6 @@
 
     })
 </script>
--->
+
 </body>
 </html>

@@ -62,7 +62,7 @@
         </ul>
     </div>
     <div class="f-btn pt40">
-        <button type="submit" class="confirm">修改</button>
+        <button type="submit" class="confirm">保存, 下一页</button>
         <a href="javascript:void(0);" id="goBack" class="confirm green-btn">取消</a>
     </div>
     </form>

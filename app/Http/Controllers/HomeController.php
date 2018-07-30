@@ -11,8 +11,7 @@ class HomeController extends Controller
 {
     public function index(Request $request)
     {
-
-
+        
         $competition = Competition::where(['id' => 1])->get(['status'])->first()->toArray();
 
         $isCenter = 0;

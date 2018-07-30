@@ -1,17 +1,15 @@
 @extends('layouts.top')
 @section('content')
-    <div class="login-s w">
+    <div class="login-s " style="position: relative; bottom: -25px; padding-right: 40px;">
         <span>还没有账号？</span>
         <a href="{{ route('register') }}">注册</a>
-        <em>|</em>
-        <a href="/">返回</a>
     </div>
     <form  method="POST" id="form" action="{{ route('login') }}">
         {{ csrf_field() }}
+        <div class="my-data w">
+            <h3>会员登录</h3>
+        </div>
         <div class="form-cont w">
-            <h3 class="big-tit">
-                会员登录
-            </h3>
             @if ($errors->has('mobile') || $errors->has('password'))
                     <script>
                         alert('手机号密码输入有误, 请重新输入');
