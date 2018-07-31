@@ -201,7 +201,7 @@
                         <p class="title">承办单位</p>
                         <p class="text">中国科协科技传播中心</p>
                         <p class="title">协办单位</p>
-                        <p class="text"> 中国科学技术出版社、优客工场、中国科技新闻学会、椅子网 </p>
+                        <p class="text"> 中国科学技术出版社、优客工场、启迪之星、中国科技新闻学会、椅子网 </p>
                     </div>
                 </td>
                 <td valign="top">
