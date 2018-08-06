@@ -57,6 +57,10 @@ class MemberController extends PermissionController
                         $help[$key]['show'] = 1;
                     }
                 }
+                $dateInput = [
+                    'birthday'=>$this->getDate($cropInfoArray['birthday']),
+                    'registered_time'=>$this->getDate($cropInfoArray['registered_time'])
+                ];
                 $view = 'member.schedule01show';
                 $teamInfo = ProjectTeam::where(['user_id' => $id])->first();
                 if($teamInfo){
@@ -64,7 +68,7 @@ class MemberController extends PermissionController
                 }
             }
         }
-        return view($view, ['cropInfo' =>$cropInfo, 'nextUrl' => $nextUrl, 'help'=>$help,'signupResouce' => $config['signupResouce']]);
+        return view($view, ['cropInfo' =>$cropInfo,'dateInput'=>$dateInput, 'nextUrl' => $nextUrl, 'help'=>$help,'signupResouce' => $config['signupResouce']]);
     }
     public function corpInfoEdit(Request $request)
     {
@@ -263,6 +267,17 @@ class MemberController extends PermissionController
         $date = str_replace('-','/', str_replace('/','/',$date));
         $date = explode("/", $date);
         $date = $date[2].'/'.$date[0].'/'.$date[1];
+        return $date;
+    }
+    public function getDate($date)
+    {
+        if(!$date){
+            return "";
+        }
+        $this->getIsLogin();
+        $date = str_replace('-','/', str_replace('/','/',$date));
+        $date = explode("/", $date);
+        $date = $date[1].'/'.$date[2].'/'.$date[0];
         return $date;
     }
 

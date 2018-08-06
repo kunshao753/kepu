@@ -74,7 +74,7 @@
                     <div class="label">
                         <label for="">出生年月</label>
                     </div>
-                    <input type="text" name="birthday"  value="{{$cropInfo->birthday}}"  id="birthday" placeholder="请填写出生年月" class="input-box">
+                    <input type="text" name="birthday"  value="{{$dateInput['birthday']}}"  id="birthday" placeholder="请填写出生年月" class="input-box">
                     <span class="prompt red-p"><span id="birthdayTip"></span></span>
                 </li>
                 <li class="clearfix">
@@ -175,7 +175,7 @@
                         <div class="label">
                             <label for="">注册日期</label>
                         </div>
-                        <input type="text" name="registered_time" id="registered_time" value="{{$cropInfo->registered_time}}"  placeholder="请选择注册日期" readonly class="input-box">
+                        <input type="text" name="registered_time" id="registered_time" value="{{$dateInput['registered_time']}}"  placeholder="请选择注册日期" readonly class="input-box">
                         <span class="prompt red-p"><span id="registered_timeTip"></span></span>
                     </li>
                     <li class="clearfix cur">
