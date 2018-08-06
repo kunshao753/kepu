@@ -45,6 +45,7 @@
                     @endforeach
             </ul>
         </div>
+        <input type="hidden" name="audit_status" value="{{$cropInfo->audit_status}}" />
         <div class="form-schedule w">
             <h3>基本信息</h3>
             <ul class="form-list">

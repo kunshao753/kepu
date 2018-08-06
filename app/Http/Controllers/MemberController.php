@@ -91,7 +91,6 @@ class MemberController extends PermissionController
         }
         $params['signup_resouce_val'] = $signupResouceVal;
         $params['accept_help'] = implode(",", $params['accept_help']);
-        $params['audit_status'] = 0;
         $params['user_id'] = Auth::user()->id;
         $result = CorpInfo::create($params);
         if($result){
@@ -219,6 +218,7 @@ class MemberController extends PermissionController
         }
         $params['user_id'] = Auth::user()->id;
         $result = ProjectPhoto::create($params);
+        CorpInfo::where(['user_id' => Auth::user()->id])->update(['audit_status'=>1]);
         if ($result) {
             return redirect('/');
         }
@@ -256,7 +256,6 @@ class MemberController extends PermissionController
         $params = $request->all();
         $params['user_id'] = Auth::user()->id;
         $result = ProjectTeam::create($params);
-        CorpInfo::where(['user_id' => Auth::user()->id])->update(['audit_status'=>1]);
         if($result){
             return Redirect()->route('member.projectInfo', ['id'=>Auth::user()->id]);
         }

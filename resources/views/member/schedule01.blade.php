@@ -149,6 +149,7 @@
                 </li>
             </ul>
         </div>
+        <input type="hidden" name="audit_status" value="0" />
         <div class="form-schedule w">
                 <h3>企业注册情况</h3>
                 <ul class="form-list">
