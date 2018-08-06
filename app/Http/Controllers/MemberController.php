@@ -40,6 +40,7 @@ class MemberController extends PermissionController
         $this->getIsLogin();
         $config= $this->getCorpInfoConfig();
         $cropInfo = [];
+        $dateInput = [];
         $help = $config['help'];
         $view = 'member.schedule01';
         $nextUrl = '';
