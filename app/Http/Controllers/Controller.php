@@ -83,6 +83,17 @@ class Controller extends BaseController
                     'key' => 'product_form_k[5]',
                     'val' => 'product_form_v[5]'
                 ),
+<<<<<<< HEAD
+=======
+                "6"=>array(
+                    'name'=>'微信公众号',
+                    'tips'=>'请填写微信公众号名称',
+                    'show' => 0,
+                    'text' => '',
+                    'key' => 'product_form_k[6]',
+                    'val' => 'product_form_v[6]'
+                ),
+>>>>>>> e0aadc7e338ca866e11408e47e380ec04c6bc622
             ),
             'productType' => array(
                 "1"=>array( 'name' => 'product_type', 'text' => '科普内容聚合平台（知识、游戏、教育、工具书类）', 'show' => 0),

@@ -794,13 +794,20 @@
     .table-box tr th, .table-box tr td {
       font-size: 20px;
       color: #969398;
+<<<<<<< HEAD
       line-height: 80px;
+=======
+      height: 80px;
+>>>>>>> e0aadc7e338ca866e11408e47e380ec04c6bc622
       text-align: center; }
       .table-box tr th span, .table-box tr td span {
         display: block;
         max-width: 120px;
         overflow: hidden;
+<<<<<<< HEAD
         height: 80px;
+=======
+>>>>>>> e0aadc7e338ca866e11408e47e380ec04c6bc622
         text-align: center;
         margin: 0 auto; }
     .table-box tr td a {
@@ -842,7 +849,11 @@
         font-size: 20px;
         color: #969398;
         padding: 0 10px; }
+<<<<<<< HEAD
         .people-num .b-page .page-list a.cur, .people-num .b-page .page-list span.cur {
+=======
+        .people-num .b-page .page-list a.cur, .people-num .b-page .page-list span.current {
+>>>>>>> e0aadc7e338ca866e11408e47e380ec04c6bc622
           color: #45cac4; }
 
 .people-num-w .table-box tr th span, .people-num-w .table-box tr td span {
@@ -898,3 +909,9 @@
       border-left: 2px solid #f4f4f4; }
 
 /*# sourceMappingURL=style.css.map */
+<<<<<<< HEAD
+=======
+.page-list a{
+  cursor:pointer;
+}
+>>>>>>> e0aadc7e338ca866e11408e47e380ec04c6bc622

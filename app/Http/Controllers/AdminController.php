@@ -33,7 +33,11 @@ class AdminController extends PermissionController
                 break;
             }
         }
+<<<<<<< HEAD
         $count = ProjectPhoto::where('id','>','0')->count();
+=======
+        $count = CorpInfo::whereIn('audit_status',[1,3,4])->count();
+>>>>>>> e0aadc7e338ca866e11408e47e380ec04c6bc622
         return view('admin.index', array('count'=>$count,'competitionStep'=> $competitionStep));
     }
 
@@ -110,8 +114,13 @@ class AdminController extends PermissionController
         $pageSize = $request->input('pageSize');
         $pageNum = $request->input('pageNo');
         $offset = ($pageNum - 1) * $pageSize;
+<<<<<<< HEAD
         $corpList = CorpInfo::offset($offset)->limit($pageSize)->orderBy('created_at','DESC')->get();
         $count = CorpInfo::where('id','>','0')->count();
+=======
+        $corpList = CorpInfo::whereIn('audit_status',[1,3,4])->offset($offset)->limit($pageSize)->orderBy('created_at','DESC')->get();
+        $count = CorpInfo::whereIn('audit_status',[1,3,4])->count();
+>>>>>>> e0aadc7e338ca866e11408e47e380ec04c6bc622
         $corpData = $this->corpAndProject($corpList, $this->getCorpInfoConfig());
         $result = [
             'pageNum'=>$pageNum ,
@@ -152,7 +161,11 @@ class AdminController extends PermissionController
         }
         if($type == 'message_board'){
             $cellData = array(['序号','姓名','手机号','邮箱','问题','描述']);
+<<<<<<< HEAD
             $messageList = Message::where('id', '>', '0')->orderBy('created_at','DESC')->paginate(500)->toArray();
+=======
+            $messageList = Message::where('id', '>', '0')->orderBy('created_at','DESC')->paginate(5000)->toArray();
+>>>>>>> e0aadc7e338ca866e11408e47e380ec04c6bc622
             if(!empty($messageList)){
                 foreach($messageList['data'] as $key=>$message){
                     $tmpArray = array($key+1, $message['name'], $message['mobile'], $message['email'], $message['question'], $message['description']);
@@ -161,7 +174,11 @@ class AdminController extends PermissionController
             }
         }else{
             $cellData = array(['序号','姓名','手机号','企业名称','项目名称','参赛身份','产品类型','产品形态']);
+<<<<<<< HEAD
             $corpList = CorpInfo::where('id', '>', '0')->orderBy('created_at','DESC')->paginate(500);
+=======
+            $corpList = CorpInfo::whereIn('audit_status',[1,3,4])->orderBy('created_at','DESC')->paginate(5000);
+>>>>>>> e0aadc7e338ca866e11408e47e380ec04c6bc622
             $corpData = $this->corpAndProjectExport($corpList, $this->getCorpInfoConfig());
             if(!empty($corpData)){
                 foreach($corpData['data'] as $key=>$value){
@@ -189,6 +206,7 @@ class AdminController extends PermissionController
         $corpData = $corpList->toArray();
         $productType = $this->getCorpInfoConfig();
         foreach($corpData['data'] as $key=>$value){
+<<<<<<< HEAD
             $isExtPhoto  = ProjectPhoto::where(['user_id'=> $value['user_id']])->first();
             $projectInfo = ProjectInfo::where(['user_id'=> $value['user_id']])->first();
             $projectTeam = ProjectTeam::where(['user_id'=> $value['user_id']])->first();
@@ -201,6 +219,20 @@ class AdminController extends PermissionController
                 $projectName = $projectInfo['project_name'];
             }
             $productTypeValue = $projectInfo['product_type'];
+=======
+            //$isExtPhoto  = ProjectPhoto::where(['user_id'=> $value['user_id']])->first();
+            $projectInfo = ProjectInfo::where(['user_id'=> $value['user_id']])->first();
+            //$projectTeam = ProjectTeam::where(['user_id'=> $value['user_id']])->first();
+            //if(!$isExtPhoto || !$projectInfo || !$projectTeam){
+            //    unset($corpData['data'][$key]);
+            //    continue;
+            //}
+            $projectName = '';
+            if($projectInfo){
+                $projectName = !empty($projectInfo['project_name']) ? $projectInfo['project_name'] : '';
+            }
+            $productTypeValue = !empty($projectInfo['product_type']) ? $projectInfo['product_type'] : '';
+>>>>>>> e0aadc7e338ca866e11408e47e380ec04c6bc622
             $productFormArray = json_decode($projectInfo['product_form_val'], true);
             foreach($productType['productType'] as $k=>$value){
                 if($projectInfo['product_type'] == $k){
@@ -228,6 +260,7 @@ class AdminController extends PermissionController
         $corpData = $corpList->toArray();
         $productType = $this->getCorpInfoConfig();
         foreach($corpData as $key=>$value){
+<<<<<<< HEAD
             $isExtPhoto  = ProjectPhoto::where(['user_id'=> $value['user_id']])->first();
             $projectInfo = ProjectInfo::where(['user_id'=> $value['user_id']])->first();
             $projectTeam = ProjectTeam::where(['user_id'=> $value['user_id']])->first();
@@ -240,6 +273,20 @@ class AdminController extends PermissionController
                 $projectName = $projectInfo['project_name'];
             }
             $productTypeValue = $projectInfo['product_type'];
+=======
+            //$isExtPhoto  = ProjectPhoto::where(['user_id'=> $value['user_id']])->first();
+            $projectInfo = ProjectInfo::where(['user_id'=> $value['user_id']])->first();
+            //$projectTeam = ProjectTeam::where(['user_id'=> $value['user_id']])->first();
+            //if(!$isExtPhoto || !$projectInfo || !$projectTeam){
+                //unset($corpData[$key]);
+                //continue;
+            //}
+            $projectName = '';
+            if($projectInfo){
+                $projectName = !empty($projectInfo['project_name']) ? $projectInfo['project_name'] : '';
+            }
+            $productTypeValue = !empty($projectInfo['product_type']) ? $projectInfo['product_type'] : '';
+>>>>>>> e0aadc7e338ca866e11408e47e380ec04c6bc622
             $productFormArray = json_decode($projectInfo['product_form_val'], true);
             foreach($productType['productType'] as $k=>$value){
                 if($projectInfo['product_type'] == $k){

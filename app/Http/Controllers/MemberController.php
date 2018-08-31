@@ -218,8 +218,19 @@ class MemberController extends PermissionController
         }
         $params['user_id'] = Auth::user()->id;
         $result = ProjectPhoto::create($params);
+<<<<<<< HEAD
         CorpInfo::where(['user_id' => Auth::user()->id])->update(['audit_status'=>1]);
         if ($result) {
+=======
+        if ($result) {
+            $isExtPhoto  = ProjectPhoto::where(['user_id'=> Auth::user()->id])->first();
+            $projectInfo = ProjectInfo::where(['user_id'=> Auth::user()->id])->first();
+            $projectTeam = ProjectTeam::where(['user_id'=> Auth::user()->id])->first();
+            if($isExtPhoto && $projectInfo && $projectTeam){
+                CorpInfo::where(['user_id' => Auth::user()->id])->update(['audit_status'=>1]);
+            }
+
+>>>>>>> e0aadc7e338ca866e11408e47e380ec04c6bc622
             return redirect('/');
         }
     }

@@ -27,6 +27,7 @@
 			var totalNum = me.options.totalSize;
 			content += "<span><a id=\"firstPage\">首页</a></span><span><a id='prePage'>上一页</a></span>";
 			//总页数大于6时候
+<<<<<<< HEAD
 			// if(total > 6) {
 			// 	//当前页数小于5时显示省略号
 			// 	if(current < 5) {
@@ -74,6 +75,55 @@
 			// 		}
 			// 	}
 			// }
+=======
+			 if(total > 6) {
+			 	//当前页数小于5时显示省略号
+			 	if(current < 5) {
+			 		for(var i = 1; i < 6; i++) {
+			 			if(current == i) {
+			 				content += "<span class='current'>" + i + "</span>";
+			 			} else {
+			 				content += "<a>" + i + "</a>";
+			 			}
+			 		}
+			 		content += ". . .";
+			 		content += "<a>"+total+"</a>";
+			 	} else {
+			 		 //判断页码在末尾的时候
+			 		if(current < total - 3) {
+			 			for(var i = current - 2; i < current + 3; i++) {
+			 				if(current == i) {
+			 					content += "<span class='current'>" + i + "</span>";
+			 				} else {
+			 					content += "<a>" + i + "</a>";
+			 				}
+			 			}
+			 			content += ". . .";
+			 			content += "<a>"+total+"</a>";
+			 		//页码在中间部分时候
+			 		} else {
+			 			content += "<a>1</a>";
+			 			content += ". . .";
+			 			for(var i = total - 4; i < total + 1; i++) {
+			 				if(current == i) {
+			 					content += "<span class='current'>" + i + "</span>";
+			 				} else {
+			 					content += "<a>" + i + "</a>";
+			 				}
+			 			}
+			 		}
+			 	}
+			 	//页面总数小于6的时候
+			 } else {
+			 	for(var i = 1; i < total + 1; i++) {
+			 		if(current == i) {
+			 			content += "<span class='current'>" + i + "</span>";
+			 		} else {
+			 			content += "<a>" + i + "</a>";
+			 		}
+			 	}
+			 }
+>>>>>>> e0aadc7e338ca866e11408e47e380ec04c6bc622
 			content += "<a id='nextPage'>下一页</a>";
 			content += "<a id='lastPage'>尾页</a>";
 			content += "<span> 共<span>"+total+"</span>页, "+totalNum+"条记录 </span>";

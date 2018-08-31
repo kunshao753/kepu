@@ -78,6 +78,7 @@
                             <span class="file-b">上传</span>
                         </div>
                     </li>
+<<<<<<< HEAD
                     <li class="right text-aline">
                         <div class="text-left">
                             <p class="text01">知识产权合规声明PDF</p>
@@ -89,6 +90,9 @@
                             <span class="file-b">上传</span>
                         </div>
                     </li>
+=======
+                    <input type="hidden" name="intellectual_property_statement" value="0" class="intellectual_property_statement" />
+>>>>>>> e0aadc7e338ca866e11408e47e380ec04c6bc622
                     <li>
                         <div class="text-left">
                             <p class="text01">融资证明材料PDF</p>
@@ -120,7 +124,11 @@
                             <span class="file-b">上传</span>
                         </div>
                     </li>
+<<<<<<< HEAD
                     <li class="right text-aline">
+=======
+                    <li class="text-aline">
+>>>>>>> e0aadc7e338ca866e11408e47e380ec04c6bc622
                         <div class="text-left">
                             <p class="text01">项目图片LOGO（PNG格式）</p>
                         </div>
@@ -188,10 +196,13 @@
                     alert("身份证复印件正反面PDF");
                     return false;
                 }
+<<<<<<< HEAD
                 if($(".intellectual_property_statement").val().length == 0){
                     alert("知识产权合规声明PDF");
                     return false;
                 }
+=======
+>>>>>>> e0aadc7e338ca866e11408e47e380ec04c6bc622
                 $('#form').submit();
             })
             $('#goBack').click(function(){
