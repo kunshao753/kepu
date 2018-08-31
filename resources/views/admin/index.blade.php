@@ -158,11 +158,7 @@
                     var result = res.data;
                     var templateList = Handlebars.compile($("#messageList-template").html());
                     Handlebars.registerHelper("index_key", function(i) {
-<<<<<<< HEAD
-                        return i+1;
-=======
                         return (res.data.pageNum - 1) * 20 + i + 1
->>>>>>> e0aadc7e338ca866e11408e47e380ec04c6bc622
                     });
                     $('#messageList').html(templateList(result));
                     $("#messagePage").paging({
@@ -197,11 +193,7 @@
                     console.log(result)
                     var templateList = Handlebars.compile($("#corpInfoList-template").html());
                     Handlebars.registerHelper("index_key", function(i) {
-<<<<<<< HEAD
-                        return i+1;
-=======
                         return (res.data.pageNum - 1) * 20 + i + 1;
->>>>>>> e0aadc7e338ca866e11408e47e380ec04c6bc622
                     });
                     Handlebars.registerHelper("ci", function(id) {
                         if(id == 1){

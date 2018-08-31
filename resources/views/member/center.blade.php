@@ -28,11 +28,7 @@
                         @if($status == 0)
                             未报名
                         @elseif($status == 1)
-<<<<<<< HEAD
-                            初审中
-=======
                             报名成功,材料审核中
->>>>>>> e0aadc7e338ca866e11408e47e380ec04c6bc622
                         @elseif($status == 2)
                             初审未通过
                         @elseif($status == 3)

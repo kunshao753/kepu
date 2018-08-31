@@ -160,14 +160,6 @@
                         <a class="a_view"  target="_blank" href="/public/{{$projectPhoto->business_license}}">PDF查看</a>
                     @endif
                 </td></tr>
-<<<<<<< HEAD
-            <tr><th>知识产权合规声明PDF</th><td>
-                    @if($projectPhoto->intellectual_property_statement)
-                        <a class="a_view" target="_blank" href="/public/{{$projectPhoto->intellectual_property_statement}}">PDF查看</a>
-                    @endif
-                </td></tr>
-=======
->>>>>>> e0aadc7e338ca866e11408e47e380ec04c6bc622
             <tr><th>融资证明材料PDF</th><td>
                     @if($projectPhoto->financing_certificate)
                         <a class="a_view"  target="_blank"  href="/public/{{$projectPhoto->financing_certificate}}">PDF查看</a>

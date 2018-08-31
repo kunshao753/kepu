@@ -209,11 +209,7 @@
                 onSuccess:function(){
                     var flag = 1;
                     var num = 0;
-<<<<<<< HEAD
-                    for(var i=1;i<6; i++){
-=======
                     for(var i=1;i<7; i++){
->>>>>>> e0aadc7e338ca866e11408e47e380ec04c6bc622
                         var isCheck = $(":checkbox[name='product_form_k["+i+"]']").attr('checked');
                         if(isCheck == 'checked'){
                             num = num+1;

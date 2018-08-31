@@ -87,24 +87,7 @@
                             <a class="a_view"  target="_blank" href="/public/{{$projectPhoto->business_license}}">PDF查看</a>
                         @endif
                     </li>
-<<<<<<< HEAD
-                    <li class="right text-aline">
-                        <div class="text-left">
-                            <p class="text01">知识产权合规声明PDF</p>
-                            <p class="text02">＊必传</p>
-                        </div>
-                        <div class="file-btn">
-                            <input type="file" id="intellectual_property_statement" class="input-file" />
-                            <input type="hidden" name="intellectual_property_statement" value="{{$projectPhoto->intellectual_property_statement}}" class="intellectual_property_statement" />
-                            <span class="file-b">上传</span>
-                        </div>
-                        @if($projectPhoto->intellectual_property_statement)
-                            <a class="a_view" target="_blank" href="/public/{{$projectPhoto->intellectual_property_statement}}">PDF查看</a>
-                        @endif
-                    </li>
-=======
                     <input type="hidden" name="intellectual_property_statement" value="0" class="intellectual_property_statement" />
->>>>>>> e0aadc7e338ca866e11408e47e380ec04c6bc622
                     <li>
                         <div class="text-left">
                             <p class="text01">融资证明材料PDF</p>
@@ -145,11 +128,7 @@
                             <img src="/public/{{$projectPhoto->contestant_photo}}" width="120" />
                         @endif
                     </li>
-<<<<<<< HEAD
-                    <li class="right text-aline">
-=======
                     <li class="text-aline">
->>>>>>> e0aadc7e338ca866e11408e47e380ec04c6bc622
                         <div class="text-left">
                             <p class="text01">项目图片LOGO（PNG格式）</p>
                         </div>
@@ -220,13 +199,6 @@
                     alert("身份证复印件正反面PDF");
                     return false;
                 }
-<<<<<<< HEAD
-                if($(".intellectual_property_statement").val().length == 0){
-                    alert("知识产权合规声明PDF");
-                    return false;
-                }
-=======
->>>>>>> e0aadc7e338ca866e11408e47e380ec04c6bc622
                 $('#form').submit();
             })
             $('#goBack').click(function(){
