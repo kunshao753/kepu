@@ -116,10 +116,10 @@
         </table>
         <h2 style="margin-top:30px;">项目信息</h2>
         <table border="0" cellspacing="0" cellpadding="0" class="table-box">
-            <tr><th >项目名称</th><td>{{$projectInfo->project_name}}</td></tr>
+            <tr><th >项目名称</th><td>{{@$projectInfo->project_name}}</td></tr>
             <tr><th>产品类型</th><td>
                     @foreach ($productType as $key=>$value)
-                        @if($key == $projectInfo->product_type) {{$value['text']}} @endif
+                        @if($key == @$projectInfo->product_type) {{$value['text']}} @endif
                     @endforeach
                 </td></tr>
             <tr><th>产品形态</th><td>
@@ -128,56 +128,56 @@
 
                     @endforeach
                 </td></tr>
-            <tr><th>产品用户</th><td>@if($projectInfo->product_user == 1) 普通公众 @else 支撑科普内容生产及传播的机构 @endif</td></tr>
-            <tr><th>产品用户数</th><td>{{$projectInfo->product_user_size}}</td></tr>
-            <tr><th>产品概况</th><td>{{$projectInfo->project_profile}}</td></tr>
-            <tr><th>产品亮点</th><td>{{$projectInfo->product_highlight}}</td></tr>
-            <tr><th>商业模式</th><td>{{$projectInfo->business_model}}</td></tr>
-            <tr><th>核心壁垒</th><td>{{$projectInfo->core_barrier}}</td></tr>
-            <tr><th>过往融资</th><td>{{$projectInfo->financing_situation}}</td></tr>
-            <tr><th>是否拥有专利技术</th><td>{{$projectInfo->is_patent}}</td></tr>
-            <tr><th>产品传播效果</th><td>{{$projectInfo->product_communication}}</td></tr>
-            <tr><th>产品内是否有广告</th><td> @if($projectInfo->is_ad == 1) 是 @else 否 @endif </td></tr>
-            <tr><th>广告类型</th><td>{{$projectInfo->ad_type}}</td></tr>
-            <tr><th>内容生产机制</th><td>{{$projectInfo->content_production_mechanism}}</td></tr>
-            <tr><th>内容审核机制</th><td>{{$projectInfo->content_review_mechanism}}</td></tr>
-            <tr><th>专家或机构推荐意见</th><td>{{$projectInfo->expert_agency_recommendation}}</td></tr>
+            <tr><th>产品用户</th><td>@if(@$projectInfo->product_user == 1) 普通公众 @else 支撑科普内容生产及传播的机构 @endif</td></tr>
+            <tr><th>产品用户数</th><td>{{@$projectInfo->product_user_size}}</td></tr>
+            <tr><th>产品概况</th><td>{{@$projectInfo->project_profile}}</td></tr>
+            <tr><th>产品亮点</th><td>{{@$projectInfo->product_highlight}}</td></tr>
+            <tr><th>商业模式</th><td>{{@$projectInfo->business_model}}</td></tr>
+            <tr><th>核心壁垒</th><td>{{@$projectInfo->core_barrier}}</td></tr>
+            <tr><th>过往融资</th><td>{{@$projectInfo->financing_situation}}</td></tr>
+            <tr><th>是否拥有专利技术</th><td>{{@$projectInfo->is_patent}}</td></tr>
+            <tr><th>产品传播效果</th><td>{{@$projectInfo->product_communication}}</td></tr>
+            <tr><th>产品内是否有广告</th><td> @if(@$projectInfo->is_ad == 1) 是 @else 否 @endif </td></tr>
+            <tr><th>广告类型</th><td>{{@$projectInfo->ad_type}}</td></tr>
+            <tr><th>内容生产机制</th><td>{{@$projectInfo->content_production_mechanism}}</td></tr>
+            <tr><th>内容审核机制</th><td>{{@$projectInfo->content_review_mechanism}}</td></tr>
+            <tr><th>专家或机构推荐意见</th><td>{{@$projectInfo->expert_agency_recommendation}}</td></tr>
         </table>
         <h2 style="margin-top:30px;">上传资料</h2>
         <table border="0" cellspacing="0" cellpadding="0" class="table-box">
             <tr><th >参赛声明签名扫描版PDF</th><td>
-                    @if($projectPhoto->contestant_statement)
-                        <a class="a_view"  target="_blank" href="/public/{{$projectPhoto->contestant_statement}}">PDF查看</a>
+                    @if(@$projectPhoto->contestant_statement)
+                        <a class="a_view"  target="_blank" href="/public/{{@$projectPhoto->contestant_statement}}">PDF查看</a>
                     @endif
                 </td></tr>
             <tr><th>身份证复印件正反面PDF</th><td>
-                    @if($projectPhoto->identity_front_back)
-                        <a class="a_view"  target="_blank" href="/public/{{$projectPhoto->identity_front_back}}">PDF查看</a>
+                    @if(@$projectPhoto->identity_front_back)
+                        <a class="a_view"  target="_blank" href="/public/{{@$projectPhoto->identity_front_back}}">PDF查看</a>
                     @endif
                 </td></tr>
             <tr><th>营业执照扫描PDF</th><td>
-                    @if($projectPhoto->business_license)
-                        <a class="a_view"  target="_blank" href="/public/{{$projectPhoto->business_license}}">PDF查看</a>
+                    @if(@$projectPhoto->business_license)
+                        <a class="a_view"  target="_blank" href="/public/{{@$projectPhoto->business_license}}">PDF查看</a>
                     @endif
                 </td></tr>
             <tr><th>融资证明材料PDF</th><td>
-                    @if($projectPhoto->financing_certificate)
-                        <a class="a_view"  target="_blank"  href="/public/{{$projectPhoto->financing_certificate}}">PDF查看</a>
+                    @if(@$projectPhoto->financing_certificate)
+                        <a class="a_view"  target="_blank"  href="/public/{{@$projectPhoto->financing_certificate}}">PDF查看</a>
                     @endif
                 </td></tr>
             <tr><th>产品传播效果报告PDF</th><td>
-                    @if($projectPhoto->product_communication_report)
-                        <a class="a_view"  target="_blank" href="/public/{{$projectPhoto->product_communication_report}}">PDF查看</a>
+                    @if(@$projectPhoto->product_communication_report)
+                        <a class="a_view"  target="_blank" href="/public/{{@$projectPhoto->product_communication_report}}">PDF查看</a>
                     @endif
                 </td></tr>
             <tr><th>选手照片（JPG等格式）</th><td>
-                    @if($projectPhoto->contestant_photo)
-                        <img src="/public/{{$projectPhoto->contestant_photo}}" width="120" />
+                    @if(@$projectPhoto->contestant_photo)
+                        <img src="/public/{{@$projectPhoto->contestant_photo}}" width="120" />
                     @endif
                 </td></tr>
             <tr><th>项目图片LOGO（PNG格式）</th><td>
-                    @if($projectPhoto->logo_photo)
-                        <img src="/public/{{$projectPhoto->logo_photo}}" width="120" />
+                    @if(@$projectPhoto->logo_photo)
+                        <img src="/public/{{@$projectPhoto->logo_photo}}" width="120" />
                     @endif
                 </td></tr>
         </table>

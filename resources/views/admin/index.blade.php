@@ -246,11 +246,12 @@
     <table border="0" cellspacing="0" cellpadding="0" class="table-box">
         <tr>
             <th width="5%">序号</th>
-            <th width="10%">姓名</th>
+            <th width="5%">姓名</th>
             <th width="10%">手机号</th>
-            <th width="15%">企业名称</th>
+            <th width="10%">企业名称</th>
             <th width="15%">项目名称</th>
             <th width="10%">参赛身份</th>
+            <th width="10%">报名来源</th>
             <th width="10%">产品类型</th>
             <th width="10%">产品形态</th>
             <th width="15%">操作</th>
@@ -263,6 +264,7 @@
             <td>@{{ company_name }}</td>
             <td>@{{ project_name }}</td>
             <td>@{{ci contestant_identity }}</td>
+            <td>@{{ signup_resouce }}</td>
             <td style="line-height: 30px;">@{{ product_type }}</td>
             <td  style="line-height: 30px;">@{{{ product_form_val }}}</td>
             <td>

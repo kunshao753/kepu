@@ -81,8 +81,8 @@ class AdminController extends PermissionController
             'teamInfo'=>$teamInfo,
             'productType'=>$productType,
             'productForm'=>$productForm,
-            'projectInfo'=>$projectInfo,
-            'projectPhoto'=>$projectPhoto
+            'projectInfo'=>!empty($projectInfo) ? $projectInfo : '',
+            'projectPhoto'=>!empty($projectPhoto) ? $projectPhoto : '',
         ));
 
 
@@ -160,7 +160,7 @@ class AdminController extends PermissionController
                 }
             }
         }else{
-            $cellData = array(['序号','姓名','手机号','企业名称','项目名称','参赛身份','产品类型','产品形态']);
+            $cellData = array(['序号','姓名','手机号','企业名称','项目名称','参赛身份','报名来源','产品类型','产品形态']);
             $corpList = CorpInfo::whereIn('audit_status',[1,3,4])->orderBy('created_at','DESC')->paginate(5000);
             $corpData = $this->corpAndProjectExport($corpList, $this->getCorpInfoConfig());
             if(!empty($corpData)){
@@ -169,7 +169,7 @@ class AdminController extends PermissionController
                     if($value['contestant_identity'] != 1){
                         $ci = '创客团队';
                     }
-                    $tmpArray = array($key+1, $value['name'],$value['mobile'],$value['company_name'],$value['project_name'],$ci,$value['product_type'],$value['product_form_val'] );
+                    $tmpArray = array($key+1, $value['name'],$value['mobile'],$value['company_name'],$value['project_name'],$ci,$value['signup_resouce'],$value['product_type'],$value['product_form_val'] );
                     array_push($cellData, $tmpArray);
                 }
             }
@@ -202,9 +202,16 @@ class AdminController extends PermissionController
             }
             $productTypeValue = !empty($projectInfo['product_type']) ? $projectInfo['product_type'] : '';
             $productFormArray = json_decode($projectInfo['product_form_val'], true);
-            foreach($productType['productType'] as $k=>$value){
+            foreach($productType['productType'] as $k=>$value1){
                 if($projectInfo['product_type'] == $k){
-                    $productTypeValue = $value['text'];
+                    $productTypeValue = $value1['text'];
+                    break;
+                }
+            }
+
+            foreach($productType['signupResouce'] as $k=>$value2){
+                if($value['signup_resouce'] == $k){
+                    $signupResourceValue = $value2['name'];
                     break;
                 }
             }
@@ -215,6 +222,7 @@ class AdminController extends PermissionController
                 }
             }
             $corpData['data'][$key]['project_name'] = $projectName;
+            $corpData['data'][$key]['signup_resouce'] = $signupResourceValue;
             $corpData['data'][$key]['product_type'] = $productTypeValue;
             $corpData['data'][$key]['product_form_val'] = $productForm;
         }
@@ -241,12 +249,19 @@ class AdminController extends PermissionController
             }
             $productTypeValue = !empty($projectInfo['product_type']) ? $projectInfo['product_type'] : '';
             $productFormArray = json_decode($projectInfo['product_form_val'], true);
-            foreach($productType['productType'] as $k=>$value){
+            foreach($productType['productType'] as $k=>$value1){
                 if($projectInfo['product_type'] == $k){
-                    $productTypeValue = $value['text'];
+                    $productTypeValue = $value1['text'];
                     break;
                 }
             }
+            foreach($productType['signupResouce'] as $k=>$value2){
+                if($value['signup_resouce'] == $k){
+                    $signupResourceValue = $value2['name'];
+                    break;
+                }
+            }
+
             $productForm = '';
             if(!empty($productFormArray)){
                 foreach ($productFormArray as $k=>$v){
@@ -254,6 +269,7 @@ class AdminController extends PermissionController
                 }
             }
             $corpData[$key]['project_name'] = $projectName;
+            $corpData[$key]['signup_resouce'] = $signupResourceValue;
             $corpData[$key]['product_type'] = $productTypeValue;
             $corpData[$key]['product_form_val'] = $productForm;
         }
