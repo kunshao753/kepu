@@ -75,7 +75,7 @@
                     <div class="label">
                         <label for="">出生年月</label>
                     </div>
-                    <input type="text" name="birthday" id="birthday" placeholder="请填写出生年月" class="input-box">
+                    <input type="text" name="birthday" id="birthday" placeholder="请填写出生年月,格式:月/日/年" class="input-box">
                     <span class="prompt red-p"><span id="birthdayTip"></span></span>
                 </li>
                 <li class="clearfix">
@@ -231,10 +231,12 @@
         $(function(){
             $( "#registered_time" ).datepicker({
                 changeMonth: true,
+                changeYear: true,
                 numberOfMonths: 1
             });
             $( "#birthday" ).datepicker({
                 changeMonth: true,
+                changeYear: true,
                 numberOfMonths: 1
             });
             $('#goBack').click(function(){
