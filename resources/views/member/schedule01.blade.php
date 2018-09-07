@@ -232,12 +232,14 @@
             $( "#registered_time" ).datepicker({
                 changeMonth: true,
                 changeYear: true,
-                numberOfMonths: 1
+                numberOfMonths: 1,
+                yearRange:"1920:2020"
             });
             $( "#birthday" ).datepicker({
                 changeMonth: true,
                 changeYear: true,
-                numberOfMonths: 1
+                numberOfMonths: 1,
+                yearRange:"1920:2020"
             });
             $('#goBack').click(function(){
                 window.location.href="/";
