@@ -25,6 +25,8 @@
             padding:10px 5px;
             line-height: 30px !important;
         }
+        .search-box{width: 200px;padding: 10px; border: 1px solid #f4f4f4;line-height: 18px;margin-right: 10px;}
+        .search-btn{background: #afdcc8;color: #fff;font-size: 18px;width: 80px;line-height: 40px;border-radius: 5px;border: none;}
     </style>
 </head>
 <body>
@@ -57,6 +59,10 @@
 <div style="background: #fff; width: 1100px; padding: 0 20px 50px 20px; margin:0 auto;">
     <div class="people-num w">
         <h2>当前报名人数<br/>{{$count}}人</h2>
+        <p style="margin: 10px 0">
+            <input class="search-box" type="text" placeholder="按姓名查询">
+            <input class="search-btn" type="button" value="搜索">
+        </p>
         <div id="corpInfoList"></div>
         <div class="b-page clearfix">
             <a  href="{{route('admin.exportList')}}?type=corporate_information" class="export-btn">导出</a>
@@ -193,7 +199,7 @@
                     console.log(result)
                     var templateList = Handlebars.compile($("#corpInfoList-template").html());
                     Handlebars.registerHelper("index_key", function(i) {
-                        return (res.data.pageNum - 1) * 20 + i + 1;
+                        return (res.data.pageNum - 1) * param.pageSize + i + 1;
                     });
                     Handlebars.registerHelper("ci", function(id) {
                         if(id == 1){
@@ -205,10 +211,11 @@
                     $('#corpInfoList').html(templateList(result));
                     $("#corpInfoPage").paging({
                         pageNo: res.data.pageNum,
-                        totalPage: Math.ceil(res.data.rowTotal/20),
+                        totalPage: Math.ceil(res.data.rowTotal/param.pageSize),
                         totalSize: res.data.rowTotal,
                         callback: function(num) {
                             param.pageNo = num;
+                            param.name = $('.search-box').val();
                             cropInfoAjax(param);
                         }
                     })
@@ -217,7 +224,15 @@
         })
     }
     param['pageNo'] = 1;
+    param['name'] = $('.search-box').val();
     cropInfoAjax(param);
+    $(function(){
+        $(".search-btn").on('click',function(){
+            param['name'] = $('.search-box').val();
+            console.log(param);
+            cropInfoAjax(param);
+        })
+    })
 
 </script>
 <script id="messageList-template" type="text/x-handlebars-template">

@@ -109,9 +109,16 @@ class AdminController extends PermissionController
     public function cropInfoList(Request $request){
         $pageSize = $request->input('pageSize');
         $pageNum = $request->input('pageNo');
+        $name = $request->input('name');
         $offset = ($pageNum - 1) * $pageSize;
-        $corpList = CorpInfo::whereIn('audit_status',[1,3,4])->offset($offset)->limit($pageSize)->orderBy('created_at','DESC')->get();
-        $count = CorpInfo::whereIn('audit_status',[1,3,4])->count();
+        if(!empty($name)){
+            $corpList = CorpInfo::whereIn('audit_status',[1,3,4])->Where('name','like',"%$name%")->offset($offset)->limit($pageSize)->orderBy('created_at','DESC')->get();
+            $count = CorpInfo::whereIn('audit_status',[1,3,4])->Where('name','like',"%$name%")->count();
+        }else{
+            $corpList = CorpInfo::whereIn('audit_status',[1,3,4])->offset($offset)->limit($pageSize)->orderBy('created_at','DESC')->get();
+            $count = CorpInfo::whereIn('audit_status',[1,3,4])->count();
+        }
+
         $corpData = $this->corpAndProject($corpList, $this->getCorpInfoConfig());
         $result = [
             'pageNum'=>$pageNum ,
