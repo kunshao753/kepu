@@ -31,10 +31,16 @@
                             报名成功,材料审核中
                         @elseif($status == 2)
                             初审未通过
+                        @elseif($status == 5)
+                            初审通过
                         @elseif($status == 3)
                             初选通过
-                        @else
+                        @elseif($status == 6)
+                            初选未通过
+                        @elseif($status == 4)
                             终选通过
+                        @elseif($status == 7)
+                            终选未通过
                         @endif
                     </span>
                 </td>

@@ -33,7 +33,7 @@ class AdminController extends PermissionController
                 break;
             }
         }
-        $count = CorpInfo::whereIn('audit_status',[1,3,4])->count();
+        $count = CorpInfo::whereIn('audit_status',[1,3,4,5])->count();
         return view('admin.index', array('count'=>$count,'competitionStep'=> $competitionStep));
     }
 
@@ -112,11 +112,11 @@ class AdminController extends PermissionController
         $name = $request->input('name');
         $offset = ($pageNum - 1) * $pageSize;
         if(!empty($name)){
-            $corpList = CorpInfo::whereIn('audit_status',[1,3,4])->Where('name','like',"%$name%")->offset($offset)->limit($pageSize)->orderBy('created_at','DESC')->get();
-            $count = CorpInfo::whereIn('audit_status',[1,3,4])->Where('name','like',"%$name%")->count();
+            $corpList = CorpInfo::whereIn('audit_status',[1,3,4,5])->Where('name','like',"%$name%")->offset($offset)->limit($pageSize)->orderBy('created_at','DESC')->get();
+            $count = CorpInfo::whereIn('audit_status',[1,3,4,5])->Where('name','like',"%$name%")->count();
         }else{
-            $corpList = CorpInfo::whereIn('audit_status',[1,3,4])->offset($offset)->limit($pageSize)->orderBy('created_at','DESC')->get();
-            $count = CorpInfo::whereIn('audit_status',[1,3,4])->count();
+            $corpList = CorpInfo::whereIn('audit_status',[1,3,4,5])->offset($offset)->limit($pageSize)->orderBy('created_at','DESC')->get();
+            $count = CorpInfo::whereIn('audit_status',[1,3,4,5])->count();
         }
 
         $corpData = $this->corpAndProject($corpList, $this->getCorpInfoConfig());
@@ -168,7 +168,7 @@ class AdminController extends PermissionController
             }
         }else{
             $cellData = array(['序号','姓名','手机号','企业名称','项目名称','参赛身份','报名来源','产品类型','产品形态']);
-            $corpList = CorpInfo::whereIn('audit_status',[1,3,4])->orderBy('created_at','DESC')->paginate(5000);
+            $corpList = CorpInfo::whereIn('audit_status',[1,3,4,5])->orderBy('created_at','DESC')->paginate(5000);
             $corpData = $this->corpAndProjectExport($corpList, $this->getCorpInfoConfig());
             if(!empty($corpData)){
                 foreach($corpData['data'] as $key=>$value){

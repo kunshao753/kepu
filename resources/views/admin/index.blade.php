@@ -127,7 +127,11 @@
         </h3>
         <ul class="reason-list">
             <li>
-                <input name="auditstep" value="2" checked type="radio">
+                <input name="auditstep" value="5" checked type="radio">
+                初审通过
+            </li>
+            <li>
+                <input name="auditstep" value="2" type="radio">
                 初审未通过
             </li>
             <li>
@@ -135,8 +139,16 @@
                 初选通过
             </li>
             <li>
+                <input name="auditstep" value="6"  type="radio">
+                初选未通过
+            </li>
+            <li>
                 <input name="auditstep" value="4" type="radio">
                 终选通过
+            </li>
+            <li>
+                <input name="auditstep" value="7" type="radio">
+                终选未通过
             </li>
         </ul>
         <div class="f-btn">
