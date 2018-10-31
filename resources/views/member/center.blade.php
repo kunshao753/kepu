@@ -46,10 +46,12 @@
                 </td>
                 <td>
                     @if($isResult == 1)
-                    <a href="{{route('member.corpInfo')}}?id={{$user['id']}}" class="btn">修改</a>
-                    <a href="javascript:void(0);" class="btn" id="del">删除</a>
+                    {{--<a href="{{route('member.corpInfo')}}?id={{$user['id']}}" class="btn">修改</a>--}}
+                    {{--<a href="javascript:void(0);" class="btn" id="del">删除</a>--}}
                     @else
-                        <a href="{{route('member.signUp')}}" class="btn">开始报名</a>
+{{--                        <a href="{{route('member.signUp')}}" class="btn">开始报名</a>--}}
+                        <a href="javascript:void(0)" class="btn" style="color: #969398;background: #f4f4f4;">报名结束</a>
+
                     @endif
                 </td>
             </tr>
