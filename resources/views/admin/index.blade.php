@@ -297,9 +297,9 @@
             <td>
                 <a style="width: 70px; height: 45px; line-height: 45px;" href="{{route('admin.memberInfo')}}?id=@{{ user_id }}" class="btn">查看</a>
                 <a style="width: 70px; height: 45px; line-height: 45px;" href="javascript:void(0);" data-id="@{{ id }}" class="btn audit-btn">审批</a>
-                <a style="padding: 0 32px;margin-top: 10px; height: 45px; line-height: 45px;position: relative" href="javascript:void(0);" class="btn">
+                <a style="padding: 0 32px;margin-top: 10px; height: 45px; line-height: 45px;position: relative;cursor: pointer" href="javascript:void(0);" class="btn">
                         <span> @{{ files_zip }} </span>
-                    <input style="position: absolute;width: 100%;height: 45px;left: 0;top: 0;opacity: 0" type="file" data-id="@{{ user_id }}" class="upload-file">
+                    <input style="position: absolute;width: 100%;height: 45px;left: 0;top: 0;opacity: 0;cursor: pointer" type="file" data-id="@{{ user_id }}" class="upload-file">
                 </a>
 
             </td>
