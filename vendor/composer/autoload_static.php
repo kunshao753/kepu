@@ -19,6 +19,7 @@ class ComposerStaticInit7b20e4d61e2f88170fbbc44c70d38a1f
         '801c31d8ed748cfa537fa45402288c95' => __DIR__ . '/..' . '/psy/psysh/src/functions.php',
         'f0906e6318348a765ffb6eb24e0d0938' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Foundation/helpers.php',
         '58571171fd5812e6e447dce228f52f4d' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Support/helpers.php',
+        '56eb11357bbe35bff36ddc719014291a' => __DIR__ . '/..' . '/qiniu/autoload.php',
     );
 
     public static $prefixLengthsPsr4 = array (

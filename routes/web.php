@@ -39,4 +39,6 @@ Route::post('/member/projectPhotoEdit', 'MemberController@projectPhotoEdit')->na
 Route::post('/member/corpInfoEdit', 'MemberController@corpInfoEdit')->name('member.corpInfoEdit');
 Route::post('/member/projectInfoEdit', 'MemberController@projectInfoEdit')->name('member.projectInfoEdit');
 Route::post('/uploadFile', 'FileController@uploadFile')->name('uploadFile');
+Route::post('/admin/uploadZipFile', 'FileController@uploadQnFile')->name('admin.uploadQnFile');
+
 

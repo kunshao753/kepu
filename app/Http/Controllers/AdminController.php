@@ -19,7 +19,6 @@ use Excel;
 use App\ProjectInfo;
 use Illuminate\Support\Facades\Auth;
 
-
 class AdminController extends PermissionController
 {
     public function index()
@@ -244,6 +243,7 @@ class AdminController extends PermissionController
         $productType = $this->getCorpInfoConfig();
         foreach($corpData as $key=>$value){
             //$isExtPhoto  = ProjectPhoto::where(['user_id'=> $value['user_id']])->first();
+            $photoInfo  = ProjectPhoto::where(['user_id'=> $value['user_id']])->first();
             $projectInfo = ProjectInfo::where(['user_id'=> $value['user_id']])->first();
             //$projectTeam = ProjectTeam::where(['user_id'=> $value['user_id']])->first();
             //if(!$isExtPhoto || !$projectInfo || !$projectTeam){
@@ -279,6 +279,7 @@ class AdminController extends PermissionController
             $corpData[$key]['signup_resouce'] = $signupResourceValue;
             $corpData[$key]['product_type'] = $productTypeValue;
             $corpData[$key]['product_form_val'] = $productForm;
+            $corpData[$key]['files_zip'] = empty($photoInfo['files_zip']) ? '上传资料' : '已上传';
         }
         return $corpData;
     }

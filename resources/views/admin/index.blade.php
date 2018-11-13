@@ -297,6 +297,11 @@
             <td>
                 <a style="width: 70px; height: 45px; line-height: 45px;" href="{{route('admin.memberInfo')}}?id=@{{ user_id }}" class="btn">查看</a>
                 <a style="width: 70px; height: 45px; line-height: 45px;" href="javascript:void(0);" data-id="@{{ id }}" class="btn audit-btn">审批</a>
+                <a style="padding: 0 32px;margin-top: 10px; height: 45px; line-height: 45px;position: relative" href="javascript:void(0);" class="btn">
+                        <span> @{{ files_zip }} </span>
+                    <input style="position: absolute;width: 100%;height: 45px;left: 0;top: 0;opacity: 0" type="file" data-id="@{{ user_id }}" class="upload-file">
+                </a>
+
             </td>
         </tr>
         @{{/each}}
@@ -337,7 +342,32 @@
                 }
             })
         })
+
+        $('#corpInfoList').delegate('.upload-file','change',function(){
+            var t = $(this);
+            var uid = t.attr('data-id');
+            var fileObj = this.files[0]
+            var formData = new FormData();
+            formData.append('file',fileObj);
+            formData.append('id',uid);
+
+            $.ajax({
+                url: "/admin/uploadZipFile",
+                type: 'post',
+                cache: false,
+                data: formData,
+                processData: false,
+                contentType: false
+            }).done(function(res) {
+                if(res.status == 'success'){
+                    t.siblings('span').html('已上传');
+                    alert('上传成功')
+                }
+            });
+        })
     })
+
+
 </script>
 
 </body>
