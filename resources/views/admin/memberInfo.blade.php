@@ -180,7 +180,7 @@
                         <img src="/public/{{@$projectPhoto->logo_photo}}" width="120" />
                     @endif
                 </td></tr>
-            <tr><th>已上传资料信息</th><td>
+            <tr><th>产品展示图片或视频</th><td>
                     @if(@$projectPhoto->files_zip)
                         <a class="a_view"  href="{{@$projectPhoto->files_zip}}">下载</a>
                     @endif
