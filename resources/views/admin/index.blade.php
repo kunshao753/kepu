@@ -136,19 +136,19 @@
             </li>
             <li>
                 <input name="auditstep" value="3"  type="radio">
-                初选通过
+                遴选通过
             </li>
             <li>
                 <input name="auditstep" value="6"  type="radio">
-                初选未通过
+                遴选未通过
             </li>
             <li>
                 <input name="auditstep" value="4" type="radio">
-                终选通过
+                初选通过
             </li>
             <li>
                 <input name="auditstep" value="7" type="radio">
-                终选未通过
+                初选未通过
             </li>
         </ul>
         <div class="f-btn">

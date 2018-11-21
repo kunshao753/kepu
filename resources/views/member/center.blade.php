@@ -32,15 +32,15 @@
                         @elseif($status == 2)
                             初审未通过
                         @elseif($status == 5)
-                            初审通过
+                            通过初审,遴选进行中
                         @elseif($status == 3)
-                            初选通过
+                            通过遴选，初选进行中
                         @elseif($status == 6)
-                            初选未通过
+                            很遗憾您未通过遴选
                         @elseif($status == 4)
-                            终选通过
+                            通过初选，终选进行中
                         @elseif($status == 7)
-                            终选未通过
+                            很遗憾您未通过初选
                         @endif
                     </span>
                 </td>
